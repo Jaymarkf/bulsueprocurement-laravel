@@ -1,0 +1,11 @@
+:root{
+    --default:#763435;
+}
+
+
+.text-default{
+    color:var(--default);
+}
+.bg-default{
+    background-color:var(--default);
+}
