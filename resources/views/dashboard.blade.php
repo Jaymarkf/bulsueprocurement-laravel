@@ -17,9 +17,9 @@
     </head>
     <body>
            <div>
-                 <div class="header sticky w-100 bg-default top-0 h-auto" style="border-bottom:8.5pt solid #d27839;">
+                 <div class="header sticky w-full bg-default top-0 h-auto">
                
-                    <a href="/">
+                    <a href="/" class="h-full w-full bg-default">
                         <img src="{{asset('images/header_logo.png')}}" alt="" class="max-w-full h-auto"> 
                     </a>
                

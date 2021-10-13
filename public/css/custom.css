@@ -9,3 +9,6 @@
 .bg-default{
     background-color:var(--default);
 }
+.header{
+    box-shadow:inset 1px -0.46vw 1px #d27839;
+}
