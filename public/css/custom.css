@@ -7,7 +7,7 @@
     color:var(--default);
 }
 .bg-default{
-    background-color:var(--default);
+    background-color:red;
 }
 .header{
     box-shadow:inset 1px -0.46vw 1px #d27839;
