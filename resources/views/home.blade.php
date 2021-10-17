@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        <title>Laravel</title>
+        <title>BULSU e-PROCUREMENT v1.1</title>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <style>
             body {
@@ -24,7 +24,7 @@
                     </a>
                 </div>
                 <dashboard-carousel></dashboard-carousel>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 xl:gap-8 ">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 xl:gap-8 px-3">
                     <div class="content p-2 mt-4">
                             <div class="content-title">
                                <h2 class="color-default text-3xl font-bold">The BulSU Transparent Seal</h2>
@@ -32,7 +32,7 @@
                             <div class="content-body">
                             A pearl buried inside a tightly-shut shell is practically worthless. Government information is a pearl, meant to be shared with the public in order to maximize its inherent value.The Transparency Seal, depicted by a pearl shining out of an open shell, is a symbol of a policy shift towards openness in access to government information. On the one hand, it hopes to inspire Filipinos in the civil service to be more open to citizen engagement; on the other, to invite the Filipino citizenry to exercise their right to participate in governance…
                             <br>
-                            <a href="bulsu.edu.ph/transparency-seal/" class="color-default-link text-xl">Read more...</a>
+                            <a href="https://bulsu.edu.ph/transparency-seal/" class="color-default-link text-xl">Read more...</a>
                             </div>
                     </div>
                     <div class="content p-2 mt-4">
@@ -41,11 +41,46 @@
                                 </div>
                                 <div class="content-body">
                                 Bulacan State University (BulSU) is a state-funded institution of higher learning established in 1904 and converted into a university in 1993 by virtue of Republic Act 7665.The University in mandated to provide higher professional/technical and special instruction for special purpose and to promote research and extension services, advanced studies and extension services, advanced studies and progressive leadership in Engineering, Architecture, Education, Art and Science, Fine Arts, Information Technology, Technical courses, Commerce…
+                                <br>
+                                <a href="https://bulsu.edu.ph/about" class="color-default-link text-xl">Read more...</a>
                                 </div>
                         </div>
-                    <div class="content">
+                    <div class="content p-2 mt-4">
+                            <div class="card">
+                                <div class="card-header bg-default-1 d-block text-center p-4">
+                                        <img src="{{asset('images/logo.png')}}" alt="" class="w-1/5 md:w-2/5 m-auto ">
+                                        <span class="text-white font-bold text-2xl text-center">Bulacan State University</span>
+                                </div>
+                                <div class="card-body bg-default relative">
+                                        <div class="flex">
+                                            <span class="text-white"><i class="fas fa-lock mr-2"></i>Sign-in your account</span>
+                                        </div>
+                                        <div class="forms">
+                                            <form action="" class="mt-3">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                </div>
 
-                    
+                                                <div class="input-group ">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-lock"></i></span>
+                                                    </div>
+                                                    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon2">
+                                                </div>
+
+                                                <div class="mt-3">
+                                                        <button class="form-control btn bg-default-1 btn-md text-white hover:bg-yellow-600 font-bold">Login</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+
+                                </div>
+                            </div>
+
                     </div>
                 </div>
                 

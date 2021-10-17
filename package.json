@@ -27,6 +27,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "@splidejs/vue-splide": "^0.4.1"
+        "@fortawesome/fontawesome-free": "^5.15.4",
+        "@splidejs/vue-splide": "^0.4.1",
+        "font-awesome": "^4.7.0"
     }
 }
