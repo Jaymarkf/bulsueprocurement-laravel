@@ -17,10 +17,11 @@
           <i class="fas fa-cogs group-hover:text-green-600 mr-1"></i><span class="group-hover:text-green-600 font-bold">Settings</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Set PPMP Year</a>
+          <a class="dropdown-item" href="#">Manage User</a>
+          <a class="dropdown-item" href="#">Manage Item Category</a>
+          <a class="dropdown-item" href="#">Manage Item Detail</a>
+          <a class="dropdown-item" href="#">Manage Purpose</a>
         </div>
       </li>
       <li class="nav-item dropdown group">
@@ -28,19 +29,23 @@
            <i class="fas fa-folder-minus mr-1 group-hover:text-green-600"></i><span class="group-hover:text-green-600">Menu</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Project Project Management Plan</a>
+          <a class="dropdown-item" href="#">CONSOLIDATED Annual Procurement Plan</a>
+          <a class="dropdown-item" href="#">Purchase Request</a>
+          <a class="dropdown-item" href="#">Price Quotation</a>
+          <a class="dropdown-item" href="#">Bac Resolution</a>
+          <a class="dropdown-item" href="#">Purchase Order</a>
+          <a class="dropdown-item" href="#">Inspection and Acceptance Report</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link uppercase text-white font-bold" href="/superadmin">BULSU e-PROCUREMENT V1.1</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      <div class="form-inline my-2 my-lg-0">
+          <a href="#" class="font-bold text-md text-white mr-2">Administrator Panel</a>
+          <a href="#">Dropdown here</a>
+      </div>
+
   </div>
 </nav>
