@@ -6,3 +6,75 @@
 .header-bottom .container{
     width:100%;
 }
+.dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+}
+
+/********************************/
+/* User Side navigation */
+
+.w-90{
+    width: 95%;
+    padding: 0;
+}
+
+.ul-items{
+    background-color: #ac421d !important;
+}
+.ul-items>ul>li{
+    color: #fff;
+    padding: 6px 0;
+    border-bottom: 1px solid #fff;
+}
+.ul-items>h5{
+    color: #fff;
+    padding: 6px 0;
+    border-bottom: 1px solid #fff;
+}
+.ul-items>h5>i{
+    padding: 0 0.5rem 0 0rem;
+}
+.ul-items>ul>li>a {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.ul-items>ul li a i{
+    padding: 0 0.5rem 0 0rem;
+}
+
+.ul-items>ul>li:hover {
+    background-color: #ffffff !important;
+    color: #222222;
+}
+.ul-items>ul>li>a:hover {
+    color: #222222;
+    text-decoration: none;
+}
+.all-number-item{
+    background-color: #763435;
+    padding: 12px 14px;
+}
+/* Grid 3 Columns */
+.grid-content{
+    text-align: center;
+
+}
+.grid-content div{
+    padding: 2.5rem 0;
+    border: 1px solid #222222;
+}
+
+.grid-content div ul{
+    background-color: #ffffe0;
+    border: 1px solid #fe980f;
+    min-height: 220px !important;
+    padding: 2.5rem 1rem;
+    vertical-align: middle;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.grid-content div ul h5, .grid-content div ul h2, .grid-content div ul p {
+    margin-bottom: 1.5rem;
+}

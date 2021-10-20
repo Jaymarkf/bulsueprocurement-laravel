@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/superadmin',function(){
     return view('/superadmin/dashboard');
 });
+Route::get('/user',function(){
+    return view('/branch/user');
+});
