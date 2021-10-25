@@ -40,10 +40,10 @@
             </div>
       </div>
     <div class="col-md-8 col-sm-8">
-        <div id="content" class="border border-secondary">
+        <div id="content" class="border border-secondary ">
 
          <!-- Admin user Update Table Content -->
-            <div class="d-flex mx-auto justify-content-between align-items-center text-light all-number-item">
+            <div class="d-flex mx-auto justify-content-between align-items-center text-light all-number-item ">
                 <div class="w-50">
                 <h5><i class="fas fa-user mr-2"></i>Users List</h5>
                 </div>
@@ -52,8 +52,8 @@
                 </div>
             </div>
             <!-- Admin User Actions  -->
-            <button type="button" class="btn btn-danger"><i class="fa fa-trash mr-2" aria-hidden="true"></i>Delete</button>
-            <select name="cars" id="cars" >
+            <button type="button" class="btn btn-danger mt-2 ml-1"><i class="fa fa-trash mr-2 " aria-hidden="true"></i>Delete</button>
+            <select name="cars" id="cars" class="mt-2">
                        <option disabled selected hidden>10</option>
                         <option value="volvo">1</option>
                         <option value="saab">2</option>
