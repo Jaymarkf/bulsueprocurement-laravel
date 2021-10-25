@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/superadmin',function(){
     return view('/superadmin/dashboard');
 });
+
+Route::get('/set-ppmp-year',function(){
+    return view('/superadmin/set-ppmp-year',["image_logo_url" => "test data"]);
+});
