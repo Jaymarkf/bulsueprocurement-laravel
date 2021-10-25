@@ -25,3 +25,8 @@ Route::get('/user',function(){
 Route::get('/admin/user',function(){
     return view('/admin/admin-user');
 });
+
+Route::get('/set-ppmp-year',function(){
+    return view('/superadmin/set-ppmp-year',["image_logo_url" => "test data"]);
+    
+});
