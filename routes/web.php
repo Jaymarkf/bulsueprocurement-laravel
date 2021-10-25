@@ -22,3 +22,6 @@ Route::get('/superadmin',function(){
 Route::get('/user',function(){
     return view('/branch/user');
 });
+Route::get('/admin/user',function(){
+    return view('/admin/admin-user');
+});
