@@ -4,7 +4,7 @@
           <!-- Admin User Create Account  -->
             <div class="d-flex mx-auto align-items-center text-light all-number-item">
                 <div class="w-50">
-                    <h5><i class="fas fa-plus-circle"></i>Add User</h5>
+                    <h5><i class="fas fa-plus-circle mr-2"></i>Add User</h5>
                 </div>
             </div>
             <div class="grid grid-cols-1 gap-4 grid-content-center px-2 mt-4">
@@ -45,7 +45,7 @@
          <!-- Admin user Update Table Content -->
             <div class="d-flex mx-auto justify-content-between align-items-center text-light all-number-item">
                 <div class="w-50">
-                <h5><i class="fas fa-user"></i>Users List</h5>
+                <h5><i class="fas fa-user mr-2"></i>Users List</h5>
                 </div>
                 <div class="w-50 text-right">
                     <p>Numbers of Users: <span class="badge badge-info">18</span> </p>
