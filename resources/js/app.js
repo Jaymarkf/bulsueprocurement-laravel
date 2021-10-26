@@ -30,3 +30,10 @@ Vue.component('dashboard-carousel', require('./components/DashboardCarousel.vue'
 const app = new Vue({
     el: '#app',
 });
+
+
+jQuery(function(){
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var today  = new Date();
+    $('#currentdate').html(today.toLocaleDateString("en-US",options));
+});

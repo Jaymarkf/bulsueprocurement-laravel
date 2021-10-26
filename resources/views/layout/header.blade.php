@@ -4,7 +4,7 @@
     <span class="text-white font-bold text-xs ml-3 md:hidden sm:text-xl">BULSU e-PROCUREMENT v1.1</span>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon text-light"></span>
+    <span class="navbar-toggler-icon text-light w-4 sm:w-6"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -17,7 +17,7 @@
           <i class="fas fa-cogs group-hover:text-green-600 mr-1"></i><span class="group-hover:text-green-600 font-bold">Settings</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Set PPMP Year</a>
+          <a class="dropdown-item" href="/set-ppmp-year">Set PPMP Year</a>
           <a class="dropdown-item" href="#">Manage User</a>
           <a class="dropdown-item" href="#">Manage Item Category</a>
           <a class="dropdown-item" href="#">Manage Item Detail</a>
@@ -25,10 +25,10 @@
         </div>
       </li>
       <li class="nav-item dropdown group">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fas fa-folder-minus mr-1 group-hover:text-green-600"></i><span class="group-hover:text-green-600">Menu</span>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
           <a class="dropdown-item" href="#">Project Project Management Plan</a>
           <a class="dropdown-item" href="#">CONSOLIDATED Annual Procurement Plan</a>
           <a class="dropdown-item" href="#">Purchase Request</a>
@@ -42,10 +42,20 @@
         <a class="nav-link uppercase text-white font-bold" href="/superadmin">BULSU e-PROCUREMENT V1.1</a>
       </li>
     </ul>
-      <div class="form-inline my-2 my-lg-0">
-          <a href="#" class="font-bold text-md text-white mr-2">Administrator Panel</a>
-          <a href="#">Dropdown here</a>
-      </div>
+      <ul class="navbar p-0">
+      <li class="nav-item">
+        <span class="text-white font-bold">Administrator</span>
+      </li>
+      <li class="nav-item dropdown group">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <i class="fas fa-user mr-1 group-hover:text-green-600"></i><span class="group-hover:text-green-600">JHONLOYD</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="#"><i class="fas fa-key mr-2"></i>Change password</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+        </div>
+      </li>
+      </ul>
 
   </div>
 </nav>
