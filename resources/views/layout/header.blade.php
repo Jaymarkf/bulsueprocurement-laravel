@@ -17,7 +17,7 @@
           <i class="fas fa-cogs group-hover:text-green-600 mr-1"></i><span class="group-hover:text-green-600 font-bold">Settings</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Set PPMP Year</a>
+          <a class="dropdown-item" href="/set-ppmp-year">Set PPMP Year</a>
           <a class="dropdown-item" href="#">Manage User</a>
           <a class="dropdown-item" href="#">Manage Item Category</a>
           <a class="dropdown-item" href="#">Manage Item Detail</a>
