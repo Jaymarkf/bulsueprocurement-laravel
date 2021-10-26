@@ -1,0 +1,9 @@
+.gradient-black{
+position:absolute;
+width:100%;
+top:0;
+left:0;
+height:100%;
+background:linear-gradient(to right, #000000e0, #ffffff00 50%, #000000e0 100%);
+z-index: 1;
+}

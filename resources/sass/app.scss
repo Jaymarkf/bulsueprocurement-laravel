@@ -1,0 +1,37 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import 'layout/header';
+@import 'home/carousel-home';
+
+$fa-font-path:        "../webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+:root{
+    --bg-default-brown:#571b1b;
+}
+
+.color-default{
+    color:$default;
+}
+.bg-default-1{
+    background-color:$default-1;
+}
+.color-default-link{
+    color:$indigo;
+}
+.bg-alert{
+
+
+    background-color:$bg-alert;
+}
+
