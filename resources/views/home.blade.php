@@ -4,7 +4,7 @@
     <body>
            <div id="app" class="max-w-full">
     
-                 <div class="header-bottom sticky w-full bg-default top-0 h-auto">
+                 <div class="header-bottom sticky w-full bg-default top-0 h-auto z-10">
                     <a href="/" class="h-full w-full bg-default">
                         <img src="{{asset('images/header_logo.png')}}" alt="" class="w-3/5 h-auto"> 
                     </a>
@@ -58,7 +58,10 @@
                                                 </div>
 
                                                 <div class="mt-3">
-                                                        <button class="form-control btn bg-default-1 btn-md text-white hover:bg-yellow-600 font-bold">Login</button>
+                                                        <button class="form-control btn bg-default-1 btn-md text-white hover:bg-yellow-600 font-bold">
+                                                            <i class="fas fa-key mr-2"></i>
+                                                            Login
+                                                        </button>
                                                 </div>
 
                                             </form>

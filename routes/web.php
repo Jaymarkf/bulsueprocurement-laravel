@@ -20,6 +20,11 @@ Route::get('/superadmin',function(){
     return view('/superadmin/dashboard');
 });
 
+Route::get('/superadmin/consolidated',function(){
+    return view('/superadmin/consolidated');
+});
+
+
 Route::get('/user',function(){
     return view('/branch/user');
 });
