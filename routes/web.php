@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/superadmin',function(){
-    return view('/superadmin/dashboard');
+Route::get('/admin',function(){
+    return view('/admin/dashboard');
 });
 
-Route::get('/superadmin/consolidated',function(){
-    return view('/superadmin/consolidated');
+Route::get('/admin/consolidated',function(){
+    return view('/admin/consolidated');
 });
 
 
@@ -34,7 +34,10 @@ Route::get('/admin/user',function(){
 });
 
 Route::get('/set-ppmp-year',function(){
-    return view('/superadmin/set-ppmp-year',["image_logo_url" => "test data"]);
+    return view('/admin/set-ppmp-year',["image_logo_url" => "test data"]);
     
 });
 
+Route::get('/admin/change-password',function(){
+    return view('/admin/change-password');
+});

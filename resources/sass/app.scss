@@ -16,6 +16,8 @@ $fa-font-path:        "../webfonts";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/regular";
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';
 :root{
     --bg-default-brown:#571b1b;
 }
@@ -29,9 +31,12 @@ $fa-font-path:        "../webfonts";
 .color-default-link{
     color:$indigo;
 }
+.bg-default{
+    background-color:$default;
+}
 .bg-alert{
-
-
     background-color:$bg-alert;
 }
-
+body,html{
+    height:100%;
+}
