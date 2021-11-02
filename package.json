@@ -29,6 +29,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@splidejs/vue-splide": "^0.4.1",
+        "bootstrap-vue": "^2.21.2",
         "font-awesome": "^4.7.0"
     }
 }

@@ -1,5 +1,6 @@
 <div class="p-4">
-    <div class="card">
+    <div class="table-responsive">
+    <div class="card m-w-max">
         <div class="card-header bg-default-1 d-flex align-items-center">
             
                 <span class="text-white font-bold text-xs md:text-base mr-auto">Project Procurement Manage Plan - Dashboard</span>
@@ -8,7 +9,7 @@
                 <span class="text-white text-sm">Total records #</span>
         </div>
         <div class="card-body">
-              <div class="table-responsive">
+       
               <table class="table table-sm table-stripped table-bordered">
                     <thead>
                         <tr>
@@ -31,7 +32,8 @@
                         </tr>
                     </tbody>
                 </table>
-              </div>
+           
         </div>
+    </div>
     </div>
 </div>
