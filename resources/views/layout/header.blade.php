@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse flex-wrap" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active ">
-        <a class="nav-link font-bold text-white text-light" href="#">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link font-bold text-white text-light" href="{{$user}}">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown group">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,17 +29,17 @@
            <i class="fas fa-folder-minus mr-1 group-hover:text-green-600"></i><span class="group-hover:text-green-600">Menu</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="#">Project Project Management Plan</a>
-          <a class="dropdown-item" href="{{$user}}/consolidated">CONSOLIDATED Annual Procurement Plan</a>
-          <a class="dropdown-item" href="#">Purchase Request</a>
-          <a class="dropdown-item" href="#">Price Quotation</a>
-          <a class="dropdown-item" href="#">Bac Resolution</a>
-          <a class="dropdown-item" href="#">Purchase Order</a>
-          <a class="dropdown-item" href="#">Inspection and Acceptance Report</a>
+          <a class="dropdown-item" href="{{$user}}"><i class="fa fa-box mr-1 text-green-400"></i>Project Project Management Plan</a>
+          <a class="dropdown-item" href="{{$user}}/consolidated"><i class="fab fa-battle-net mr-1 text-yellow-400"></i>CONSOLIDATED Annual Procurement Plan</a>
+          <a class="dropdown-item" href="{{$user}}/purchase-request"><i class="fas fa-cash-register mr-1 text-pink-400"></i>Purchase Request</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-money-bill-wave mr-1 text-green-700"></i>Price Quotation</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-receipt mr-1 text-gray-400"></i>Bac Resolution</a>
+          <a class="dropdown-item" href="#"><i class="far fa-handshake mr-1 text-blue-400"></i>Purchase Order</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-glasses mr-1 text-gray-600"></i>Inspection and Acceptance Report</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link uppercase text-white font-bold" href="/admin">BULSU e-PROCUREMENT V1.1</a>
+        <a class="nav-link uppercase text-white font-bold" href="{{$user}}">BULSU e-PROCUREMENT V1.1</a>
       </li>
     </ul>
       <ul class="navbar p-0 ml-2">

@@ -23,7 +23,9 @@ Route::get('/admin',function(){
 Route::get('/admin/consolidated',function(){
     return view('/admin/consolidated');
 });
-
+Route::get('/admin/purchase-request',function(){
+    return view('/admin/purchase-request');
+});
 
 Route::get('/user',function(){
     return view('/branch/user');
