@@ -23,9 +23,8 @@ Route::get('/admin',function(){
 Route::get('/admin/consolidated',function(){
     return view('/admin/consolidated');
 });
-
-Route::get('/admin/table',function(){
-    return view('/admin/admin-table-pagination');
+Route::get('/admin/purchase-request',function(){
+    return view('/admin/purchase-request');
 });
 
 // USER

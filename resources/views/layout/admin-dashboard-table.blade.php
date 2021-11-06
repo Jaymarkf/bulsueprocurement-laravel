@@ -1,9 +1,9 @@
-<div class="p-4">
+<div class="p-4 admin-table-container">
     <div class="table-responsive">
     <div class="card m-w-max">
         <div class="card-header bg-default-1 d-flex align-items-center">
             
-                <span class="text-white font-bold text-xs md:text-base mr-auto">Project Procurement Manage Plan - Dashboard</span>
+                <span class="text-white font-bold text-xs md:text-base mr-auto"><i class="fa fa-box mr-1 text-green-400"></i>Project Procurement Manage Plan - Dashboard</span>
 
                 <a href="/" class="btn bg-alert mr-2 text-white" onclick="alert('please render a data view')">Unsubmitted/Pending PPMP</a>
                 <span class="text-white text-sm">Total records #</span>
