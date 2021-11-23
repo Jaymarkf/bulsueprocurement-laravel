@@ -69,6 +69,10 @@
                                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                         <i class="fas fa-folder-open mr-1"></i> View
                                     </button>
+
+                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                        <i class="fas fa-trash-alt mr-1"></i> Delete
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
