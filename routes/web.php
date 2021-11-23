@@ -43,3 +43,11 @@ Route::get('/set-ppmp-year',function(){
 Route::get('/admin/change-password',function(){
     return view('/admin/change-password');
 });
+
+Route::get('/admin/manage-quotation', function(){
+    return view('/admin/manage-quotation');
+});
+
+Route::get('/admin/manage-bac-resolution', function() {
+    return view('/admin/manage-bac-resolution');
+});
