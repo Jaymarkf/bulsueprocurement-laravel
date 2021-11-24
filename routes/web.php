@@ -51,3 +51,11 @@ Route::get('/admin/manage-quotation', function(){
 Route::get('/admin/manage-bac-resolution', function() {
     return view('/admin/manage-bac-resolution');
 });
+
+Route::get('/admin/purchase-order', function() {
+    return view('/admin/purchase-order');
+});
+
+Route::get('/admin/inspection-acceptance', function() {
+    return view('/admin/inspection-acceptance');
+});
