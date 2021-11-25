@@ -8,7 +8,7 @@
             'link'=> array('/admin'),
             'text'=> array('admin')
         )))
-    @include('layout/admin-dashboard-table')
+    @include('/admin/ppmp')
     @include('layout/footer')
   </div>
 

@@ -9,7 +9,7 @@
             'text'=> array('admin','consolidated')
         )))
 
-        
+      
         <div class="container-fluid admin-table-container">
             <div class="card">
                 <div class="card-header bg-default">
@@ -17,6 +17,7 @@
                     <span class="text-white font-bold ml-10">Notification <i class="text-lg fas fa-bell cursor-pointer dropdown-pointer hover:text-yellow-600"></i></span>
                 </div>
                 <div class="card-body">
+                    <div class="table-responsive">
                     <table class="table table-auto w-full table-bordered ">
                         <thead>
                             <tr>
@@ -44,6 +45,7 @@
                             </tr>
                         </tfoot>
                     </table>
+                    </div>
                 </div>
                 <div class="card-footer d-flex">
                     <a href="/admin" class="btn btn-dark btn-sm mr-auto hover:bg-gray-400 underline-none"><i class="fas fa-arrow-alt-circle-left mr-2"></i>back</a>
