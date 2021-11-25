@@ -2,108 +2,63 @@
 <html lang="en">
     @include('layout/head-script')
  <body>
-    <div id="app">
-        @include('layout/header',array('user'=>'/admin'))
-        @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
-            'link'=> array('/admin','/admin/purchase-order'),
-            'text'=> array('admin','purchase-order')
+  <div>
+    @include('layout/header',array('user'=>'/admin'))
+    @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
+            'link'=> array('/admin' ,'/admin/purchase-order'),
+            'text'=> array('admin','purchase order')
         )))
-
-        <div class="container-fluid admin-table-container">
-        <p class="text-xl font-bold mb-4">
-            Manage BAC Resolution
-        </p>
-        <div class="container-fluid row d-flex items-center mb-3">
-            <a class="btn bg-gray-600 text-white mr-4 hover:bg-gray-400" href="/admin" ><i class="far fa-caret-square-left mr-3"></i>Back</a>
-        </div>
-            <div class="card">
+    <button class="btn bg-green-600 hover:bg-green-400 text-white ml-3 mb-3" data-toggle="modal" data-target="#modalcompany_items"><i class="fas fa-plus mr-1"></i> Add New</button>
+    <div class="card admin-table-container">
                 <div class="card-header bg-default d-flex items-center">
-                    <span class="text-base text-white mr-auto"><i class="fas fa-file-alt mr-1"></i>BAC Resolution List</span>
-                    <span class="text-base text-white">Number of BAC Resolution: <i class="badge badge-pill bg-blue-400">10</i></span>
-                </div>
+                    <span class="text-base text-white d-flex items-center"><i class="fas fa-receipt mr-1 text-gray-400"></i> BAC Resolution List - <p class="badge bg-yellow-500 text-sm rounded-lg ml-1">Year 0001</p></span>
+                    <span class="text-white text-sm ml-auto">Total records 22</span>
+                </div>  
                 <div class="card-body">
-                    <div class="grid grid-cols-4 gap-4 mb-4 align-middle">
-                        <div class="col-span-3">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                <i class="fas fa-plus mr-1"></i> Add New
-                            </button>
-
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                <i class="fas fa-print mr-1"></i> Generate BAC Report
-                            </button>
-                        </div>
-                        <div class="col-span-1">
-                            <input
-                                type="text"
-                                placeholder="Search"
-                                class="
-                                px-2
-                                py-2
-                                placeholder-gray-400
-                                text-gray-600
-                                relative
-                                bg-white bg-white
-                                rounded
-                                text-sm
-                                border border-gray-400
-                                outline-none
-                                focus:outline-none focus:ring
-                                w-full
-                                "
-                            />
-                        </div>
+                    <div class="d-flex w-full items-center mb-0 sm:mb-3 flex-col sm:flex-row">
+                    <a href="#" class="btn bg-green-600 hover:bg-green-400 text-white mr-3 mb-3 sm:mb-0 order-2 sm:order-1"><i class="fas fa-file-alt mr-1"></i>Generate BAC Report</a>
+                    <input type="text" placeholder="input approved budget contract.." class="form-control w-100 sm:w-2/4 order-1 sm:order-2 mb-3 sm:mb-0">
                     </div>
-
-                    <div class="table-responsive">
-                    <table class="table table-auto table-bordered">
-                        <thead>
-                            <tr>
-                               <th class="text-xs">Date Created</th>
-                               <th class="text-xs">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-lg align-middle">2021-01-06 19:30:26</td>
-                                <td class="text-xs align-middle">
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                        <i class="fas fa-folder-open mr-1"></i> View
-                                    </button>
-
-                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                                        <i class="fas fa-trash-alt mr-1"></i> Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
+                   <div class="table-responsive">
+                    <table class="table table-auto w-full table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date Created</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>11-11-2020</td>
+                            <td>print preview | DELETE</td>
+                        </tr>
+                    </tbody>
                     </table>
-                    </div>
+                   </div>
                 </div>
             </div>
-        </div>
-        @include('layout/footer')    
-    </div>
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">End user list (Approved by Budget office and Procurement)</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-            Data table here <br>
-            columns >> End users | Item Detail | Action > approved button (toggle on or  off switch button)
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close mr-1"></i>Close</button>
-        <button type="button" class="btn btn-primary"><i class="fa fa-save mr-1"></i>Save</button>
-      </div>
-    </div>
+    @include('layout/footer')
   </div>
-</div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalcompany_items" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">End user list (Approved by Budget office and Procurement)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Go to purchase order in existing website for referrence
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close mr-1"></i>Close</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-save mr-1"></i>Save</button>
+            </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
 </html>

@@ -20,68 +20,43 @@ Route::get('/admin',function(){
     return view('/admin/dashboard');
 });
 
-Route::get('/admin/consolidated',function(){
-    return view('/admin/consolidated');
-});
-Route::get('/admin/purchase-request',function(){
-    return view('/admin/purchase-request');
-});
-
-// USER
-Route::get('/user',function(){
-    return view('/user/user-dashboard');
-});
-Route::get('/user/price-catalogue',function(){
-    return view('/user/user-dashboard');
-});
-Route::get('/user/order-details-item',function(){
-    return view('/user/order-details');
-});
-Route::get('/user/ppmp-cart-list',function(){
-    return view('/user/ppmp-cart-list');
-});
-Route::get('/user/ppmp-requested',function(){
-    return view('/user/ppmp-requested');
+Route::get('/admin/{url}',function($url){
+    if($url == 'dashboard'){
+        return view('/admin/dashboard');
+    }else if($url == 'consolidated'){
+        return view('/admin/consolidated');
+    }else if($url == 'purchase-request'){
+        return view('/admin/purchase-request');
+    }else if($url =='ppmp'){
+        return view('/admin/dashboard');
+    }else if($url == 'price-quotation'){
+        return view('/admin/price-quotation');
+    }else if($url =='bac-resolution'){
+        return view('/admin/bac-resolution');
+    }else if($url == 'purchase-order'){
+        return view('/admin/purchase-order');
+    }else{
+        return redirect('/404');
+    }
 });
 
-Route::get('/user/activity-log',function(){
-    return view('/user/activity-log');
-});
-
-Route::get('/user/ppmp-log-history',function(){
-    return view('/user/ppmp-log-history');
-});
-Route::get('user/change-password',function(){
-    return view('/user/change-password');
-});
-Route::get('user/set-ppmp-year',function(){
-    return view('/user/year');
-});
-
-//  SETTING
-Route::get('/admin/manage-item-details',function(){
-    return view('/admin/manage-item-details');
-});
 
 Route::get('/admin/manage-user',function(){
     return view('/admin/admin-user');
 });
 
-Route::get('/admin/manage-item-category',function(){
-    return view('/admin/manage-item-category');
-});
-Route::get('/admin/manage-purpose',function(){
-    return view('/admin/manage-purpose');
-});
 
 
+Route::get('/user',function(){
+    return view('/branch/user');
+});
 
 Route::get('/set-ppmp-year',function(){
-    return view('/admin/set-ppmp-year',["image_logo_url" => "test data"]);
+    return view('template-forms/set-ppmp-year');
     
 });
-Route::get('/admin/change-password',function(){
-    return view('/admin/change-password');
+Route::get('/change-password',function(){
+    return view('template-forms/change-password',array('user'=>'example'));
 });
 
 Route::get('/admin/manage-quotation', function(){
