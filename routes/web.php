@@ -99,3 +99,15 @@ Route::get('/admin/purchase-order', function() {
 Route::get('/admin/inspection-acceptance', function() {
     return view('/admin/inspection-acceptance');
 });
+
+Route::get('/admin/manage-item-cat', function() {
+    return view('/admin/manage-item-cat');
+});
+
+Route::get('/admin/manage-item-details', function() {
+    return view('/admin/manage-item-details');
+});
+
+Route::get('/admin/manage-item-purpose', function() {
+    return view('/admin/manage-item-purpose');
+});
