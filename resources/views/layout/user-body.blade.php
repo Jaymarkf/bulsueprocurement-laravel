@@ -27,9 +27,9 @@
 <div class="container d-md-flex align-items-stretch w-90 mw-100 pt-5" >
    <!-- Page Content  -->
    <nav id="sidebar w-25">
-      <h2 class="p-1 text-center"><i class="fas fa-tags"></i> Price Catalogue </h2>
+      <h2 class="p-1 text-center h1"><i class="fas fa-tags"></i> Price Catalogue </h2>
       <div class="p-3 w-90 border border-secondary ul-items">
-         <h5><i class="fas fa-tags"></i>All Items</h5>
+         <h5 class="text-uppercase"><i class="fas fa-tags mr-2"></i>All Items</h5>
          <ul class="list-unstyled components mb-5 ">
             <li>
                <a href="#pageSubmenu1" >
@@ -121,7 +121,7 @@
             </li>
             <li>
                <a href="#pageSubmenu3" >
-               <i class="fas fa-tags"></i>JANITORIAL SUPPLIES/a>
+               <i class="fas fa-tags"></i>JANITORIAL SUPPLIES</a>
             </li>
             <li>
                <a href="#pageSubmenu3" >
@@ -189,11 +189,11 @@
          </ul>
 
    </nav>
-   <div id="content" class="w-75 border border-secondary">
+   <div id="content" class="w-75 border border-secondary h-100 pb-4">
       <!--  -->
       <div class="d-flex mx-auto justify-content-between align-items-center text-light all-number-item">
          <div class="w-50">
-           <h5><i class="fas fa-tags"></i>All Items</h5>
+           <h5 class="text-uppercase"><i class="fas fa-tags mr-2"></i>All Items</h5>
          </div>
          <div class="w-50 text-right">
             <p>Number of Items Found: <span class="badge badge-info">18</span> </p>
@@ -206,7 +206,7 @@
                   <h5>Canon 811 Tri-Color</h5>
                   <h2>₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="product-details.php?prodid=2" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/user/order-details-item" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
             </ul>
          </div>
 
@@ -215,7 +215,7 @@
                   <h5>Canon 811 Tri-Color</h5>
                   <h2>₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="product-details.php?prodid=2" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/user/order-details-item" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
             </ul>
          </div>
          <div>
@@ -223,7 +223,7 @@
                   <h5>Canon 811 Tri-Color</h5>
                   <h2>₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="product-details.php?prodid=2" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/user/order-details-item" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
             </ul>
 
          </div>
@@ -232,7 +232,7 @@
                   <h5>Canon 811 Tri-Color</h5>
                   <h2>₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="product-details.php?prodid=2" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/user/order-details-item" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
             </ul>
          </div>
          <div>
@@ -240,7 +240,7 @@
                   <h5>Canon 811 Tri-Color</h5>
                   <h2>₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="product-details.php?prodid=2" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/user/order-details-item" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
             </ul>
          </div>
          <div>
@@ -248,7 +248,7 @@
                   <h5>Canon 811 Tri-Color</h5>
                   <h2>₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="product-details.php?prodid=2" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/user/order-details-item" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
             </ul>
          </div>
          <div>
@@ -256,7 +256,7 @@
                   <h5>Canon 811 Tri-Color</h5>
                   <h2>₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="product-details.php?prodid=2" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/user/order-details-item" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
             </ul>
          </div>
          <div>
@@ -264,7 +264,7 @@
                   <h5>Canon 811 Tri-Color</h5>
                   <h2>₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="product-details.php?prodid=2" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/user/order-details-item" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
             </ul>
          </div>
          <div>
@@ -272,7 +272,7 @@
                   <h5>Canon 811 Tri-Color</h5>
                   <h2>₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="product-details.php?prodid=2" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/user/order-details-item" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
             </ul>
          </div>
       </div>

@@ -61,8 +61,11 @@
 
 }
 .grid-content div{
-    padding: 2.5rem 0;
-    border: 1px solid #222222;
+    padding: 0.5rem 0;
+    /* border: 1px solid #222222; */
+}
+.grid-content .manage-user_wrapper{
+    padding: 0 !important;
 }
 
 .grid-content div ul{
@@ -78,3 +81,30 @@
 .grid-content div ul h5, .grid-content div ul h2, .grid-content div ul p {
     margin-bottom: 1.5rem;
 }
+
+/*  */
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    transition: border linear .2s,box-shadow linear .2s;
+    padding: 4px 6px;
+    border-radius: 5px;
+}
+.w-98{
+    width: 99% !important;
+}
+
+
+table.display thead tr th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #cccccc;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+table.display tbody tr th, table.display tbody tr td{
+    border: 1px solid #cccccc;
+} 
