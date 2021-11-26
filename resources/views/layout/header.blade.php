@@ -32,9 +32,9 @@
           <a class="dropdown-item" href="{{$user}}"><i class="fa fa-box mr-1 text-green-400"></i>Project Project Management Plan</a>
           <a class="dropdown-item" href="{{$user}}/consolidated"><i class="fab fa-battle-net mr-1 text-yellow-400"></i>CONSOLIDATED Annual Procurement Plan</a>
           <a class="dropdown-item" href="{{$user}}/purchase-request"><i class="fas fa-cash-register mr-1 text-pink-400"></i>Purchase Request</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-money-bill-wave mr-1 text-green-700"></i>Price Quotation</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-receipt mr-1 text-gray-400"></i>Bac Resolution</a>
-          <a class="dropdown-item" href="#"><i class="far fa-handshake mr-1 text-blue-400"></i>Purchase Order</a>
+          <a class="dropdown-item" href="{{$user}}/price-quotation"><i class="fas fa-money-bill-wave mr-1 text-green-700"></i>Price Quotation</a>
+          <a class="dropdown-item" href="{{$user}}/bac-resolution"><i class="fas fa-receipt mr-1 text-gray-400"></i>Bac Resolution</a>
+          <a class="dropdown-item" href="{{$user}}/purchase-order"><i class="far fa-handshake mr-1 text-blue-400"></i>Purchase Order</a>
           <a class="dropdown-item" href="#"><i class="fas fa-glasses mr-1 text-gray-600"></i>Inspection and Acceptance Report</a>
         </div>
       </li>
@@ -51,7 +51,7 @@
             <span class="group-hover:text-green-600"><i class="fas fa-user-cog mr-2"></i> JHONLOYD</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" href="{{$user}}/change-password"><i class="fas fa-key mr-2"></i>Change password</a>
+            <a class="dropdown-item" href="/change-password"><i class="fas fa-key mr-2"></i>Change password</a>
             <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
           </div>
         </li>
