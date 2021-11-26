@@ -15,28 +15,14 @@
       </li>
       <li class="nav-item dropdown group">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-cogs group-hover:text-green-600 mr-1"></i><span class="group-hover:text-green-600 font-bold">Settings</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Set PPMP Year</a>
-          <a class="dropdown-item" href="#">Manage User</a>
-          <a class="dropdown-item" href="#">Manage Item Category</a>
-          <a class="dropdown-item" href="#">Manage Item Detail</a>
-          <a class="dropdown-item" href="#">Manage Purpose</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown group">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fas fa-folder-minus mr-1 group-hover:text-green-600"></i><span class="group-hover:text-green-600">Menu</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Project Project Management Plan</a>
-          <a class="dropdown-item" href="#">CONSOLIDATED Annual Procurement Plan</a>
-          <a class="dropdown-item" href="#">Purchase Request</a>
-          <a class="dropdown-item" href="#">Price Quotation</a>
-          <a class="dropdown-item" href="#">Bac Resolution</a>
-          <a class="dropdown-item" href="#">Purchase Order</a>
-          <a class="dropdown-item" href="#">Inspection and Acceptance Report</a>
+          <a class="dropdown-item" href="/user/set-ppmp-year"><i class="fas fa-calendar-alt mr-2"></i>Set PPMP Year</a>
+          <a class="dropdown-item" href="/user/price-catalogue"><i class="fas fa-tags mr-2"></i>Price Catalogue</a>
+          <a class="dropdown-item" href="/user/ppmp-cart-list"><i class="fas fa-shopping-cart mr-2"></i>PPMP Cart List</a>
+          <a class="dropdown-item" href="/user/ppmp-requested"><i class="fas fa-tasks mr-2"></i>New PPMP - 2021</a>
+          <a class="dropdown-item" href="/user/ppmp-log-history"><i class="fas fa-history mr-2"></i>PPMP History</a>
         </div>
       </li>
       <li class="nav-item">
@@ -44,18 +30,20 @@
       </li>
     </ul>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown group">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-user-circle mr-1 group-hover:text-green-600 text-white fa-2x "></i><span class="group-hover:text-green-600 font-bold">Account</span>
-        </a>
-        <div class="dropdown-menu right mr-auto ml-0" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Change Password</a>
-          <a class="dropdown-item" href="#">Logout</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      <ul class="navbar p-0 ml-auto">
+          <li class="nav-item">
+            <span class="text-white font-bold"><i class="fas fa-hdd mr-2"></i>USER Panel</span>
+          </li>
+          <li class="nav-item dropdown group">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="group-hover:text-green-600"><i class="fas fa-user mr-2"></i> <b>USER</b></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
+              <a class="dropdown-item" href="/user/change-password"><i class="fas fa-key mr-2"></i>Change password</a>
+              <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+            </div>
+          </li>
+        </ul>
   </div>
   <div>&nbsp;</div>
 
