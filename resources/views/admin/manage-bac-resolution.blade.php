@@ -5,8 +5,8 @@
     <div id="app">
         @include('layout/header',array('user'=>'/admin'))
         @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
-            'link'=> array('/admin','/admin/purchase-order'),
-            'text'=> array('admin','purchase-order')
+            'link'=> array('/admin','/admin/manage-bac-resolution'),
+            'text'=> array('admin','manage-bac-resolution')
         )))
 
         <div class="container-fluid admin-table-container">
@@ -104,7 +104,6 @@
     </div>
   </div>
 </div>
-
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
 </html>

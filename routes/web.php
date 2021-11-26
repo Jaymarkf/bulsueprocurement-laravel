@@ -58,3 +58,31 @@ Route::get('/set-ppmp-year',function(){
 Route::get('/change-password',function(){
     return view('template-forms/change-password',array('user'=>'example'));
 });
+
+Route::get('/admin/manage-quotation', function(){
+    return view('/admin/manage-quotation');
+});
+
+Route::get('/admin/manage-bac-resolution', function() {
+    return view('/admin/manage-bac-resolution');
+});
+
+Route::get('/admin/purchase-order', function() {
+    return view('/admin/purchase-order');
+});
+
+Route::get('/admin/inspection-acceptance', function() {
+    return view('/admin/inspection-acceptance');
+});
+
+Route::get('/admin/manage-item-cat', function() {
+    return view('/admin/manage-item-cat');
+});
+
+Route::get('/admin/manage-item-details', function() {
+    return view('/admin/manage-item-details');
+});
+
+Route::get('/admin/manage-item-purpose', function() {
+    return view('/admin/manage-item-purpose');
+});
