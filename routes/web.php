@@ -20,24 +20,41 @@ Route::get('/admin',function(){
     return view('/admin/dashboard');
 });
 
-Route::get('/admin/consolidated',function(){
-    return view('/admin/consolidated');
+Route::get('/admin/{url}',function($url){
+    if($url == 'dashboard'){
+        return view('/admin/dashboard');
+    }else if($url == 'consolidated'){
+        return view('/admin/consolidated');
+    }else if($url == 'purchase-request'){
+        return view('/admin/purchase-request');
+    }else if($url =='ppmp'){
+        return view('/admin/dashboard');
+    }else if($url == 'price-quotation'){
+        return view('/admin/price-quotation');
+    }else if($url =='bac-resolution'){
+        return view('/admin/bac-resolution');
+    }else if($url == 'purchase-order'){
+        return view('/admin/purchase-order');
+    }else{
+        return redirect('/404');
+    }
 });
+
+
+Route::get('/admin/user',function(){
+    return view('/admin/admin-user');
+});
+
 
 
 Route::get('/user',function(){
     return view('/branch/user');
 });
 
-Route::get('/admin/user',function(){
-    return view('/admin/admin-user');
-});
-
 Route::get('/set-ppmp-year',function(){
-    return view('/admin/set-ppmp-year',["image_logo_url" => "test data"]);
+    return view('template-forms/set-ppmp-year');
     
 });
-
-Route::get('/admin/change-password',function(){
-    return view('/admin/change-password');
+Route::get('/change-password',function(){
+    return view('template-forms/change-password',array('user'=>'example'));
 });
