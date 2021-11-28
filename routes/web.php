@@ -35,6 +35,12 @@ Route::get('/admin/{url}',function($url){
         return view('/admin/bac-resolution');
     }else if($url == 'purchase-order'){
         return view('/admin/purchase-order');
+    }else if($url == 'add-purchase-order'){
+        return view('/admin/add-purchase-order');
+    }else if($url == 'inspection-acceptance'){
+        return view('/admin/inspection-acceptance');
+    }else if($url == 'add-inspection-acceptance'){
+        return view('/admin/add-inspection-acceptance');
     }else{
         return redirect('/404');
     }
