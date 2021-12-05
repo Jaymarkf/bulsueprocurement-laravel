@@ -108,3 +108,45 @@ table.display thead tr th {
 table.display tbody tr th, table.display tbody tr td{
     border: 1px solid #cccccc;
 } 
+
+/* Supplier */
+h3.ics-title {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+.row.supplier-ics-container {
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+.row.mx-auto .col-md-4 {
+    flex: 0 0 31.333333%;
+    max-width: 31.333333%;
+}
+.supplier-ics-container>div> label.text-center {
+    width: 100%;
+    margin: 0.5rem;
+}
+
+.fund-cluster-row .col-md-3 {
+    max-width: 23%;
+}
+.item-equipment-description-section{
+    width: 92%;
+    margin: 0 auto;
+}
+.item-equipment-description-section.shadow-lg .inner-container {
+    width: 96%;
+    margin: 0 auto;
+}
+
+.w-98{
+    width: 98%;
+}
+.w-95{
+    width: 95%;
+}
+.w-97{
+    width: 97%;
+}
