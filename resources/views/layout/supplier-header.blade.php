@@ -20,11 +20,14 @@
           <li><a class="dropdown-item" href="/supplier"><i class="fa fa-hdd mr-1"></i>Dashboard</a></li>
           <li><a class="dropdown-item" href="/supplier/inventory-custodian-form"><i class="fab fa-battle-net mr-1 text-yellow-400"></i>Inventory Custodian Form</a></li>
           <li><a class="dropdown-item" href="/supplier/property-acknowledgement-report"><i class="fas mr-1 text-pink-400"></i>Property Acknowledgement Receipt</a></li>
-          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="/supplier/#"><i class="fas fa-external-link-alt mr-1 text-green-700"></i>Property Transfer</a></li>
-             <!-- <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Submenu</a></li>
-                            <li><a class="dropdown-item" href="#">Submenu0</a></li>
-            </ul> -->
+          <li class="dropdown-submenu"><a href="#" data-toggle="dropdown" class="dropdown-item dropdown-toggle"><i class="fas fa-external-link-alt mr-1 text-green-700"></i>Property Transfer</a>
+             <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Inventory Custodian Slip</a></li>
+                <li class="dropdown-item"><a href="#">Property Acknowledgement Receipt</a></li>
+                <li class="dropdown-item"><a href="#">Summary Report</a></li>
+              </ul>
+            </li>
+
         </li>
           <li><a class="dropdown-item" href="/supplier/unserviceable-property"><i class="fas fa-trash-alt mr-1 text-gray-400"></i>unserviceable Property</a></li>
           <li><a class="dropdown-item" href="/supplier/purchase-order"><i class="far mr-1 text-blue-400"></i>General Inventory Reports</a></li>
@@ -50,7 +53,7 @@
     </ul>
       <ul class="navbar p-0 ml-2">
         <li class="nav-item">
-          <span class="text-white font-bold">Supplier</span>
+          <span class="text-white font-bold">Supply Office</span>
         </li>
         <li class="nav-item dropdown group">
           <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

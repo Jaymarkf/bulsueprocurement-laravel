@@ -151,6 +151,8 @@ Route::get('/supplier/{url}',function($url){
         return view('/supplier/unserviceable-property');
     }else if($url == 'view-inventory-reports'){
         return view('/supplier/view-inventory-reports');   
+    }else if($url == 'property-transfer-ics'){
+        return view('/supplier/property-transfer-ics');   
     }else{
         return redirect('/404');
     }

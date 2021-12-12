@@ -11,4 +11,11 @@
     @include('layout/footer')
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" defer> </script>
+<script>
+        $(document).ready( function () {
+            $('#suppliertable, #supplierpartable').DataTable();
+        });
+    
+</script>
 </html>
