@@ -1,13 +1,14 @@
 <!-- Set Year and Cart Section -->
-<div class="mt-5 w-90 mx-auto">
+
+<div class="mt-2 w-97 mx-auto">
 	<div class="w-90">
       Set the procurement year first before making a transactions...	
    </div>
-   <div class="d-flex w-100 mx-auto justify-content-between align-items-center mt-3 border border-secondary p-3">
+   <div class="d-flex w-100 mx-auto justify-content-between align-items-center p-3">
       <div class="w-50">
-            <a href="year.php" class="pull-left" data-placement="right" title="" id="yearbtn" data-original-title="Click to Change the year">
+            <a href="/set-ppmp-year" class="pull-left" data-placement="right" title="" id="yearbtn" data-original-title="Click to Change the year">
                <div class="pull-left">
-                  <h3 style="color:#ffa500;background-color:rgba(295,235,215,0.8);padding:3px 20px;border-radius:50px;"> Year: 2020</h3>
+                  <h1 class="h1 m-0" style="color:#ffa500;background-color:rgba(295,235,215,0.8);padding:3px 20px;border-radius:50px;"> Year: 2021</h1>
                </div>
             </a>
             <script type="text/javascript">
@@ -18,7 +19,7 @@
             </script>
       </div>
       <div class="w-50">
-          <a href="#" class="btn btn-default bg-dark pull-right text-light"><i class="icon-shopping-cart icon-large"></i> PPMP Cart<br><span class="badge badge-info">0</span></a>
+          <a href="#" class="btn btn-default bg-gray-100 border border-gray-400 pull-right text-dark rounded-none py-1"><i class="fa fa-shopping-cart" aria-hidden="true"></i> PPMP Cart<br><span class="badge badge-info  px-2 rounded-full text-sm text-light py-0">0</span></a>
       </div>
    </div>    
 </div>
@@ -203,76 +204,76 @@
       <div class="grid grid-cols-3 gap-4 grid-content px-4 pt-4">
          <div>
             <ul>
-                  <h5>Canon 811 Tri-Color</h5>
-                  <h2>₱774.00 / Cartridges</h2>
+                  <h5 class="h4 text-blue-500 m-0">Canon 811 Tri-Color</h5>
+                  <h2 class="h4 text-yellow-500 my-3">₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="/user/order-details" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/faculty/order-details-item" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </a>
             </ul>
          </div>
 
          <div>
              <ul>
-                  <h5>Canon 811 Tri-Color</h5>
-                  <h2>₱774.00 / Cartridges</h2>
+                  <h5 class="h4 text-blue-500 m-0">Canon 811 Tri-Color</h5>
+                  <h2 class="h4 text-yellow-500 my-3">₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="/user/order-details" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/faculty/order-details-item" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </a>
             </ul>
          </div>
          <div>
             <ul>
-                  <h5>Canon 811 Tri-Color</h5>
-                  <h2>₱774.00 / Cartridges</h2>
+                  <h5 class="h4 text-blue-500 m-0">Canon 811 Tri-Color</h5>
+                  <h2 class="h4 text-yellow-500 my-3">₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="/user/order-details" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/faculty/order-details-item" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </a>
             </ul>
 
          </div>
          <div>
              <ul>
-                  <h5>Canon 811 Tri-Color</h5>
-                  <h2>₱774.00 / Cartridges</h2>
+                  <h5 class="h4 text-blue-500 m-0">Canon 811 Tri-Color</h5>
+                  <h2 class="h4 text-yellow-500 my-3">₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="/user/order-details" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/faculty/order-details-item" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </a>
             </ul>
          </div>
          <div>
              <ul>
-                  <h5>Canon 811 Tri-Color</h5>
-                  <h2>₱774.00 / Cartridges</h2>
+                  <h5 class="h4 text-blue-500 m-0">Canon 811 Tri-Color</h5>
+                  <h2 class="h4 text-yellow-500 my-3">₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="/user/order-details" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/faculty/order-details-item" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </a>
             </ul>
          </div>
          <div>
              <ul>
-                  <h5>Canon 811 Tri-Color</h5>
-                  <h2>₱774.00 / Cartridges</h2>
+                  <h5 class="h4 text-blue-500 m-0">Canon 811 Tri-Color</h5>
+                  <h2 class="h4 text-yellow-500 my-3">₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="/user/order-details" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/faculty/order-details-item" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </a>
             </ul>
          </div>
          <div>
              <ul>
-                  <h5>Canon 811 Tri-Color</h5>
-                  <h2>₱774.00 / Cartridges</h2>
+                  <h5 class="h4 text-blue-500 m-0">Canon 811 Tri-Color</h5>
+                  <h2 class="h4 text-yellow-500 my-3">₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="/user/order-details" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/faculty/order-details-item" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </a>
             </ul>
          </div>
          <div>
              <ul>
-                  <h5>Canon 811 Tri-Color</h5>
-                  <h2>₱774.00 / Cartridges</h2>
+                  <h5 class="h4 text-blue-500 m-0">Canon 811 Tri-Color</h5>
+                  <h2 class="h4 text-yellow-500 my-3">₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="/user/order-details" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/faculty/order-details-item" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </a>
             </ul>
          </div>
          <div>
              <ul>
-                  <h5>Canon 811 Tri-Color</h5>
-                  <h2>₱774.00 / Cartridges</h2>
+                  <h5 class="h4 text-blue-500 m-0">Canon 811 Tri-Color</h5>
+                  <h2 class="h4 text-yellow-500 my-3">₱774.00 / Cartridges</h2>
                   <p>INK/TONER FOR PRINTERS</p>
-                  <a href="/user/order-details" class="btn btn-success"><i class="icon-shopping-cart icon-large"></i> Item Details </a>
+                  <a href="/faculty/order-details-item" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </a>
             </ul>
          </div>
       </div>

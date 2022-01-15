@@ -3,7 +3,7 @@
     @include('layout/head-script')
 <body>
     @include('layout/faculty-header',array('faculty'=>'faculty'))
-    @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
+    @include('layout/user-breadcrumbs' ,array('breadcrumbs'=>array(
             'link'=> array('/faculty','/faculty/price-catalogue'),
             'text'=> array('faculty','price-catalogue')
         )))

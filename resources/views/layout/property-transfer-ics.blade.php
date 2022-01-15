@@ -1,7 +1,7 @@
 <h3 class="ics-title ml-3"><i class="fas fa-external-link-alt mr-1"></i>Property Transfer</h3>
 <h2 class="text-center h4 mt-4 mb-0">Transaction Type - Inventory Custodian Report </h2>
 
-<div class="item-equipment-description-section shadow-lg py-8 border mt-20 pt-0">
+<div class="item-equipment-description-section shadow-lg py-8 border mt-2 pt-0">
     <div class="d-flex mx-auto align-items-center text-light all-number-item mb-8" style="position:relative;width:100%;background-image:linear-gradient(#e877c6, #763435); ">
         <div class="w-100 text-center"><h5><i class="mr-2 "></i>Transfer ICS Data</h5></div>
     </div>
