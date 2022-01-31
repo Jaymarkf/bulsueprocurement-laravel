@@ -20,6 +20,7 @@ Route::get('/admin',function(){
     return view('/admin/dashboard');
 });
 
+
 Route::get('/admin/{url}',function($url){
     if($url == 'dashboard'){
         return view('/admin/dashboard');
@@ -35,6 +36,7 @@ Route::get('/admin/{url}',function($url){
         return view('/admin/bac-resolution');
     }else if($url == 'purchase-order'){
         return view('/admin/purchase-order');
+
     }else if($url == 'manage-user'){
         return view('/admin/admin-user');
     }else if($url == 'manage-quotation'){
@@ -43,8 +45,6 @@ Route::get('/admin/{url}',function($url){
         return view('/admin/inspection-acceptance');
     }else if($url == 'manage-item-details'){
         return view('/admin/manage-item-details');
-    }else if($url == 'admin-user'){
-        return view('/admin/admin-user');
     }else if($url == 'manage-item-category'){
         return view('/admin/manage-item-cat');
     }else if($url == 'manage-purpose'){
@@ -55,16 +55,6 @@ Route::get('/admin/{url}',function($url){
         return view('/admin/manage-bac-resolution');
     }else if($url == 'purchase-order'){
         return view('/admin/purchase-order');
-    }else if($url == 'inspection-acceptance'){
-        return view('/admin/inspection-acceptance');
-    }else if($url == 'manage-bac-resolution'){
-        return view('/admin/manage-bac-resolution');
-    }else if($url == 'manage-item-cat'){
-        return view('/admin/manage-item-cat');
-    }else if($url == 'inspection-acceptance'){
-        return view('/admin/inspection-acceptance');
-    }else if($url == 'manage-item-details'){
-        return view('/admin/manage-item-details');
     }else if($url == 'manage-item-purpose'){
         return view('/admin/manage-item-purpose');
         
@@ -73,8 +63,29 @@ Route::get('/admin/{url}',function($url){
     }
 });
 
+
 Route::get('/admin/table',function(){
     return view('/admin/admin-table-pagination');
+});
+
+
+
+
+// USER
+Route::get('/user',function(){
+    return view('/user/user-dashboard');
+});
+Route::get('/user/price-catalogue',function(){
+    return view('/user/user-dashboard');
+});
+Route::get('/user/order-details-item',function(){
+    return view('/user/order-details');
+});
+Route::get('/user/ppmp-cart-list',function(){
+    return view('/user/ppmp-cart-list');
+});
+Route::get('/user/ppmp-requested',function(){
+    return view('/user/ppmp-requested');
 });
 
 
@@ -82,6 +93,7 @@ Route::get('/admin/table',function(){
 Route::get('/faculty',function(){
     return view('/faculty/dashboard');
 });
+
 
 Route::get('/faculty/{url}',function($url){
 
@@ -125,9 +137,11 @@ Route::get('/faculty/{url}',function($url){
 
 
 
+
 //  SETTING
 
 
+//GLOBAL template
 Route::get('/set-ppmp-year',function(){
     return view('template-forms/set-ppmp-year');
 });

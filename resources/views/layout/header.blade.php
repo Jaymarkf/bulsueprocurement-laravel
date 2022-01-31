@@ -35,7 +35,7 @@
           <a class="dropdown-item" href="{{$user}}/price-quotation"><i class="fas fa-money-bill-wave mr-1 text-green-700"></i>Price Quotation</a>
           <a class="dropdown-item" href="{{$user}}/bac-resolution"><i class="fas fa-receipt mr-1 text-gray-400"></i>Bac Resolution</a>
           <a class="dropdown-item" href="{{$user}}/purchase-order"><i class="far fa-handshake mr-1 text-blue-400"></i>Purchase Order</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-glasses mr-1 text-gray-600"></i>Inspection and Acceptance Report</a>
+          <a class="dropdown-item" href="{{$user}}/inspection-acceptance"><i class="fas fa-glasses mr-1 text-gray-600"></i>Inspection and Acceptance Report</a>
         </div>
       </li>
       <li class="nav-item">
