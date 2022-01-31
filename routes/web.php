@@ -37,6 +37,10 @@ Route::get('/admin/{url}',function($url){
     }else if($url == 'purchase-order'){
         return view('/admin/purchase-order');
 
+    }else if($url == 'add-purchase-order'){
+        return view('/admin/add-purchase-order');
+    }else if($url == 'add-inspection-acceptance'){
+        return view('/admin/add-inspection-acceptance');
     }else if($url == 'manage-user'){
         return view('/admin/admin-user');
     }else if($url == 'manage-quotation'){
@@ -57,7 +61,6 @@ Route::get('/admin/{url}',function($url){
         return view('/admin/purchase-order');
     }else if($url == 'manage-item-purpose'){
         return view('/admin/manage-item-purpose');
-        
     }else{
         return redirect('/404');
     }
