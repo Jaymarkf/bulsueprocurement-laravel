@@ -36,7 +36,8 @@ Route::get('/admin/{url}',function($url){
         return view('/admin/bac-resolution');
     }else if($url == 'purchase-order'){
         return view('/admin/purchase-order');
-
+    }else if($url == 'table'){
+        return view('/admin/admin-table-pagination');
     }else if($url == 'add-purchase-order'){
         return view('/admin/add-purchase-order');
     }else if($url == 'add-inspection-acceptance'){
@@ -67,31 +68,6 @@ Route::get('/admin/{url}',function($url){
 });
 
 
-Route::get('/admin/table',function(){
-    return view('/admin/admin-table-pagination');
-});
-
-
-
-
-// USER
-Route::get('/user',function(){
-    return view('/user/user-dashboard');
-});
-Route::get('/user/price-catalogue',function(){
-    return view('/user/user-dashboard');
-});
-Route::get('/user/order-details-item',function(){
-    return view('/user/order-details');
-});
-Route::get('/user/ppmp-cart-list',function(){
-    return view('/user/ppmp-cart-list');
-});
-Route::get('/user/ppmp-requested',function(){
-    return view('/user/ppmp-requested');
-});
-
-
 // FACULTY
 Route::get('/faculty',function(){
     return view('/faculty/dashboard');
@@ -99,11 +75,8 @@ Route::get('/faculty',function(){
 
 
 Route::get('/faculty/{url}',function($url){
-
     if($url == 'order-details-item'){
-
         return view('/faculty/order-details');
-
     }else if($url == 'ppmp-cart-list'){
 
         return view('/faculty/ppmp-cart-list');
@@ -121,8 +94,8 @@ Route::get('/faculty/{url}',function($url){
         return view('/faculty/ppmp-log-history');
 
     }else if($url == 'change-password'){
-
-        return view('/faculty/change-password ');
+        //use template forms for change-password for every user
+        return view('/template-forms/change-password ');
 
     }else if($url == 'set-ppmp-year'){
 
