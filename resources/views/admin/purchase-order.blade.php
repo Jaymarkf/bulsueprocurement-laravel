@@ -2,11 +2,19 @@
 <html lang="en">
     @include('layout/head-script')
  <body>
+<<<<<<< HEAD
   <div>
     @include('layout/header',array('user'=>'/admin'))
     @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
             'link'=> array('/admin' ,'/admin/purchase-order'),
             'text'=> array('admin','purchase order')
+=======
+    <div id="app">
+        @include('layout/header',array('user'=>'/admin'))
+        @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
+            'link'=> array('/admin','/admin/purchase-order'),
+            'text'=> array('admin','purchase-order')
+>>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
         )))
 
         <div class="container-fluid admin-table-container">
@@ -87,6 +95,7 @@
                             </tr>
                         </tbody>
                     </table>
+<<<<<<< HEAD
                    </div>
                 </div>
             </div>
@@ -112,6 +121,36 @@
             </div>
         </div>
     </div>
+=======
+                    </div>
+                </div>
+            </div>
+        </div>
+        @include('layout/footer')    
+    </div>
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">End user list (Approved by Budget office and Procurement)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            Data table here <br>
+            columns >> End users | Item Detail | Action > approved button (toggle on or  off switch button)
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close mr-1"></i>Close</button>
+        <button type="button" class="btn btn-primary"><i class="fa fa-save mr-1"></i>Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+>>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
 </html>

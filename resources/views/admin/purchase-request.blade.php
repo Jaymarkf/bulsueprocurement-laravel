@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     @include('layout/head-script')
+<<<<<<< HEAD
     <style>
         .toggle-checkbox:checked {
             @apply: right-0 border-green-400;
@@ -12,6 +13,8 @@
             background-color: #059669;
         }
     </style>
+=======
+>>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
  <body>
     <div id="app">
         @include('layout/header',array('user'=>'/admin'))
@@ -74,12 +77,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+<<<<<<< HEAD
         <h5 class="modal-title" id="exampleModalLabel">End user list (Approved by Budget Office and Procurement)</h5>
+=======
+        <h5 class="modal-title" id="exampleModalLabel">End user list (Approved by Budget office and Procurement)</h5>
+>>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+<<<<<<< HEAD
             <table class="table table-auto table-bordered">
                 <thead>
                     <tr>
@@ -108,6 +116,10 @@
                     </tr>
                 </tfoot>
             </table>
+=======
+            Data table here <br>
+            columns >> End users | Item Detail | Action > approved button (toggle on or  off switch button)
+>>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close mr-1"></i>Close</button>

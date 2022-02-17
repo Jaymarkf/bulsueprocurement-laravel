@@ -1,7 +1,7 @@
 
 <div class="container d-md-flex align-items-stretch w-98 mw-100" >
    <!-- Page Content  -->
-   <div id="content" class="w-100 border border-secondary h-100 pb-3">
+   <div id="content" class="w-100 border border-secondary h-100 pb-3 admin-table-container">
       <!--  -->
       <div class="d-flex mx-auto justify-content-between align-items-center text-light all-number-item">
          <div class="form-inline">
