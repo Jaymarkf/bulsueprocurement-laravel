@@ -20,10 +20,6 @@ Route::get('/admin',function(){
     return view('/admin/dashboard');
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
 Route::get('/admin/{url}',function($url){
     if($url == 'dashboard'){
         return view('/admin/dashboard');
@@ -39,14 +35,6 @@ Route::get('/admin/{url}',function($url){
         return view('/admin/bac-resolution');
     }else if($url == 'purchase-order'){
         return view('/admin/purchase-order');
-<<<<<<< HEAD
-    }else if($url == 'add-purchase-order'){
-        return view('/admin/add-purchase-order');
-    }else if($url == 'inspection-acceptance'){
-        return view('/admin/inspection-acceptance');
-    }else if($url == 'add-inspection-acceptance'){
-        return view('/admin/add-inspection-acceptance');
-=======
 
     }else if($url == 'add-purchase-order'){
         return view('/admin/add-purchase-order');
@@ -72,29 +60,20 @@ Route::get('/admin/{url}',function($url){
         return view('/admin/purchase-order');
     }else if($url == 'manage-item-purpose'){
         return view('/admin/manage-item-purpose');
->>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
     }else{
         return redirect('/404');
     }
 });
 
 
-<<<<<<< HEAD
-Route::get('/admin/manage-user',function(){
-    return view('/admin/admin-user');
-=======
 Route::get('/admin/table',function(){
     return view('/admin/admin-table-pagination');
->>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
 });
 
 
 
-<<<<<<< HEAD
-=======
 
 // USER
->>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
 Route::get('/user',function(){
     return view('/branch/user');
 });
@@ -107,35 +86,6 @@ Route::get('/change-password',function(){
     return view('template-forms/change-password',array('user'=>'example'));
 });
 
-<<<<<<< HEAD
-Route::get('/admin/manage-quotation', function(){
-    return view('/admin/manage-quotation');
-});
-
-Route::get('/admin/manage-bac-resolution', function() {
-    return view('/admin/manage-bac-resolution');
-});
-
-Route::get('/admin/purchase-order', function() {
-    return view('/admin/purchase-order');
-});
-
-Route::get('/admin/inspection-acceptance', function() {
-    return view('/admin/inspection-acceptance');
-});
-
-Route::get('/admin/manage-item-cat', function() {
-    return view('/admin/manage-item-cat');
-});
-
-Route::get('/admin/manage-item-details', function() {
-    return view('/admin/manage-item-details');
-});
-
-Route::get('/admin/manage-item-purpose', function() {
-    return view('/admin/manage-item-purpose');
-});
-=======
 
 // FACULTY
 Route::get('/faculty',function(){
@@ -220,4 +170,3 @@ Route::get('/supplier/{url}',function($url){
     }
 });
 
->>>>>>> 8cfd68b6163762ef70daf4dc399567e3e392f1a2
