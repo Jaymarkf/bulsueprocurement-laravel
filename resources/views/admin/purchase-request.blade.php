@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     @include('layout/head-script')
+    <style>
+        .toggle-checkbox:checked {
+            @apply: right-0 border-green-400;
+            right: 0;
+            border-color: #059669;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            @apply: bg-green-400;
+            background-color: #059669;
+        }
+    </style>
  <body>
     <div id="app">
         @include('layout/header',array('user'=>'/admin'))
@@ -63,14 +74,40 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">End user list (Approved by Budget office and Procurement)</h5>
+        <h5 class="modal-title" id="exampleModalLabel">End user list (Approved by Budget Office and Procurement)</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-            Data table here <br>
-            columns >> End users | Item Detail | Action > approved button (toggle on or  off switch button)
+            <table class="table table-auto table-bordered">
+                <thead>
+                    <tr>
+                       <th class="text-xs">End User</th>
+                       <th class="text-xs">Item Detail</th>
+                       <th class="text-xs">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Test End User</td>
+                        <td>Test Item Detail</td>
+                        <td>
+                            <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" class="text-right font-bold text-xl">
+                            TOTAL AMOUNT
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close mr-1"></i>Close</button>
