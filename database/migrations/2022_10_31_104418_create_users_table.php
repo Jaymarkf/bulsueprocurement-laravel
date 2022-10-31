@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->longText('remarks');
             $table->timestamps();
 
-            $table->foreign('branch_id')->references('id')->on('branchhes');
+            $table->foreign('branch_id')->references('id')->on('branches');
             $table->foreign('profile_id')->references('id')->on('user_profiles');
         });
     }

@@ -21,6 +21,8 @@ class CreateItemDetailsTable extends Migration
             $table->text('unit');
             $table->decimal('price_catalogue');
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('item_categories');
         });
     }
 
