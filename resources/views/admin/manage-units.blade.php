@@ -36,9 +36,9 @@
                         <div class="col-span-3">
                             <p class="text-xs">Add unit of measurement</p>
                             @if($errors->any())
-                                <div class="bg-red-500">
+                                <div>
                                     @foreach ($errors->all() as $error)
-                                        <div>{{ $error }}</div>
+                                        <div class="text-red-500">* Please put unit of measurement to add.</div>
                                     @endforeach
                                 </div>
                             @endif
@@ -90,7 +90,7 @@
                             />
                         </div>
                         <div class="col-span-3">
-                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="deleteUnits()">
                                 <i class="fas fa-trash mr-1"></i> Delete Selected
                             </button>
                         </div>
@@ -118,7 +118,7 @@
                             @if (isset($units))
                                 @foreach($units as $unit) 
                                     <tr>
-                                        <td class="text-xs align-middle"><input class="leading-tight test" value={{ $unit->id }} type="checkbox"></td>
+                                        <td class="text-xs align-middle"><input class="leading-tight uom-checkbox" value={{ $unit->id }} type="checkbox"></td>
                                         <td class="text-xs align-middle">
                                             <button onclick="openModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                                 <i class="fas fa-pen"></i>
@@ -241,6 +241,30 @@
 
     function closeModal() {
         modal.classList.add("hidden");;
+    }
+
+    async function deleteUnits() {
+        let checkboxes = document.getElementsByClassName('uom-checkbox');
+        let selIds = [];
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                selIds.push(checkboxes[i].value);
+            }
+        }
+        if (selIds.length === 0) {
+            alert("Select which unit/s to delete first.");
+        } else {
+            let a = confirm(`Are you sure to delete ${selIds.length > 1 ? 'these units' : 'this unit'}?`);
+            if (a) {
+                const url = "{{ url('admin/manage-units/delete') }}";
+                const res = await axios.delete(url,{ data: {id: selIds} }).then(res => {
+                    alert("Unit deleted!");
+                    window.location.reload(true);
+                }).catch(err => {
+                    alert("Something went wrong! Unit not deleted. Please send this to website administrator.\n" + err);
+                });
+            }
+        }
     }
 
     window.onclick = function(ev) {

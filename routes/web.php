@@ -20,6 +20,7 @@ use App\Http\Controllers\ItemPurposeController;
 Route::get('/admin/manage-units', [UnitController::class, 'index']);
 Route::post('/admin/manage-units/add', [UnitController::class, 'store']);
 Route::put('/admin/manage-units/edit', [UnitController::class, 'update']);
+Route::delete('/admin/manage-units/delete', [UnitController::class, 'delete_unit']);
 
 //Manage Item Purposes
 Route::get('/admin/manage-item-purpose', [ItemPurposeController::class, 'index']);

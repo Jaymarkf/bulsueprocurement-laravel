@@ -126,33 +126,41 @@ class UnitController extends Controller
     }
 
 
-    public function delete_Unit(Request $request)
+    public function delete_unit(Request $request)
     {
         //
         try {
             $err = 0;
             DB::beginTransaction();
             foreach ($request->id as $uom_id) {
-                if (is_int($uom_id)) {
-                    $unit = Unit::find($uom_id);
-                    if (!$unit->delete()) {
-                        $err += 1;
-                    }
-                } else {
+
+                $unit = Unit::find($uom_id);
+                if (!$unit->delete()) {
                     $err += 1;
                 }
             }
 
+
             if ($err <= 0) {
                 DB::commit();
                 $unit = Unit::all();
-                return redirect()->back()->with('Unit', $unit);
+                return response()->json([
+                    "success" => true,
+                    "message" => "Record/s deleted.",
+                ], 200);
             } else {
-                return redirect()->back()->with('error_message', 'Something went wrong. Records not deleted.');
+                DB::rollBack();
+                return response()->json([
+                    "success" => false,
+                    "message" => "Record/s NOT deleted.",
+                ], 400);
             }
         } catch (Throwable $e) {
             DB::rollBack();
-            return redirect()->back()->with('error_message', 'Something went wrong. Records not deleted.');
+            return response()->json([
+                "success" => false,
+                "message" => "Record/s NOT deleted.",
+            ], 400);
         }
     }
 }
