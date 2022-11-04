@@ -18,11 +18,12 @@ class CreateItemDetailsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->longText('description');
             $table->longText('article');
-            $table->text('unit');
+            $table->unsignedBigInteger('unit_id');
             $table->decimal('price_catalogue');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('item_categories');
+            $table->foreign('unit_id')->references('id')->on('units');
         });
     }
 
