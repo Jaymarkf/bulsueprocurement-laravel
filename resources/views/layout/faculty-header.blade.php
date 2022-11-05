@@ -39,7 +39,7 @@
               <span class="group-hover:text-green-600"><i class="fas fa-user mr-2"></i> <b>USER</b></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
-              <a class="dropdown-item" href="/faculty/change-password"><i class="fas fa-key mr-2"></i>Change password</a>
+              <a class="dropdown-item" href="/change-password"><i class="fas fa-key mr-2"></i>Change password</a>
               <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
             </div>
           </li>
