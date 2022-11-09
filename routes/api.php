@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeTypeController;
+use App\Http\Controllers\EmployeePositionController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('v1/employee_type', EmployeeTypeController::class);
+Route::resource('v1/employee_position', EmployeePositionController::class);
+Route::resource('v1/employee', EmployeeController::class);
