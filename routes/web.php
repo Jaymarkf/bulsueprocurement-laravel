@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ItemPurposeController;
+use App\Http\Controllers\ItemCategoriesController;
+use App\Http\Controllers\ItemDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,20 @@ Route::delete('/admin/manage-units/delete', [UnitController::class, 'delete_unit
 //Manage Item Purposes
 Route::get('/admin/manage-item-purpose', [ItemPurposeController::class, 'index']);
 Route::post('/admin/manage-item-purpose/add', [ItemPurposeController::class, 'store']);
+
+// Manage Item Categories
+Route::get('admin/manage-item-category', [ItemCategoriesController::class, 'index'])->name('item_categories.index');
+Route::post('admin/manage-item-category', [ItemCategoriesController::class, 'store'])->name('item_categories.store');
+Route::post('admin/manage-item-category/update', [ItemCategoriesController::class, 'update'])->name('item_categories.update');
+Route::post('admin/manage-item-category/delete', [ItemCategoriesController::class, 'deleteCateg'])->name('item_categories.delete');
+
+//Manage Item Details
+Route::get('admin/manage-item-details', [ItemDetailsController::class, 'index'])->name('item_details.index');
+Route::post('admin/manage-item-details', [ItemDetailsController::class, 'store'])->name('item_details.store');
+Route::post('admin/manage-item-details/update', [ItemDetailsController::class, 'update'])->name('item_details.update');
+Route::post('admin/manage-item-details/delete', [ItemDetailsController::class, 'deleteCateg'])->name('item_details.delete');
+
+
 
 Route::get('/', function () {
     return view('home');

@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-header bg-default d-flex items-center">
                     <span class="text-base text-white mr-auto"><i class="fas fa-file-alt mr-1"></i>Item Category List</span>
-                    <span class="text-base text-white">Number of Category: <i class="badge badge-pill bg-blue-400">10</i></span>
+                    <span class="text-base text-white">Number of Category: <i class="badge badge-pill bg-blue-400">{{$item_details->count()}}</i></span>
                 </div>
                 <div class="card-body">
                     <div class="grid grid-cols-4 gap-4 mb-4 align-middle">
@@ -51,11 +51,7 @@
                                 "
                             />
                         </div>
-                        <div class="col-span-3">
-                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                                <i class="fas fa-trash mr-1"></i> Delete Selected
-                            </button>
-                        </div>
+    
                     </div>
 
                     <div class="table-responsive">
@@ -70,17 +66,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-xs align-middle"><input class="leading-tight" type="checkbox"></td>
-                                <td class="text-xs align-middle">
-                                    <button onclick="modalHandler(true, 'edit')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            @if($item_details->count() > 0)
+                            <form action="{{ route('item_details.delete')}}" method="POST" id="index"> 
+                            @csrf 
+                            @foreach ($item_details as $item_detail)
+                                <tr id="{{$item_detail->id}}">
+                                    <td class="id" hidden name="ids[{{$item_detail->id}}]"> {{$item_detail->id}}</td>
+                                    <td class="text-xs align-middle"><input type="checkbox" name="ids[{{$item_detail->id}}]" class="sub_chk" value="{{$item_detail->id}}"></td>
+                                    <td class="text-xs align-middle">
+                                    <a onclick="modalHandler(true, 'edit')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded edit" data-id="{{$item_detail->id}}" name="ids[{{$item_detail->id}}]">
                                         <i class="fas fa-pen"></i>
-                                    </button>
-                                </td>
-                                <td class="text-xl align-middle">APPLIANCES (LESS THAN P15,000)</td>
-                                <td class="text-xl align-middle">Television 25"</td>
-                                <td class="text-xl align-middle">P13,000</td>
-                            </tr>
+                                    </a></td>
+                                    <td class="text-xl align-middle categ-name">{{ $item_detail -> category_name }}</td>
+                                    <td class="text-xl align-middle description">{{ $item_detail -> description }}</td>
+                                    <td class="text-xl align-middle price-catalogue">{{ $item_detail -> price_catalogue }}</td>
+                                    <td class="text-xl align-middle article hidden">{{ $item_detail -> article }}</td>
+                                    
+                                </tr>
+                            @endforeach
+                            <div class="col-span-3 mb-4">
+                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit"><i class="fas fa-trash mr-1"></i> Delete Selected </button>
+                            </div>
+                            </form>
+
+                            @else   
+                                    <td colspan="5">No Records Found. </td>
+
+                            @endif
+
+
                         </tbody>
                     </table>
                     </div>
@@ -91,7 +105,7 @@
     </div>
     <!--modal content-->
     
-    <div class="py-12 bg-gray-700 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0 hidden" id="editModal">
+    <div class="py-12 bg-gray-700 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0 hidden">
         <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
             <div class="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400">
                 
@@ -121,36 +135,141 @@
         </div>
     </div>  
     
-    <div class="py-12 bg-gray-700 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0 hidden" id="addModal">
-        <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
-            <div class="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400">
-                
-                <h1 class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">Add New Item Detail</h1>
-                <select class="form-select block w-full mt-2">
-                    <option>Select Category</option>
-                    <option>APPLIANCES (LESS THAN P15,000)</option>
-                </select>
-                <input id="name" class="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Article" />    
-                <input id="name" class="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Description" />    
-                <input id="name" class="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Unit of Measurement" />  
-                <input type="number" id="name" class="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Price Catalogue" />      
-                <div class="flex items-center justify-start w-full mt-5">
-                    <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-green-600 bg-green-700 rounded text-white px-8 py-2 text-sm">Save</button>
-                    <button class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler(false, 'add')">Cancel</button>
+
+    <!-- WORKING CREATE FUNCTION -->
+    <!-- MOdal content -->
+    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="addModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog" style="display: block;">
+            <div class="modal-dialog modal-dialog-centered relative w-full pointer-events-none">
+            <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                    <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
+                        Add New Item Details
+                    </h5>
                 </div>
-                <button class="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600" onclick="modalHandler(false, 'add')" aria-label="close modal" role="button">
+
+                <form action="{{route('item_details.store')}}" method="POST">
+                @csrf
+                <div class="modal-body relative px-4 py-0">
+                <div class="form-group">
+                    <strong>Category Id </strong>
+                    <select class="form-select block w-full mt-2" id="categForm" required>
+                        <option value="">Select Category</option>
+                        @foreach ($item_categories as $item_description)
+                         <option name="category_id" value="{{$item_description->id}}">
+                                {{$item_description->description}}
+                        </option>
+                        @endforeach
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <input type="text" hidden name="category_id" class="form-control" id="categid-hidden">
+                    <input type="text" hidden name="unit_id" class="form-control" id="unitid-hidden">
+                    <input type="text" hidden name="category_name" class="form-control" id="categname-hidden">
+                    <input type="text" hidden name="unit_name" class="form-control" id="unitname-hidden">
+                </div>
+                <div class="form-group">
+                    <strong>Description</strong>
+                    <input type="text" name="description" class="form-control" placeholder="Description" required>
+                </div>
+                <div class="form-group">
+                    <strong>Article </strong>
+                    <input type="text" name="article" class="form-control" placeholder="Article" required>
+                </div>
+                <div class="form-group">
+                <strong>Units </strong>
+                  <select class="form-select block w-full mt-2" id="unitForm" required>
+                        <option value="">Select Unit</option>
+                        @foreach ($unit as $uni)
+                         <option name="unit_id" value="{{$uni->id}}">
+                            {{$uni->uom}}
+                        </option>
+                        @endforeach
+                    </select>
+
+                </div>
+   
+                <div class="form-group">
+                    <strong>Price Catalogue</strong>
+                    <input type="text" name="price_catalogue" class="form-control" placeholder="Price Catalogue" required>
+                </div>
+
+                </div>
+                <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                <div class="flex items-center justify-start w-full">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit"><i class="fas fa-save mr-1"></i> Save</button>
+                    <button class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler()" aria-label="close modal" role="button">Cancel</button>
+                </div>
+                
+
+            </div>
+            </form>
+            <button class="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600" onclick="fadeOut(true)" aria-label="close modal" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+            </div>
+        </div>
+        </div>
+    <!-- END OF ADD MODAL -->
+
+      <!-- EDIT MODAL -->
+      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="editModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog" style="display: block;">
+            <div class="modal-dialog modal-dialog-centered relative w-full pointer-events-none">
+            <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                    <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
+                        Edit this item category
+                    </h5>
+                </div>
+
+                <form action="{{route('item_details.update')}}" method="POST">
+                @csrf
+                <div class="modal-body relative px-4 py-0">
+                <div class="form-group">
+                    <strong class="d-block">Category </strong>
+                    <input type="text" name="category_name" id="categname" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" hidden name="id" class="form-control" id="idtoupdate">
+                </div>
+                <div class="form-group">
+                    <strong>Description</strong>
+                    <input type="text" name="description" class="form-control" placeholder="unit of measurement" id="IDdesc">
+                </div>
+                <div class="form-group">
+                    <strong>Article </strong>
+                    <input type="text" name="article" class="form-control" placeholder="article" id="IDarticle">
+                </div>
+
+   
+                <div class="form-group">
+                    <strong>Price Catalogue</strong>
+                    <input type="text" name="price_catalogue" class="form-control" placeholder="price catalogue" id="IDprice">
+                </div>
+
+                </div>
+                <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                <div class="flex items-center justify-start w-full">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit"><i class="fas fa-save mr-1"></i> Save</button>
+                    <button class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler()" aria-label="close modal" role="button">Cancel</button>
+                </div>
+            
+            </div>
+            </form>
+            <button class="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"  onclick="fadeOut()" aria-label="close modal" role="button">
                     <svg  xmlns="http://www.w3.org/2000/svg"  class="icon icon-tabler icon-tabler-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <line x1="18" y1="6" x2="6" y2="18" />
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                 </button>
-
             </div>
-        </div>
-    </div>  
-
-    <script>
+        <!-- END OF EDIT MODAL -->
+        <script>
         let editModal = document.getElementById("editModal");
         let addModal = document.getElementById("addModal");
 
@@ -159,8 +278,15 @@
 
             if (modal === "edit") {
                 selModal = editModal;
+                selModal.classList.remove("hidden");
+                selModal.classList.add("show");
+                // console.log('test');
+
             } else if (modal === "add") {
                 selModal = addModal;
+                selModal.classList.remove("hidden");
+                selModal.classList.add("show");
+                
             }
 
             if (val) {
@@ -169,31 +295,62 @@
                 fadeOut(selModal);
             }
         }
-        function fadeOut(el) {
-            el.style.opacity = 1;
-            (function fade() {
-                if ((el.style.opacity -= 0.1) < 0) {
-                    el.style.display = "none";
-                } else {
-                    requestAnimationFrame(fade);
-                }
-            })();
+        function fadeOut() {
+            let addModal = document.getElementById("addModal");
+            addModal.classList.remove("show");
+            addModal.classList.add("hidden");
+            let editModal = document.getElementById("editModal");
+            editModal.classList.remove("show");
+            editModal.classList.add("hidden");
+            // el.style.opacity = 1;
+            // (function fade() {
+            //     if ((el.style.opacity -= 0.1) < 0) {
+            //         el.style.display = "none";
+            //     } else {
+            //         requestAnimationFrame(fade);
+            //     }
+            // })();
         }
         function fadeIn(el, display) {
-            el.style.opacity = 0;
+            el.style.opacity = 1;
             el.style.display = display || "flex";
-            (function fade() {
-                let val = parseFloat(el.style.opacity);
-                if (!((val += 0.2) > 1)) {
-                    el.style.opacity = val;
-                    requestAnimationFrame(fade);
-                }
-            })();
+
         }
     </script>
-    <!--end modal content-->
+    <!--end of WORKING CREATE FUNCTION-->
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+        $("#categForm").change(function() {
+            var selected = $(this).find("option:selected").val();
+            var selectedText = $(this).find("option:selected").text();
+            console.log(selected);
+            console.log(selectedText);       
+            $("input#categid-hidden").val(selected);
+            $("input#categname-hidden").val(selectedText);
+        });
+        $("#unitForm").change(function() {
+            var selected = $(this).find("option:selected").val();
+            var selectedText = $(this).find("option:selected").text();
+            console.log(selected);
+            $("input#unitid-hidden").val(selected);
+            $("input#unitname-hidden").val(selectedText);
+        });
+</script>
+<script>
+    $(document).on('click', '.edit', function() {
+      var currentValue = $(this).parents('tr');
+      console.log(currentValue);
+      $('#categid-hidden').val(currentValue.find('.categ_id').text());
+      $('#idtoupdate').val(currentValue.find('.id').text());
+      $('#categname').val(currentValue.find('.categ-name').text());
+      $('#categname-hidden').val(currentValue.find('.categ-name').text());
+      $('#IDdesc').val(currentValue.find('.description').text());
+      $('#IDarticle').val(currentValue.find('.article').text());
+      $('#IDprice').val(currentValue.find('.price-catalogue').text());
+    });
+  </script>
+
 <link
   href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css"
   rel="stylesheet"
