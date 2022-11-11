@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('profile_id');
             $table->integer('approved');
             $table->longText('remarks');
+            $table->text('level');
             $table->timestamps();
 
             $table->foreign('branch_id')->references('id')->on('branches');
