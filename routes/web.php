@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ItemPurposeController;
+use App\Http\Controllers\ManageCompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,14 @@ Route::delete('/admin/manage-units/delete', [UnitController::class, 'delete_unit
 //Manage Item Purposes
 Route::get('/admin/manage-item-purpose', [ItemPurposeController::class, 'index']);
 Route::post('/admin/manage-item-purpose/add', [ItemPurposeController::class, 'store']);
+
+//Manage companies
+Route::get('/admin/manage-company', [ManageCompanyController::class, 'index']);
+Route::get('/admin/manage-company/add', [ManageCompanyController::class, 'create']);
+Route::post('/admin/manage-company/save', [ManageCompanyController::class, 'store']);
+Route::get('/admin/manage-company/edit/{id}', [ManageCompanyController::class, 'show']);
+Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::class, 'update']);
+Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
 
 Route::get('/', function () {
     return view('home');
