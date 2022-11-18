@@ -8,8 +8,6 @@
             'link'=> array('/admin','/admin/manage-company'),
             'text'=> array('Admin','Manage Company')
         )))
-
-      
         <div class="container-fluid">
             <h1 class="text-xl font-bold mb-3">Manage Company</h1>
             @if (session('status'))
