@@ -44,9 +44,19 @@ Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController:
 //Add Users //todo-> middleware
 Route::post('add-users',[AdminController::class,'save']);
 
+<<<<<<< HEAD
 
 //Add Users //todo-> middleware
 Route::post('add-users',[AdminController::class,'save']);
+=======
+//Manage companies
+Route::get('/admin/manage-company', [ManageCompanyController::class, 'index']);
+Route::get('/admin/manage-company/add', [ManageCompanyController::class, 'create']);
+Route::post('/admin/manage-company/save', [ManageCompanyController::class, 'store']);
+Route::get('/admin/manage-company/edit/{id}', [ManageCompanyController::class, 'show']);
+Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::class, 'update']);
+Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
+>>>>>>> 8085533 (Added manage company, add, edit, and delete)
 
 Route::get('/', function () {
     return view('home');

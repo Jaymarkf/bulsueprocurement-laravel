@@ -8,6 +8,11 @@
             'link'=> array('/admin','/admin/manage-company'),
             'text'=> array('Admin','Manage Company')
         )))
+<<<<<<< HEAD
+=======
+
+      
+>>>>>>> 20de7a1 (merging joenn-v3 to master_backup)
         <div class="container-fluid">
             <h1 class="text-xl font-bold mb-3">Manage Company</h1>
             @if (session('status'))
