@@ -20,12 +20,16 @@ use App\Http\Controllers\ManageCompanyController;
 //Manage Units/Unit of Measurements
 Route::get('/admin/manage-units', [UnitController::class, 'index']);
 Route::post('/admin/manage-units/add', [UnitController::class, 'store']);
-Route::put('/admin/manage-units/edit', [UnitController::class, 'update']);
+Route::get('/admin/manage-units/{id}', [UnitController::class, 'show']);
+Route::put('/admin/manage-units/update/{id}', [UnitController::class, 'update']);
 Route::delete('/admin/manage-units/delete', [UnitController::class, 'delete_unit']);
 
 //Manage Item Purposes
 Route::get('/admin/manage-item-purpose', [ItemPurposeController::class, 'index']);
 Route::post('/admin/manage-item-purpose/add', [ItemPurposeController::class, 'store']);
+Route::get('/admin/manage-item-purpose/{id}', [ItemPurposeController::class, 'show']);
+Route::put('/admin/manage-item-purpose/{id}', [ItemPurposeController::class, 'update']);
+Route::delete('/admin/manage-item-purpose/delete-selected', [ItemPurposeController::class, 'destroy']);
 
 //Manage companies
 Route::get('/admin/manage-company', [ManageCompanyController::class, 'index']);
@@ -74,8 +78,6 @@ Route::get('/admin/{url}', function ($url) {
         return view('/admin/manage-item-details');
     } elseif ($url == 'manage-item-category') {
         return view('/admin/manage-item-cat');
-    } elseif ($url == 'manage-purpose') {
-        return view('admin/manage-item-purpose');
     } elseif ($url == '/manage-quotation') {
         return view('/admin/manage-quotation');
     } elseif ($url == 'manage-bac-resolution') {

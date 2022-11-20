@@ -69,9 +69,11 @@ class UnitController extends Controller
      * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function show(Unit $unit)
+    public function show($id)
     {
         //
+        $unit = Unit::find($id);
+        return view('admin/manage-edit-units')->with('unit', $unit);
     }
 
     /**
@@ -83,6 +85,7 @@ class UnitController extends Controller
     public function edit(Unit $unit)
     {
         //
+
     }
 
     /**
@@ -92,7 +95,7 @@ class UnitController extends Controller
      * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Unit $unit)
+    public function update(Request $request, $id)
     {
         //
         $validator = Validator::make($request->all(), [
@@ -104,6 +107,7 @@ class UnitController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
+        $unit = Unit::find($id);
         $unit->uom = $request->uom;
 
         if ($unit->save()) {
