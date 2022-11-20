@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ItemPurposeController;
@@ -26,6 +27,10 @@ Route::delete('/admin/manage-units/delete', [UnitController::class, 'delete_unit
 Route::get('/admin/manage-item-purpose', [ItemPurposeController::class, 'index']);
 Route::post('/admin/manage-item-purpose/add', [ItemPurposeController::class, 'store']);
 
+
+//Add Users //todo-> middleware
+Route::post('add-users',[AdminController::class,'save']);
+
 Route::get('/', function () {
     return view('home');
 });
@@ -33,6 +38,8 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('/admin/dashboard');
 });
+
+Route::post('login',[AdminController::class,'login']);
 
 Route::get('/admin/{url}', function ($url) {
     if ($url == 'dashboard') {

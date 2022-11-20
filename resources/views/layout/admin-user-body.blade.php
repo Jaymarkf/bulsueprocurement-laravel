@@ -8,40 +8,51 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 gap-4 grid-content-center px-2 mt-4">
-                <form action="/action_page.php">
 
-                    <label for="Access level">Access Level</label><br>
-                    <select name="cars" id="cars"  class="form-control form-control-sm">
-                        <option disabled selected hidden>Select Access Level</option>
-                        <option value="volvo">Administrator</option>
-                        <option value="saab">User</option>
-                    </select><br>
+                <form action="add-users" method="post">
+                  @csrf
+                    <label for="position">Position</label><br>
+                    <select name="position" id="position"  class="form-control form-control-sm">
+                        <option disabled selected hidden>Select Position</option>
+                        <option value="procurement offce">Procurement Office</option>
+                        <option value="procurement offce staff">Procurement Office Staff</option>
+                        <option value="budget office">Budget Office</option>
+                        <option value="budget office">Budget Office Staff</option>
+                        <option value="end user">End-User</option>
+                        <option value="supplier">Supplier</option>
+                    </select>
+                    <br>
+                    <label for="branch">Branch / Department</label>
+                    <select name="branch" id="branch"  class="form-control form-control-sm">
+                        <option disabled selected hidden>Select Branch / Department</option>
+                        <option value="malolos branch">please set this to dynamic data</option>
+                    </select>
+                    <br>
+                    <label for="username">Username</label><br>
+                    <input type="text" id="username" name="username" placeholder="Username" class="form-control form-control-sm"><br>
 
-                    <label for="cars">College Department</label><br>
-                    <select name="cars" id="cars"  class="form-control form-control-sm">
-                       <option disabled selected hidden>Select Branch</option>
-                        <option value="volvo">Budget Office</option>
-                        <option value="saab">Procurement Unit</option>
-                    </select><br>
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" name="password" placeholder="Password" class="form-control form-control-sm" autocomplete="password"><br>
 
-                    <label for="fname">Unique Username:</label><br>
-                    <input type="text" id="unique-name" name="uniquename" placeholder="Username" class="form-control form-control-sm"><br>
+                    <label for="email">Email Address</label><br>
+                    <input type="email" id="email" name="email" placeholder="Email" class="form-control form-control-sm"><br>
 
-                    <label for="fname">First name</label><br>
-                    <input type="text" id="first-name" name="firstname" placeholder="First Name" class="form-control form-control-sm"><br>
+                    <label for="firstname">First Name</label><br>
+                    <input type="text" id="firstname" name="firstname" placeholder="First Name" class="form-control form-control-sm"><br>
 
-                    <label for="lname">Last name</label><br>
-                    <input type="text" id="last-name" name="lastname" placeholder="Last Name" class="form-control form-control-sm"><br>
-                    <label for="lname">Position</label><br>
-                    <input type="text" id="position" name="position" value="Doe" class="form-control form-control-sm"><br>
-                    <button data-placement="right" title="" id="save" name="save" class="btn btn-success" data-original-title="Click to Save"><i class="fas fa-save"></i> Save</button>
+                    <label for="middleinitial">Middle Initial</label><br>
+                    <input type="text" id="middleinitial" name="middleinitial" placeholder="Middle Initial" class="form-control form-control-sm"><br>
+
+                    <label for="lastname">Last Name</label><br>
+                    <input type="text" id="lastname" name="lastname" placeholder="Last Name" class="form-control form-control-sm"><br>
+                    <input type="hidden" name="approved"/>
+
+                    <button data-placement="right" type="submit" class="btn btn-success" data-original-title="Click to Save"><i class="fas fa-save"></i> Save</button>
                 </form> 
-
             </div>
       </div>
     <div class="col-md-8 col-sm-8">
         <div id="content" class="border border-secondary shadow-lg">
-
          <!-- Admin user Update Table Content -->
             <div class="d-flex mx-auto justify-content-between align-items-center text-light all-number-item ">
                 <div class="w-50">
