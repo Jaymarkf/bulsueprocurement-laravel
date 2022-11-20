@@ -20,11 +20,9 @@ class ItemPurposeController extends Controller
     {
         //
         try {
-            DB::beginTransaction();
             $itemPurposes = ItemPurpose::all();
             return view('admin/manage-item-purpose')->with('purposes', $itemPurposes);
         } catch (Throwable $e) {
-            DB::rollBack();
             return view('admin/manage-item-purpose')->with('error_message', 'Item purposes cannot be fetched. Please try again or contact website administrator!');
         }
     }
@@ -82,9 +80,11 @@ class ItemPurposeController extends Controller
      * @param  \App\Models\ItemPurpose  $itemPurpose
      * @return \Illuminate\Http\Response
      */
-    public function show(ItemPurpose $itemPurpose)
+    public function show($id)
     {
         //
+        $itemPurpose = ItemPurpose::find($id);
+        return view('admin/manage-edit-item-purpose')->with('itempurpose', $itemPurpose);
     }
 
     /**
@@ -105,7 +105,7 @@ class ItemPurposeController extends Controller
      * @param  \App\Models\ItemPurpose  $itemPurpose
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ItemPurpose $itemPurpose)
+    public function update(Request $request, $id)
     {
         //
         try {
@@ -117,7 +117,7 @@ class ItemPurposeController extends Controller
                 $errors = $validator->errors();
                 return redirect()->back()->withErrors($errors);
             }
-
+            $itemPurpose = ItemPurpose::find($id);
             $itemPurpose->purpose = $request->purpose;
 
             DB::beginTransaction();
@@ -156,14 +156,21 @@ class ItemPurposeController extends Controller
 
             if ($err <= 0) {
                 DB::commit();
-                $itemPurposes = ItemPurpose::all();
-                return redirect()->back()->with('purposes', $itemPurposes);
-            } else {
-                return redirect()->back()->with('error_message', 'Something went wrong. Records not deleted.');
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Purposes deleted.',
+                    'data' => [],
+                    'error' => '',
+                ], 200);
             }
         } catch (Throwable $e) {
             DB::rollBack();
-            return redirect()->back()->with('error_message', 'Something went wrong. Records not deleted.');
+            return response()->json([
+                'success' => true,
+                'message' => 'Purposes not deleted.',
+                'data' => [],
+                'error' => $e,
+            ], 400);
         }
     }
 }
