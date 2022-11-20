@@ -21,7 +21,7 @@
           <a class="dropdown-item" href="/admin/manage-user"><i class="fas fa-user-alt mr-2"></i>Manage User <span class="py-1 badge badge-pill bg-default text-white">14 new users</span></a>
           <a class="dropdown-item" href="/admin/manage-item-category"><i class="fas fa-list-alt mr-2"></i>Manage Item Category</a>
           <a class="dropdown-item" href="/admin/manage-item-details"><i class="fas fa-tags mr-2"></i>Manage Item Detail</a>
-          <a class="dropdown-item" href="/admin/manage-purpose"><i class="fas fa-envelope mr-2"></i>Manage Purpose</a>
+          <a class="dropdown-item" href="/admin/manage-item-purpose"><i class="fas fa-envelope mr-2"></i>Manage Purpose</a>
         </div>
       </li>
       <li class="nav-item dropdown group">
