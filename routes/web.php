@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ItemPurposeController;
 use App\Http\Controllers\ManageCompanyController;
+use App\Http\Controllers\ItemCategoriesController;
+use App\Http\Controllers\ItemDetailsController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\FacultyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,13 +63,48 @@ Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::
 Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
 
 
-
 //Add Users //todo-> middleware
 Route::post('add-users',[AdminController::class,'save']);
 
 
 //Add Users //todo-> middleware
 Route::post('add-users',[AdminController::class,'save']);
+
+
+
+// roncy_updated BRANCH
+// Manage Item Categories
+Route::get('admin/manage-item-category', [ItemCategoriesController::class, 'index'])->name('item_categories.index');
+Route::post('admin/manage-item-category', [ItemCategoriesController::class, 'store'])->name('item_categories.store');
+Route::post('admin/manage-item-category/update', [ItemCategoriesController::class, 'update'])->name('item_categories.update');
+Route::post('admin/manage-item-category/delete', [ItemCategoriesController::class, 'deleteCateg'])->name('item_categories.delete');
+
+//Manage Item Details
+Route::get('admin/manage-item-details', [ItemDetailsController::class, 'index'])->name('item_details.index');
+Route::post('admin/manage-item-details', [ItemDetailsController::class, 'store'])->name('item_details.store');
+Route::post('admin/manage-item-details/update', [ItemDetailsController::class, 'update'])->name('item_details.update');
+Route::post('admin/manage-item-details/delete', [ItemDetailsController::class, 'deleteCateg'])->name('item_details.delete');
+
+//ADMIN - Manage User
+Route::get('admin/manage-user', [UsersController::class, 'index']);
+Route::post('admin/manage-user', [UsersController::class, 'store'])->name('userlists.store');
+Route::post('admin/manage-user/update', [UsersController::class, 'update'])->name('userlists.update');
+Route::post('admin/manage-user/delete', [UsersController::class, 'deleteUser'])->name('userlists.delete');
+
+
+// Reset Password
+Route::get('admin/manage-user/forget-password', [ResetPasswordController::class, 'getForgetPassword'])->name('reset-password');
+Route::post('admin/manage-user/forget-password', [ResetPasswordController::class, 'postForgetPassword'])->name('post.reset-password');
+Route::get('admin/manage-user/reset-password/{reset_code}', [ResetPasswordController::class, 'getResetPassword'])->name('reset-code');
+Route::post('admin/manage-user/reset-password/{reset_code}', [ResetPasswordController::class, 'postResetPassword'])->name('post.reset-code');
+
+// Faculty 
+Route::get('/faculty', [FacultyController::class, 'index']);
+Route::get('/faculty/search', [FacultyController::class, 'search'])->name('search-item');
+Route::get('/faculty/{id}', [FacultyController::class, 'get_causes_against_category']);
+
+
+ 
 
 Route::get('/', function () {
     return view('home');
@@ -97,9 +137,7 @@ Route::get('/admin/{url}', function ($url) {
         return view('/admin/add-purchase-order');
     } elseif ($url == 'add-inspection-acceptance') {
         return view('/admin/add-inspection-acceptance');
-    } elseif ($url == 'manage-user') {
-        return view('/admin/admin-user');
-    } elseif ($url == 'manage-quotation') {
+    }elseif ($url == 'manage-quotation') {
         return view('/admin/manage-quotation');
     } elseif ($url == 'inspection-acceptance') {
         return view('/admin/inspection-acceptance');
@@ -123,10 +161,6 @@ Route::get('/admin/{url}', function ($url) {
 });
 
 
-// FACULTY
-Route::get('/faculty', function () {
-    return view('/faculty/dashboard');
-});
 
 
 Route::get('/faculty/{url}', function ($url) {

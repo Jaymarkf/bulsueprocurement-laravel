@@ -21,6 +21,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'email_address',
+        'dashboard_year',
+        'branch_id',
+        'profile_id',
+        'branch',
+        'first_name',
+        'last_name',
+        'position',
+        'approved',
+        'remarks',
+        'level',
+        'username'
+
     ];
 
     /**

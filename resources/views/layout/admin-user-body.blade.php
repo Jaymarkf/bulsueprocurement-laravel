@@ -8,64 +8,91 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 gap-4 grid-content-center px-2 mt-4">
+              <!-- CREATE FORM -->
+                <form action="{{route('userlists.store')}}" method="POST">
+                @csrf 
+                    <label for="Access level">Access Level</label><br>
+                    <select name="level" id="selectAccessLevel"  class="form-control form-control-sm">
+                        <option disabled selected hidden>Select Access Level</option>
+                        @foreach($access_levels as $access_level)
+                          <option value="{{$access_level->level}}" id="{{$access_level->level}}" acess-level="{{$access_level->level}}">{{$access_level->level}}</option>
+                        @endforeach
+                    </select><br>
 
-                <form action="add-users" method="post">
-                  @csrf
-                    <label for="position">Position</label><br>
-                    <select name="position" id="position"  class="form-control form-control-sm">
-                        <option disabled selected hidden>Select Position</option>
-                        <option value="procurement offce">Procurement Office</option>
-                        <option value="procurement offce staff">Procurement Office Staff</option>
-                        <option value="budget office">Budget Office</option>
-                        <option value="budget office">Budget Office Staff</option>
-                        <option value="end user">End-User</option>
-                        <option value="supplier">Supplier</option>
-                    </select>
-                    <br>
-                    <label for="branch">Branch / Department</label>
-                    <select name="branch" id="branch"  class="form-control form-control-sm">
-                        <option disabled selected hidden>Select Branch / Department</option>
-                        <option value="malolos branch">please set this to dynamic data</option>
-                    </select>
-                    <br>
-                    <label for="username">Username</label><br>
-                    <input type="text" id="username" name="username" placeholder="Username" class="form-control form-control-sm"><br>
+                    <label for="cars">College Department</label><br>
 
-                    <label for="password">Password</label><br>
-                    <input type="password" id="password" name="password" placeholder="Password" class="form-control form-control-sm" autocomplete="password"><br>
+                    <select name="cars" id="selectBranch"  class="form-control form-control-sm" disabled>
+                       <option disabled selected hidden>Select Branch</option>
+                       @foreach($branches as $branch)
+                          @if($branch->level === 'administrator')
+                            <option value="{{$branch->branch_name}}" id="{{$branch->id}}" access-level="administrator">{{$branch->branch_name}}</option>
+                          @endif
+                        @endforeach
 
-                    <label for="email">Email Address</label><br>
-                    <input type="email" id="email" name="email" placeholder="Email" class="form-control form-control-sm"><br>
+                        @foreach($branches as $branch)
+                          @if($branch->level === 'user')
+                            <option value="{{$branch->branch_name}}" id="{{$branch->id}}" access-level="user">{{$branch->branch_name}}</option>
+                          @endif
+                        @endforeach
 
-                    <label for="firstname">First Name</label><br>
-                    <input type="text" id="firstname" name="firstname" placeholder="First Name" class="form-control form-control-sm"><br>
+                        @foreach($branches as $branch)
+                          @if($branch->level === 'supplier')
+                            <option value="{{$branch->branch_name}}" id="{{$branch->id}}" access-level="supplier">{{$branch->branch_name}}</option>
+                          @endif
+                        @endforeach
 
-                    <label for="middleinitial">Middle Initial</label><br>
-                    <input type="text" id="middleinitial" name="middleinitial" placeholder="Middle Initial" class="form-control form-control-sm"><br>
+                    </select><br>
 
-                    <label for="lastname">Last Name</label><br>
-                    <input type="text" id="lastname" name="lastname" placeholder="Last Name" class="form-control form-control-sm"><br>
-                    <input type="hidden" name="approved"/>
+                    <div class="form-group hidden">
+                        <input type="text" hidden name="branch_id" id="updateBranchId" value="1">
+                        <input type="text" hidden name="branch" id="updateBranch" value="CIT">
+                        <input type="text" hidden name="profile_id" id="updateUserProfileId" value="1">
+                        <input type="text" hidden name="level" id="updateLevel" value="admin">
+                        <input type="text" hidden name="remarks" id="updateremarks" value="Registered by Admin"> 
+                        <input type="text" hidden name="approved" id="updateremarks" value="1">
+                        <input type="text" hidden name="dashboard_year" id="updateyear" value="2022">
+                        <input type="password" hidden name="password" id="updateyear" value="password">
+                    </div>
 
-                    <button data-placement="right" type="submit" class="btn btn-success" data-original-title="Click to Save"><i class="fas fa-save"></i> Save</button>
+                    <label for="fname">Unique Username:</label><br>
+                    <input type="text" id="unique-name" name="username" placeholder="Username" class="form-control form-control-sm"><br>
+
+                    <label for="fname">First name</label><br>
+                    <input type="text" id="first-name" name="first_name" placeholder="First Name" class="form-control form-control-sm"><br>
+
+                    <label for="lname">Last name</label><br>
+                    <input type="text" id="last-name" name="last_name" placeholder="Last Name" class="form-control form-control-sm"><br>
+                  
+                    <label for="email_address">Email address</label>
+                    <input type="email" id="email address" name="email_address" placeholder="Email address" class="form-control form-control-sm"><br>
+                   
+                    <label for="lname">Position</label><br>
+                    <input type="text" id="position" name="position" value="Doe" class="form-control form-control-sm"><br>
+                 
+                    <button type="submit" data-placement="right" title="" id="save" name="save" class="btn btn-success" data-original-title="Click to Save"><i class="fas fa-save"></i> Save</button>
                 </form> 
+
             </div>
       </div>
     <div class="col-md-8 col-sm-8">
         <div id="content" class="border border-secondary shadow-lg">
+
          <!-- Admin user Update Table Content -->
             <div class="d-flex mx-auto justify-content-between align-items-center text-light all-number-item ">
                 <div class="w-50">
                 <h5><i class="fas fa-user mr-2"></i>Users List</h5>
                 </div>
                 <div class="w-50 text-right">
-                    <p>Numbers of Users: <span class="badge badge-info">18</span> </p>
+                    <p>Numbers of Users: <span class="badge badge-info">{{$users_lists->count()}}</span> </p>
                 </div>
             </div>
             <!-- Admin User Actions  -->
-            <button type="button" class="btn btn-danger mt-2 ml-1"><i class="fa fa-trash mr-2 " aria-hidden="true"></i>Delete</button>
+
             <!-- Content User Lists -->
             <div class="grid grid-cols-1 gap-4 grid-content px-1 table-responsive py-0" >
+            <form action="{{ route('userlists.delete')}}" method="POST" id="index">  
+            @csrf   
+            <button type="submit" class="btn btn-danger mt-2 ml-1 float-left"><i class="fa fa-trash mr-2 " aria-hidden="true"></i>Delete Selected</button>
             <table id="manage-user" class="table table-striped table-bordered" cellspacing="0" width="100%" >
                       <thead>
                         <tr>
@@ -74,178 +101,61 @@
                           <th class="th-sm">College/Department</th>
                           <th class="th-sm">Username</th>
                           <th class="th-sm">Access Level</th>
-                          <th class="th-sm">Registered Date</th>
                           <th class="th-sm">Reset Password</th>
                           <th class="th-sm">Active</th>
                         </tr>
                       </thead>
-                      <tbody style="height: 150px; overflow-y: auto;" >
-                        <tr>
-                          <td>
-                                <label class="inline-flex items-center">
-                                   <input type="checkbox" class="form-checkbox"/>
-                                </label>
-                          </td>
-                          <td>                            
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                              <i class="fas fa-edit text-white"></i>
-                            </button>
-                          </td>
-                          <td>Hagonoy Campus</td>
-                          <td>John</td>
-                          <td>User</td>
-                          <td>2012/06/01</td>
-                          <td>
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                  <i class="fas fa-repeat text-white"></i>
-                            </button>
-                          </td>
-                          <td>
-                              <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <i class="fas fa-check text-white"></i>  
-                              </button>
-                          </td>
-                         </tr>
-                          <tr>
-                          <td>
-                                <label class="inline-flex items-center">
-                                   <input type="checkbox" class="form-checkbox"/>
-                                </label>
-                          </td>
-                          <td>                            
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                              <i class="fas fa-edit text-white"></i>
-                            </button>
-                          </td>
-                          <td>Supplier</td>
-                          <td>supplier_admin</td>
-                          <td>supplier</td>
-                          <td>2020/10/20</td>
-                          <td>
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                  <i class="fas fa-repeat text-white"></i>
-                            </button>
-                          </td>
-                          <td>
-                              <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <i class="fas fa-check text-white"></i>  
-                              </button>
-                          </td>
-                          
+                      <tbody style="height: auto; overflow-y: auto;" >
+                      @if(isset($users_lists))           
+        
+                        @foreach($users_lists as $users_list)
+                        <tr id="{{$users_list->id}}">
+                            <td class="id" hidden name="ids[{{$users_list->id}}]"> {{$users_list->id}}</td>
+                            <td>
+                                  <label class="inline-flex items-center">
+                                    <input type="checkbox" class="form-checkbox" name="ids[{{$users_list->id}}]" value="{{$users_list->id}}"/>
+                                  </label>
+                            </td>
+                            <td>
+                              <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center edit" onclick="modalHandler(true)">
+                                  <i class="fas fa-edit text-white"></i>
+                              </a>
+                            </td>
+                            <td class="branch">{{$users_list->branch}}</td>
+                            <td class="username">{{$users_list->username}}</td>
+                            <div class="firstname hidden">{{$users_list->first_name}}</div>
+                            <div class="lastname hidden">{{$users_list->last_name}}</div>
+                            <div class="password hidden">{{$users_list->password}}</div>
+                            <td>{{$users_list->level}}</td>
+                            <div class="password hidden">{{$users_list->created_at}}</div>
+                            <td>
+                              <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center" href="{{route('reset-password', $users_list->id)}}">
+                                    <i class="fas fa-repeat text-white"></i>
+                              </a>
+                            </td>
+                            <td>
+                                <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                                  <i class="fas fa-check text-white"></i>  
+                                </a>
+                            </td>
                         </tr>
-                        <tr>
-                          <td>
-                                <label class="inline-flex items-center">
-                                   <input type="checkbox" class="form-checkbox"/>
-                                </label>
-                          </td>
-                          <td>                            
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                              <i class="fas fa-edit text-white"></i>
-                            </button>
-                          </td>
-                          <td>Supplier</td>
-                          <td>Jaymark</td>
-                          <td>supplier</td>
-                          <td>2020/06/01</td>
-                          <td>
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                  <i class="fas fa-repeat text-white"></i>
-                            </button>
-                          </td>
-                          <td>
-                              <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <i class="fas fa-check text-white"></i>  
-                              </button>
-                          </td>
-                          
-                        </tr>
-                        <tr>
-                          <td>
-                                <label class="inline-flex items-center">
-                                   <input type="checkbox" class="form-checkbox"/>
-                                </label>
-                          </td>
-                          <td>                            
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                              <i class="fas fa-edit text-white"></i>
-                            </button>
-                          </td>
-                          <td>College of Engineering</td>
-                          <td>coe</td>
-                          <td>User</td>
-                          <td>2020/09/04</td>
-                          <td>
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                  <i class="fas fa-repeat text-white"></i>
-                            </button>
-                          </td>
-                          <td>
-                              <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <i class="fas fa-check text-white"></i>  
-                              </button>
-                          </td>
-                          
-                        </tr>
-                        <tr>
-                          <td>
-                                <label class="inline-flex items-center">
-                                   <input type="checkbox" class="form-checkbox"/>
-                                </label>
-                          </td>
-                          <td>                            
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                              <i class="fas fa-edit text-white"></i>
-                            </button>
-                          </td>
-                          <td>College of Business Administration</td>
-                          <td>mrcba</td>
-                          <td>user</td>
-                          <td>2012/06/01</td>
-                          <td>
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                  <i class="fas fa-repeat text-white"></i>
-                            </button>
-                          </td>
-                          <td>
-                              <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <i class="fas fa-check text-white"></i>  
-                              </button>
-                          </td>
-                          
-                        </tr>
-                        <tr>
-                          <td>
-                                <label class="inline-flex items-center">
-                                   <input type="checkbox" class="form-checkbox"/>
-                                </label>
-                          </td>
-                          <td>                            
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                              <i class="fas fa-edit text-white"></i>
-                            </button>
-                          </td>
-                          <td>Hagonoy Campus</td>
-                          <td>John</td>
-                          <td>User</td>
-                          <td>2012/06/01</td>
-                          <td>
-                             <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                  <i class="fas fa-repeat text-white"></i>
-                            </button>
-                          </td>
-                          <td>
-                              <button class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <i class="fas fa-check text-white"></i>  
-                              </button>
-                          </td>
-                          
-                        </tr>
+                        @endforeach
+                      
+                      
+                      @else
+                      <td colspan="8">No Records Found. </td>
+                      @endif
                       </tbody>
                     </table>
+
+                    <!-- <div class="col-span-3 mb-4">
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit"><i class="fas fa-trash mr-1"></i> Delete Selected </button>
+                    </div> -->
+                    </form>
         </div>
         </div>
 
     </div>
   </div>
 </div>
+
