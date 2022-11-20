@@ -61,6 +61,10 @@ Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::
 Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
 >>>>>>> 8085533 (Added manage company, add, edit, and delete)
 
+
+//Add Users //todo-> middleware
+Route::post('add-users',[AdminController::class,'save']);
+
 Route::get('/', function () {
     return view('home');
 });
