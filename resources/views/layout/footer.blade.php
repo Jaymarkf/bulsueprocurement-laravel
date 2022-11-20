@@ -1,4 +1,4 @@
-<div class="container container w-100 mw-100 bottom-0">
+<div class="container w-100 mw-100 bottom-0">
    <div class="row mt-5 pt-4 pb-4 border-top bg-dark">
       <div class="col-md-6 col-lg-8 mb-md-0 mb-4">
          <p class="copyright mb-0 text-light">
@@ -10,3 +10,4 @@
       </div>
    </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>

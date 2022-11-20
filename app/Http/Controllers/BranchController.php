@@ -21,20 +21,29 @@ class BranchController extends Controller
         //
         try {
             $branches = Branches::all();
-            return view('')->with('branches', $branches);
+            if (count($branches) === 0) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'No branches found.',
+                    'data' => [],
+                    'error' => '',
+                ], 404);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => '',
+                    'data' => $branches,
+                    'error' => '',
+                ], 200);
+            }
         } catch (Throwable $e) {
-            return view('')->with('error_message', 'Cannot fetch branches.');
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong! Cannot get branches.',
+                'data' => '',
+                'error' => $e,
+            ], 400);
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -51,26 +60,37 @@ class BranchController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'branch_name' => 'required|min:3',
-                'level' => 'required|max:20',
             ]);
 
             if ($validator->fails()) {
-                $errors = $validator->errors();
-                return redirect()->back()->withErrors($errors);
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Please complete your inputs!',
+                    'data' => [],
+                    'error' => $validator->errors(),
+                ], 400);
             }
 
             $newBranch = new Branches();
             $newBranch->branch_name = $request->branch_name;
-            $newBranch->level = $request->level;
 
             if ($newBranch->save()) {
-                $branches = Branches::all();
-                return redirect()->back()->with('branches', $branches);
-            } else {
-                return redirect()->back()->with('error_message', 'Something went wrong. Branch not added.');
+                DB::commit();
+                return response()->json([
+                    'success' => true,
+                    'message' => '',
+                    'data' => [],
+                    'error' => ''
+                ], 200);
             }
         } catch (Throwable $e) {
-            return redirect()->back()->with('error_message', 'Something went wrong. Branch not added.');
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong! Branch not saved!',
+                'data' => [],
+                'error' => $e,
+            ], 400);
         }
     }
 
@@ -83,18 +103,30 @@ class BranchController extends Controller
     public function show(Branches $branches)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Branches  $branches
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Branches $branches)
-    {
-        //
-
+        try {
+            if ($branches) {
+                return response()->json([
+                    'success' => true,
+                    'message' => '',
+                    'data' => $branches,
+                    'error' => ''
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Branch not found.',
+                    'data' => [],
+                    'error' => '',
+                ], 404);
+            }
+        } catch (Throwable $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong! Cannot access branch record.',
+                'data' => [],
+                'error' => $e,
+            ], 400);
+        }
     }
 
     /**
@@ -112,25 +144,38 @@ class BranchController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'branch_name' => 'required|min:3',
-                'level' => 'required|max:20',
             ]);
 
             if ($validator->fails()) {
                 $errors = $validator->errors();
-                return redirect()->back()->withErrors($errors);
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Please complete your inputs.',
+                    'data' => [],
+                    'error' => $errors,
+                ], 400);
             }
 
-            $branches->branch_name = $request->branch_name;
-            $branches->level = $request->level;
+            if (isset($request->branch_name) || !is_null($request->branch_name) || trim($request->branch_name) !== '') {
+                $branches->branch_name = $request->branch_name;
+            }
 
             if ($branches->save()) {
-                $allBranches = Branches::all();
-                return redirect()->back()->with('branches', $allBranches);
-            } else {
-                return redirect()->back()->with('error_message', 'Something went wrong. Branch not added.');
+                DB::commit();
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Branch changes successfully saved.',
+                    'data' => [],
+                    'error' => '',
+                ], 200);
             }
         } catch (Throwable $e) {
-            return redirect()->back()->with('error_message', 'Something went wrong. Branch not added.');
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong! Cannot save changes.',
+                'data' => [],
+                'error' => '',
+            ], 400);
         }
     }
 
@@ -158,21 +203,25 @@ class BranchController extends Controller
             if ($err <= 0) {
                 DB::commit();
                 return response()->json([
-                    "success" => true,
-                    "message" => "Record/s deleted.",
+                    'success' => true,
+                    'message' => 'Record/s deleted.',
+                    'data' => [],
+                    'error' => ''
                 ], 200);
             } else {
                 DB::rollBack();
                 return response()->json([
-                    "success" => false,
-                    "message" => "Record/s NOT deleted.",
+                    'success' => false,
+                    'message' => 'Record/s NOT deleted.',
                 ], 400);
             }
         } catch (Throwable $e) {
             DB::rollBack();
             return response()->json([
-                "success" => false,
-                "message" => "Record/s NOT deleted.",
+                'success' => false,
+                'message' => 'Record/s NOT deleted.',
+                'data' => [],
+                'error' => $e,
             ], 400);
         }
     }

@@ -18,8 +18,10 @@ class CreateUserProfilesTable extends Migration
             $table->text('first_name');
             $table->text('middle_initial');
             $table->text('last_name');
-            $table->text('position');
+            $table->unsignedBigInteger('employee_position_id');
             $table->timestamps();
+
+            $table->foreign('employee_position_id')->references('id')->on('employee_positions');
         });
     }
 

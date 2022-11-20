@@ -84,14 +84,6 @@ class EmployeePositionController extends Controller
                     'data' => '',
                     'error' => '',
                 ], 200);
-            } else {
-                DB::rollBack();
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Something went wrong, new employee position is not saved.',
-                    'data' => '',
-                    'error' => '',
-                ], 400);
             }
         } catch (Throwable $e) {
             DB::rollBack();
