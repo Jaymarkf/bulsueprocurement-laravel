@@ -22,14 +22,18 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->integer('dashboard_year')->default(0);
             $table->unsignedBigInteger('branch_id');
+            $table->string('branch');
+            $table->string('first_name');
+            $table->string('last_name'); 
+            $table->string('position'); 
             $table->unsignedBigInteger('profile_id');
             $table->integer('approved');
             $table->longText('remarks');
             $table->text('level');
             $table->timestamps();
 
-            $table->foreign('branch_id')->references('id')->on('branches');
-            $table->foreign('profile_id')->references('id')->on('user_profiles');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');;
+            $table->foreign('profile_id')->references('id')->on('user_profiles')->onDelete('cascade');;
         });
     }
 

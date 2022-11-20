@@ -18,6 +18,8 @@ class CreateItemDetailsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->longText('description');
             $table->longText('article');
+            $table->longText('category_name');
+            $table->longText('unit_name');
             $table->unsignedBigInteger('unit_id');
             $table->decimal('price_catalogue');
             $table->timestamps();
