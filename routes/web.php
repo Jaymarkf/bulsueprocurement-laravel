@@ -42,38 +42,15 @@ Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::
 Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
 
 
-//Add Users //todo-> middleware
+//Add Users todo-> middleware
 Route::post('add-users',[AdminController::class,'save']);
 
-
-//Add Users //todo-> middleware
-Route::post('add-users',[AdminController::class,'save']);
-
-//Manage companies
-Route::get('/admin/manage-company', [ManageCompanyController::class, 'index']);
-Route::get('/admin/manage-company/add', [ManageCompanyController::class, 'create']);
-Route::post('/admin/manage-company/save', [ManageCompanyController::class, 'store']);
-Route::get('/admin/manage-company/edit/{id}', [ManageCompanyController::class, 'show']);
-Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::class, 'update']);
-Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
-
-
-
-//Add Users //todo-> middleware
-Route::post('add-users',[AdminController::class,'save']);
-
-
-//Add Users //todo-> middleware
-Route::post('add-users',[AdminController::class,'save']);
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/admin', function () {
-    return view('/admin/dashboard');
-});
-
+//HOME PAGE LOGIN todo middle ware
 Route::post('login',[AdminController::class,'login']);
 
 Route::get('/admin/{url}', function ($url) {
@@ -120,7 +97,7 @@ Route::get('/admin/{url}', function ($url) {
     } else {
         return redirect('/404');
     }
-});
+})->middleware('auth_admin');
 
 
 // FACULTY
