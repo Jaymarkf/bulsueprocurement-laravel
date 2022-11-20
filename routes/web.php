@@ -31,7 +31,7 @@ Route::post('/admin/manage-item-purpose/add', [ItemPurposeController::class, 'st
 Route::get('/admin/manage-item-purpose/{id}', [ItemPurposeController::class, 'show']);
 Route::put('/admin/manage-item-purpose/{id}', [ItemPurposeController::class, 'update']);
 Route::delete('/admin/manage-item-purpose/delete-selected', [ItemPurposeController::class, 'destroy']);
-<<<<<<< HEAD
+
 
 //Manage companies
 Route::get('/admin/manage-company', [ManageCompanyController::class, 'index']);
@@ -44,14 +44,11 @@ Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController:
 
 //Add Users //todo-> middleware
 Route::post('add-users',[AdminController::class,'save']);
-=======
->>>>>>> c935bd7 (Added the units editing and deleting functions)
 
-<<<<<<< HEAD
 
 //Add Users //todo-> middleware
 Route::post('add-users',[AdminController::class,'save']);
-=======
+
 //Manage companies
 Route::get('/admin/manage-company', [ManageCompanyController::class, 'index']);
 Route::get('/admin/manage-company/add', [ManageCompanyController::class, 'create']);
@@ -59,7 +56,11 @@ Route::post('/admin/manage-company/save', [ManageCompanyController::class, 'stor
 Route::get('/admin/manage-company/edit/{id}', [ManageCompanyController::class, 'show']);
 Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::class, 'update']);
 Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
->>>>>>> 8085533 (Added manage company, add, edit, and delete)
+
+
+
+//Add Users //todo-> middleware
+Route::post('add-users',[AdminController::class,'save']);
 
 
 //Add Users //todo-> middleware
