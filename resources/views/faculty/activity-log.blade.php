@@ -3,10 +3,10 @@
     @include('layout/head-script')
 <body>
     
-    @include('layout/user-header',array('user'=>'user'))
+    @include('layout/faculty-header',array('faculty'=>'faculty'))
     @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
-            'link'=> array('/user','/user/activity-log'),
-            'text'=> array('user','activity-log')
+            'link'=> array('/faculty','/faculty/activity-log'),
+            'text'=> array('faculty','activity-log')
         )))
 
     @include('layout/activity-log')

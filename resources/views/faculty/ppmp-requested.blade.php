@@ -2,15 +2,14 @@
 <html lang="en">
     @include('layout/head-script')
 <body>
-    @include('layout/user-header',array('user'=>'user'))
+    @include('layout/faculty-header',array('faculty'=>'faculty'))
     @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
-            'link'=> array('/user','/user/ppmp-log-history'),
-            'text'=> array('user','ppmp-log-history')
+            'link'=> array('/faculty','/faculty/ppmp-requested'),
+            'text'=> array('faculty','ppmp-requested')
         )))
 
-    @include('layout/ppmp-log-history')
+    @include('layout/ppmp-requested')
     @include('layout/footer')
-    <!-- CSS -->
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
 </html>

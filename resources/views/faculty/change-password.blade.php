@@ -3,11 +3,11 @@
     @include('layout/head-script')
  <body>
     <div id="app">
-        @include('layout/user-header',array('user'=>'/user'))
+        @include('layout/faculty-header',array('faculty'=>'/faculty'))
         
         @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
-            'link'=> array('/user','/user/change-password'),
-            'text'=> array('user','change-password')
+            'link'=> array('/faculty','/faculty/change-password'),
+            'text'=> array('faculty','change-password')
         )))
         <form action="#" method="POST">
         @include('layout/change-password')

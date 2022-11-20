@@ -2,13 +2,13 @@
 <html lang="en">
     @include('layout/head-script')
 <body>
-    @include('layout/user-header',array('user'=>'user'))
+    @include('layout/faculty-header',array('faculty'=>'faculty'))
     @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
-            'link'=> array('/user','/user/ppmp-cart-list'),
-            'text'=> array('user','ppmp-cart-list')
+            'link'=> array('/faculty','/faculty/order-details-item'),
+            'text'=> array('faculty','order-details-item')
         )))
 
-    @include('layout/ppmp-cart-list')
+    @include('layout/order-details')
     @include('layout/footer')
 </body>
 <script src="{{ asset('js/app.js') }}"></script>

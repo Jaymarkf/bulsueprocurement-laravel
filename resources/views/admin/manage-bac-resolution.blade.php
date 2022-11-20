@@ -83,27 +83,6 @@
         </div>
         @include('layout/footer')    
     </div>
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">End user list (Approved by Budget office and Procurement)</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-            Data table here <br>
-            columns >> End users | Item Detail | Action > approved button (toggle on or  off switch button)
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close mr-1"></i>Close</button>
-        <button type="button" class="btn btn-primary"><i class="fa fa-save mr-1"></i>Save</button>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
 </html>

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\ItemPurposeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,54 +16,111 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//Manage Units/Unit of Measurements
+Route::get('/admin/manage-units', [UnitController::class, 'index']);
+Route::post('/admin/manage-units/add', [UnitController::class, 'store']);
+Route::put('/admin/manage-units/edit', [UnitController::class, 'update']);
+Route::delete('/admin/manage-units/delete', [UnitController::class, 'delete_unit']);
+
+//Manage Item Purposes
+Route::get('/admin/manage-item-purpose', [ItemPurposeController::class, 'index']);
+Route::post('/admin/manage-item-purpose/add', [ItemPurposeController::class, 'store']);
+
+
+//Add Users //todo-> middleware
+Route::post('add-users',[AdminController::class,'save']);
+
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/admin',function(){
+
+Route::get('/admin', function () {
     return view('/admin/dashboard');
 });
 
+Route::post('login',[AdminController::class,'login']);
 
-Route::get('/admin/{url}',function($url){
-    if($url == 'dashboard'){
+Route::get('/admin/{url}', function ($url) {
+    if ($url == 'dashboard') {
         return view('/admin/dashboard');
-    }else if($url == 'consolidated'){
+    } elseif ($url == 'consolidated') {
         return view('/admin/consolidated');
-    }else if($url == 'purchase-request'){
+    } elseif ($url == 'purchase-request') {
         return view('/admin/purchase-request');
-    }else if($url =='ppmp'){
+    } elseif ($url == 'ppmp') {
         return view('/admin/dashboard');
-    }else if($url == 'price-quotation'){
+    } elseif ($url == 'price-quotation') {
         return view('/admin/price-quotation');
-    }else if($url =='bac-resolution'){
+    } elseif ($url == 'bac-resolution') {
         return view('/admin/bac-resolution');
-    }else if($url == 'purchase-order'){
+    } elseif ($url == 'purchase-order') {
         return view('/admin/purchase-order');
-    }else if($url == 'table'){
-        return view('admin/admin-table-pagination');
-    }else if($url == 'manage-item-details'){
-        return view('/admin/manage-item-details');
-    }else if($url == 'manage-user'){
+    } elseif ($url == 'table') {
+        return view('/admin/admin-table-pagination');
+    } elseif ($url == 'add-purchase-order') {
+        return view('/admin/add-purchase-order');
+    } elseif ($url == 'add-inspection-acceptance') {
+        return view('/admin/add-inspection-acceptance');
+    } elseif ($url == 'manage-user') {
         return view('/admin/admin-user');
-    }else if($url =='manage-item-category'){
-        return view('/admin/manage-item-cat');
-    }else if($url =='manage-purpose'){
-        return view('/admin/manage-item-purpose');
-    }else if($url == 'manage-quotation'){
+    } elseif ($url == 'manage-quotation') {
         return view('/admin/manage-quotation');
-    }else if($url =='manage-bac-resolution'){
-        return view('/admin/manage-bac-resolution');
-    }else if($url =='purchase-order'){
-        return view('/admin/purchase-order');
-    }else if($url == 'inspection-acceptance'){
+    } elseif ($url == 'inspection-acceptance') {
         return view('/admin/inspection-acceptance');
-    }else if($url =='manage-item-cat'){
-        return view('/admin/manage-item-cat');
-    }else if($url =='manage-item-details'){
+    } elseif ($url == 'manage-item-details') {
         return view('/admin/manage-item-details');
-    }else if($url =='manage-item-purpose'){
-        return view('/admin/manage-item-purpose');
-    }else{
+    } elseif ($url == 'manage-item-category') {
+        return view('/admin/manage-item-cat');
+    } elseif ($url == 'manage-purpose') {
+        return view('admin/manage-item-purpose');
+    } elseif ($url == '/manage-quotation') {
+        return view('/admin/manage-quotation');
+    } elseif ($url == 'manage-bac-resolution') {
+        return view('/admin/manage-bac-resolution');
+    } elseif ($url == 'purchase-order') {
+        return view('/admin/purchase-order');
+        // } elseif ($url == 'manage-item-purpose') {
+        //     return view('/admin/manage-item-purpose');
+        // } elseif ($url == 'manage-units') {
+        //     return view('admin/manage-units');
+    } else {
+        return redirect('/404');
+    }
+});
+
+
+// FACULTY
+Route::get('/faculty', function () {
+    return view('/faculty/dashboard');
+});
+
+
+Route::get('/faculty/{url}', function ($url) {
+    if ($url == 'order-details-item') {
+        return view('/faculty/order-details');
+    } elseif ($url == 'ppmp-cart-list') {
+
+        return view('/faculty/ppmp-cart-list');
+    } elseif ($url == 'ppmp-requested') {
+
+        return view('/faculty/ppmp-requested');
+    } elseif ($url == 'activity-log') {
+
+        return view('/faculty/activity-log');
+    } elseif ($url == 'ppmp-log-history') {
+
+        return view('/faculty/ppmp-log-history');
+    } elseif ($url == 'change-password') {
+        //use template forms for change-password for every user
+        return view('/template-forms/change-password ');
+    } elseif ($url == 'set-ppmp-year') {
+
+        return view('/faculty/year');
+    } elseif ($url == 'price-catalogue') {
+
+        return view('/faculty/dashboard');
+    } else {
         return redirect('/404');
     }
 });
@@ -68,53 +128,36 @@ Route::get('/admin/{url}',function($url){
 
 
 
-
-
-// USER
-Route::get('/user',function(){
-    return view('/user/user-dashboard');
-});
-Route::get('/user/price-catalogue',function(){
-    return view('/user/user-dashboard');
-});
-Route::get('/user/order-details-item',function(){
-    return view('/user/order-details');
-});
-Route::get('/user/ppmp-cart-list',function(){
-    return view('/user/ppmp-cart-list');
-});
-Route::get('/user/ppmp-requested',function(){
-    return view('/user/ppmp-requested');
-});
-
-Route::get('/user/activity-log',function(){
-    return view('/user/activity-log');
-});
-
-Route::get('/user/ppmp-log-history',function(){
-    return view('/user/ppmp-log-history');
-});
-Route::get('user/change-password',function(){
-    return view('/user/change-password');
-});
-Route::get('user/set-ppmp-year',function(){
-    return view('/user/year');
-});
-
-
-
-
-
+//  SETTING
 
 
 //GLOBAL template
-Route::get('/set-ppmp-year',function(){
+Route::get('/set-ppmp-year', function () {
     return view('template-forms/set-ppmp-year');
-    
+});
+Route::get('/change-password', function () {
+    return view('template-forms/change-password', array('user' => 'example'));
 });
 
-Route::get('/change-password',function(){
-    return view('template-forms/change-password',array('user'=>'example'));
+
+// SUPPLIER
+Route::get('/supplier', function () {
+    return view('/supplier/dashboard');
 });
 
 
+Route::get('/supplier/{url}', function ($url) {
+    if ($url == 'inventory-custodian-form') {
+        return view('/supplier/inventory-custodian-form');
+    } elseif ($url == 'property-acknowledgement-report') {
+        return view('/supplier/property-acknowledgement-report');
+    } elseif ($url == 'unserviceable-property') {
+        return view('/supplier/unserviceable-property');
+    } elseif ($url == 'view-inventory-reports') {
+        return view('/supplier/view-inventory-reports');
+    } elseif ($url == 'property-transfer-ics') {
+        return view('/supplier/property-transfer-ics');
+    } else {
+        return redirect('/404');
+    }
+});

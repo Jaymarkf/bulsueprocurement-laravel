@@ -18,15 +18,15 @@
            <i class="fas fa-folder-minus mr-1 group-hover:text-green-600"></i><span class="group-hover:text-green-600">Menu</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/user/set-ppmp-year"><i class="fas fa-calendar-alt mr-2"></i>Set PPMP Year</a>
-          <a class="dropdown-item" href="/user/price-catalogue"><i class="fas fa-tags mr-2"></i>Price Catalogue</a>
-          <a class="dropdown-item" href="/user/ppmp-cart-list"><i class="fas fa-shopping-cart mr-2"></i>PPMP Cart List</a>
-          <a class="dropdown-item" href="/user/ppmp-requested"><i class="fas fa-tasks mr-2"></i>New PPMP - 2021</a>
-          <a class="dropdown-item" href="/user/ppmp-log-history"><i class="fas fa-history mr-2"></i>PPMP History</a>
+          <a class="dropdown-item" href="/faculty/set-ppmp-year"><i class="fas fa-calendar-alt mr-2"></i>Set PPMP Year</a>
+          <a class="dropdown-item" href="/faculty/price-catalogue"><i class="fas fa-tags mr-2"></i>Price Catalogue</a>
+          <a class="dropdown-item" href="/faculty/ppmp-cart-list"><i class="fas fa-shopping-cart mr-2"></i>PPMP Cart List</a>
+          <a class="dropdown-item" href="/faculty/ppmp-requested"><i class="fas fa-tasks mr-2"></i>New PPMP - 2021</a>
+          <a class="dropdown-item" href="/faculty/ppmp-log-history"><i class="fas fa-history mr-2"></i>PPMP History</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link uppercase text-white font-bold" href="/superadmin">BULSU e-PROCUREMENT V1.1</a>
+        <a class="nav-link uppercase text-white font-bold" href="/admin">BULSU e-PROCUREMENT V1.1</a>
       </li>
     </ul>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -39,7 +39,7 @@
               <span class="group-hover:text-green-600"><i class="fas fa-user mr-2"></i> <b>USER</b></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
-              <a class="dropdown-item" href="/user/change-password"><i class="fas fa-key mr-2"></i>Change password</a>
+              <a class="dropdown-item" href="/change-password"><i class="fas fa-key mr-2"></i>Change password</a>
               <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
             </div>
           </li>
