@@ -38,9 +38,13 @@
                                         <span class="text-white font-bold text-2xl text-center">Bulacan State University</span>
                                 </div>
                                 <div class="card-body bg-default relative">
+                                        @if(Session::get('fail'))
+                                        <span class="text-danger font-weight-bold text-center  text-sm text-red-500 mb-3">{{ Session::get('fail') }}</span>
+                                        @endif
                                         <div class="flex">
                                             <span class="text-white"><i class="fas fa-lock mr-2"></i>Sign-in your account</span>
                                         </div>
+
                                         <div class="forms">
                                             <form action="login" method="post" class="mt-3">
                                             @csrf
@@ -55,7 +59,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="pwd"><i class="fas fa-lock"></i></span>
                                                     </div>
-                                                    <input type="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="pwd" password="password" autocomplete="password">
+                                                    <input type="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="pwd" password="password" name="password" autocomplete="password">
                                                 </div>
 
                                                 <div class="mt-3">
