@@ -44,6 +44,10 @@ Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController:
 //Add Users //todo-> middleware
 Route::post('add-users',[AdminController::class,'save']);
 
+
+//Add Users //todo-> middleware
+Route::post('add-users',[AdminController::class,'save']);
+
 Route::get('/', function () {
     return view('home');
 });
