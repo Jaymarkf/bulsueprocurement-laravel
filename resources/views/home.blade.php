@@ -42,19 +42,20 @@
                                             <span class="text-white"><i class="fas fa-lock mr-2"></i>Sign-in your account</span>
                                         </div>
                                         <div class="forms">
-                                            <form action="" class="mt-3">
+                                            <form action="login" method="post" class="mt-3">
+                                            @csrf
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                                    <span class="input-group-text" id="usn"><i class="fas fa-user"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                <input type="text" class="form-control" placeholder="Username" aria-label="username" aria-describedby="usn" name="username">
                                                 </div>
 
                                                 <div class="input-group ">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-lock"></i></span>
+                                                        <span class="input-group-text" id="pwd"><i class="fas fa-lock"></i></span>
                                                     </div>
-                                                    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon2">
+                                                    <input type="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="pwd" password="password" autocomplete="password">
                                                 </div>
 
                                                 <div class="mt-3">

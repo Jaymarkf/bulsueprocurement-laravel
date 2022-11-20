@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ItemPurposeController;
@@ -39,6 +40,10 @@ Route::get('/admin/manage-company/edit/{id}', [ManageCompanyController::class, '
 Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::class, 'update']);
 Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
 
+
+//Add Users //todo-> middleware
+Route::post('add-users',[AdminController::class,'save']);
+
 Route::get('/', function () {
     return view('home');
 });
@@ -46,6 +51,8 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('/admin/dashboard');
 });
+
+Route::post('login',[AdminController::class,'login']);
 
 Route::get('/admin/{url}', function ($url) {
     if ($url == 'dashboard') {
