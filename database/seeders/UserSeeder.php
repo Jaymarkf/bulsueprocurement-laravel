@@ -17,9 +17,9 @@ class UserSeeder extends Seeder
     {
         //
         User::create([
-            'username' => Str::random(5),
-            'email_address' => Str::random(5) . '@gmail.com',
-            'password' => Str::random(25),
+            'username' => "dev",
+            'email_address' => 'dev@gmail.com',
+            'password' => bcrypt('devpw123#'),
             'branch_id' => rand(1, 5),
             'profile_id' => 1,
             'approved' => 1,
