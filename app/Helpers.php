@@ -27,4 +27,16 @@ class UserHelpers
 
         return false;
     }
+
+    /**
+     * Validate string
+     * @param   string   $str   the string you want to validate
+     * @return string;
+     */
+    public static function validateInput(string $str)
+    {
+        $str = str_replace(' ', '-', $str); // Replaces all spaces with hyphens.
+
+        return preg_replace('/[^A-Za-z0-9\-]/', '', $str); // Removes special chars.
+    }
 }
