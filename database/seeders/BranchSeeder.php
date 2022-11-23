@@ -15,26 +15,27 @@ class BranchSeeder extends Seeder
     public function run()
     {
         //
-        Branches::create(['branch_name' => 'Hagonoy Campus',]);
-        Branches::create(['branch_name' => 'Meneses Campus',]);
-        Branches::create(['branch_name' => 'Bustos Campus',]);
-        Branches::create(['branch_name' => 'Sarmiento Campus',]);
-        Branches::create(['branch_name' => 'Main Office',]);
-        Branches::create(['branch_name' => 'College of Architecture and Fine Arts',]);
-        Branches::create(['branch_name' => 'College of Arts and Letters',]);
-        Branches::create(['branch_name' => 'College of Business Administration',]);
-        Branches::create(['branch_name' => 'College of Criminal Justice Education',]);
-        Branches::create(['branch_name' => 'College of Education',]);
-        Branches::create(['branch_name' => 'College of Engineering',]);
-        Branches::create(['branch_name' => 'College of Home Economics',]);
-        Branches::create(['branch_name' => 'College of Industrial Technology',]);
-        Branches::create(['branch_name' => 'College of Information and Communications Technology',]);
-        Branches::create(['branch_name' => 'College of Law',]);
-        Branches::create(['branch_name' => 'College of Nursing',]);
-        Branches::create(['branch_name' => 'College of Physical Education, Recreation and Sports',]);
-        Branches::create(['branch_name' => 'College of Science',]);
-        Branches::create(['branch_name' => 'College of Social Science and Philosophy',]);
-        Branches::create(['branch_name' => 'Graduate School',]);
-        Branches::create(['branch_name' => 'College of Hospitality and Tourism Management',]);
+        Branches::create(['branch_name' => 'N/A', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'Hagonoy Campus', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'Meneses Campus', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'Bustos Campus', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'Sarmiento Campus', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'Main Office', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Architecture and Fine Arts', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Arts and Letters', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Business Administration', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Criminal Justice Education', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Education', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Engineering', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Home Economics', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Industrial Technology', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Information and Communications Technology', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Law', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Nursing', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Physical Education, Recreation and Sports', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Science', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Social Science and Philosophy', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'Graduate School', 'added_by' => 1]);
+        Branches::create(['branch_name' => 'College of Hospitality and Tourism Management', 'added_by' => 1]);
     }
 }

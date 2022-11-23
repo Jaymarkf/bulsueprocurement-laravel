@@ -20,7 +20,7 @@ class UserProfileSeeder extends Seeder
             'first_name' => Str::random(5),
             'middle_initial' => Str::random(1),
             'last_name' => Str::random(5),
-            'employee_position_id' => rand(1, 5),
+            'employee_position_id' => 1,
         ]);
     }
 }

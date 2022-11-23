@@ -23,6 +23,7 @@ class EmployeeSeeder extends Seeder
                 'last_name' => Str::random(5),
                 'branch_id' => rand(1, 5),
                 'employee_position_id' => rand(1, 5),
+                'added_by' => 1,
             ]);
         }
     }
