@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ItemCategories;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Livewire\Component;
+use App\Models\ItemDetails;
+use App\Models\ItemCategories;
 
-class ItemCategoriesController extends Controller
+class ItemOrderDetailsController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +16,12 @@ class ItemCategoriesController extends Controller
      */
     public function index()
     {
-        //INDEX
-        $item_categories = ItemCategories::all();
-        return view('admin.manage-item-cat',compact('item_categories'));
+        //
+        $item_details = ItemDetails::with('category')->get();
+        $item_categories = ItemCategories::with('detail')->get();
+
+        return view('faculty.order-details',compact('item_details','item_categories'));
+
     }
 
     /**
@@ -40,14 +42,7 @@ class ItemCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //STORE
-        $request -> validate([
-            'description' => 'required'
-        ]);
-
-        ItemCategories::create($request->all());
-
-        return redirect()->back()->with('success_add','User Not Found');
+        //
     }
 
     /**
@@ -79,15 +74,9 @@ class ItemCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        //UPDATE
-        $item_category = ItemCategories::find( $request-> id);
-        $item_category->description = $request->input('description');
-        $item_category->save();
-        
-        
-        return redirect('/admin/manage-item-category') -> with('success_update','Descriptions created successfully');
+        //
     }
 
     /**
@@ -99,16 +88,5 @@ class ItemCategoriesController extends Controller
     public function destroy($id)
     {
         //
-        
     }
-
-    public function deleteCateg(Request $request)
-    {
-        $ids = $request->ids;
-        ItemCategories::whereIn('id',$ids)->delete();
-        
-        return redirect()->back()-> with('success_deleted','Descriptions created successfully');
-
-    }   
-
 }

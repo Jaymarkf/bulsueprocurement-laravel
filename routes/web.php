@@ -10,6 +10,7 @@ use App\Http\Controllers\ItemDetailsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\ItemOrderDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,11 +99,14 @@ Route::post('admin/manage-user/forget-password', [ResetPasswordController::class
 Route::get('admin/manage-user/reset-password/{reset_code}', [ResetPasswordController::class, 'getResetPassword'])->name('reset-code');
 Route::post('admin/manage-user/reset-password/{reset_code}', [ResetPasswordController::class, 'postResetPassword'])->name('post.reset-code');
 
+// FACULTY - ORDER DETAILS
+Route::get('/faculty/order-details-item', [ItemOrderDetailsController::class, 'index']);
+
 // Faculty 
 Route::get('/faculty', [FacultyController::class, 'index']);
-Route::get('/faculty/search', [FacultyController::class, 'search'])->name('search-item');
+Route::post('/faculty', [FacultyController::class, 'search'])->name('search-item');
 Route::get('/faculty/{id}', [FacultyController::class, 'get_causes_against_category']);
-
+Route::post('/faculty/order-item-details', [FacultyController::class, 'show'])->name('show-item');
 
  
 
