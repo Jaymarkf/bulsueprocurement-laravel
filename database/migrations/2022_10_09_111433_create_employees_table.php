@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->text('last_name');
             $table->unsignedBigInteger('branch_id')->nullable(true);
             $table->unsignedBigInteger('employee_position_id');
+            $table->unsignedBigInteger('added_by');
             $table->timestamps();
 
             $table->foreign('branch_id')->references('id')->on('branches');

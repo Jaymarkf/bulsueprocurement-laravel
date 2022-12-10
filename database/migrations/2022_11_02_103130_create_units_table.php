@@ -16,7 +16,9 @@ class CreateUnitsTable extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->text("uom");
+            $table->unsignedBigInteger("added_by");
             $table->timestamps();
+            $table->foreign('added_by')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

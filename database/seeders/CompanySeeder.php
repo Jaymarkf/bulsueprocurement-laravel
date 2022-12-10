@@ -22,6 +22,7 @@ class CompanySeeder extends Seeder
             'tin' => rand(100, 999) . '-' . rand(100, 999) . '-' . rand(100, 999),
             'email_address' => str::random(7) . '@gmail.com',
             'contact' => '09' . rand(100000000, 999999999),
+            'added_by' => 1,
         ]);
     }
 }
