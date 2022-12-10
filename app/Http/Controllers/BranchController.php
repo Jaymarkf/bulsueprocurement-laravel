@@ -189,18 +189,9 @@ class BranchController extends Controller
     {
         //
         try {
-            $err = 0;
             DB::beginTransaction();
-            foreach ($request->id as $branch_id) {
-
-                $branch = Branches::find($branch_id);
-                if (!$branch->delete()) {
-                    $err += 1;
-                }
-            }
-
-
-            if ($err <= 0) {
+            $branch = Branches::whereIn($request->id);
+            if ($branch->delete()) {
                 DB::commit();
                 return response()->json([
                     'success' => true,

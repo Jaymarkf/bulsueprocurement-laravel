@@ -20,7 +20,10 @@ class CreateCompaniesTable extends Migration
             $table->text('tin');
             $table->text('email_address');
             $table->text('contact');
+            $table->unsignedBigInteger('added_by');
             $table->timestamps();
+
+            $table->foreign('added_by')->references('id')->on('users');
         });
     }
 

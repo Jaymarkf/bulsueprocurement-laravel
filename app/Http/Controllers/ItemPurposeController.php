@@ -145,16 +145,10 @@ class ItemPurposeController extends Controller
     {
         //
         try {
-            $err = 0;
             DB::beginTransaction();
-            foreach ($request->id as $purpose_id) {
-                $unit = ItemPurpose::find($purpose_id);
-                if (!$unit->delete()) {
-                    $err += 1;
-                }
-            }
+            $itemPurpose = ItemPurpose::whereIn('id', $request->id);
 
-            if ($err <= 0) {
+            if ($itemPurpose->delete()) {
                 DB::commit();
                 return response()->json([
                     'success' => true,
@@ -162,6 +156,14 @@ class ItemPurposeController extends Controller
                     'data' => [],
                     'error' => '',
                 ], 200);
+            } else {
+                DB::rollBack();
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Purposes not deleted.',
+                    'data' => [],
+                    'error' => '',
+                ], 400);
             }
         } catch (Throwable $e) {
             DB::rollBack();

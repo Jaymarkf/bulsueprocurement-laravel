@@ -48,29 +48,8 @@ Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::
 Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
 
 
-//Add Users //todo-> middleware
+//Add Users todo-> middleware
 Route::post('add-users',[AdminController::class,'save']);
-
-
-//Add Users //todo-> middleware
-Route::post('add-users',[AdminController::class,'save']);
-
-//Manage companies
-Route::get('/admin/manage-company', [ManageCompanyController::class, 'index']);
-Route::get('/admin/manage-company/add', [ManageCompanyController::class, 'create']);
-Route::post('/admin/manage-company/save', [ManageCompanyController::class, 'store']);
-Route::get('/admin/manage-company/edit/{id}', [ManageCompanyController::class, 'show']);
-Route::put('/admin/manage-company/save-changes/{id}', [ManageCompanyController::class, 'update']);
-Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController::class, 'delete_selected']);
-
-
-//Add Users //todo-> middleware
-Route::post('add-users',[AdminController::class,'save']);
-
-
-//Add Users //todo-> middleware
-Route::post('add-users',[AdminController::class,'save']);
-
 
 
 // roncy_updated BRANCH
@@ -106,20 +85,19 @@ Route::get('/faculty/order-details-item', [ItemOrderDetailsController::class, 'i
 Route::get('/faculty', [FacultyController::class, 'index']);
 Route::post('/faculty', [FacultyController::class, 'search'])->name('search-item');
 Route::get('/faculty/{id}', [FacultyController::class, 'get_causes_against_category']);
+
 Route::post('/faculty/order-item-details', [FacultyController::class, 'show'])->name('show-item');
 
- 
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/admin', function () {
-    return view('/admin/dashboard');
-});
 
+//HOME PAGE LOGIN
 Route::post('login',[AdminController::class,'login']);
 
+//ADMIN ROUTES with MIDDLEWARE
 Route::get('/admin/{url}', function ($url) {
     if ($url == 'dashboard') {
         return view('/admin/dashboard');
@@ -162,7 +140,7 @@ Route::get('/admin/{url}', function ($url) {
     } else {
         return redirect('/404');
     }
-});
+})->middleware('auth_admin');
 
 
 

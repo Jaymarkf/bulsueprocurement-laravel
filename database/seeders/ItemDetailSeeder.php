@@ -21,6 +21,7 @@ class ItemDetailSeeder extends Seeder
             'article' => 'Test',
             'unit_id' => 16,
             'price_catalogue' => 1000.23,
+            'added_by' => 1,
         ]);
     }
 }

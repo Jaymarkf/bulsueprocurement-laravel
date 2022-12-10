@@ -12,12 +12,29 @@ class AdminController extends Controller
     function save(Request $request){
         dd('test');
     }
+    function validate_input($string) {
+        $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+     
+        return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+     }
     function login(Request $request){
-        $user = User::where('username',md5($request->username))
+
+
+       $username =  $this->validate_input($request->username);
+       $password =  $this->validate_input($request->username);
+        $data = User::where('username',$request->username)
                     ->where('password',md5($request->password))
                     ->get()
                     ->first();
-        dd($user);
-
+        
+        if($data){
+            // session()->pull('login'); session destroyer
+            $request->session()->put('login',$data->id); 
+            dd('redirect the users in specific template depends on the user position');
+            // return redirect('/admin/dashboard'); <---example
+            //return redirect('supplier/dashboard'); <---example
+        }else{
+            return back()->with('fail',"Credentials are incorrect! Try again");
+        }
     }
 }

@@ -15,6 +15,7 @@ class EmployeePositionSeeder extends Seeder
     public function run()
     {
         //
+        EmployeePosition::create(['employee_type_id' => 1, 'description' => 'N/A',]);
         EmployeePosition::create(['employee_type_id' => 1, 'description' => 'INSTRUCTOR I',]);
         EmployeePosition::create(['employee_type_id' => 1, 'description' => 'PROFESSOR III',]);
         EmployeePosition::create(['employee_type_id' => 1, 'description' => 'INSTRUCTOR II',]);

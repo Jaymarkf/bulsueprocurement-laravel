@@ -19,6 +19,7 @@ class ItemPurposeSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             ItemPurpose::create([
                 'purpose' => str::random(10),
+                'added_by' => 1
             ]);
         }
     }

@@ -69,26 +69,6 @@
                                 </button>
                             {{ Form::close() }}
                         </div>
-                        <div class="col-span-1">
-                            <input
-                                type="text"
-                                placeholder="Search"
-                                class="
-                                px-2
-                                py-2
-                                placeholder-gray-400
-                                text-gray-600
-                                relative
-                                bg-white
-                                rounded
-                                text-sm
-                                border border-gray-400
-                                outline-none
-                                focus:outline-none focus:ring
-                                w-full
-                                "
-                            />
-                        </div>
                         <div class="col-span-3">
                             <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="deleteUnits()">
                                 <i class="fas fa-trash mr-1"></i> Delete Selected
@@ -97,7 +77,7 @@
                     </div>
 
                     <div class="table-responsive">
-                    <table class="table table-auto table-bordered">
+                    <table class="table table-auto table-bordered" id="dataTable">
                         <thead>
                             <tr>
                                <th class="text-xs w-8">Select</th>
@@ -167,6 +147,14 @@
     </div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js" defer></script>
+<script defer>
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+
+    });
+</script>
 <script defer>
     let selId = 0;
     let modal = document.getElementById('edit-modal');

@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\ItemDetails;
 use App\Models\ItemCategories;
 use App\Models\Unit;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Helpers\UserHelpers;
+use Throwable;
 
 class ItemDetailsController extends Controller
 {
@@ -21,6 +25,7 @@ class ItemDetailsController extends Controller
         $item_categories = ItemCategories::all();
         $unit = Unit::all();
         return view('admin.manage-item-details',compact('item_details', 'item_categories','unit'));
+
 
     }
 
@@ -43,7 +48,7 @@ class ItemDetailsController extends Controller
     public function store(Request $request)
     {
         //STORE
-        $request -> validate([
+        $request->validate([
             'category_id' => 'required',
             'description' => 'required',
             'price_catalogue' => 'required',
@@ -90,16 +95,40 @@ class ItemDetailsController extends Controller
     public function update(Request $request)
     {
         //UPDATE
-        $item_category = ItemCategories::find($request->id);
         $item_details = ItemDetails::find($request->id);
-
+        $prevState = json_encode($item_details);
+        $item_details->category_id = $request->input('category_id');
         $item_details->description = $request->input('description');
-        $item_details->category_name = $request->input('category_name');
         $item_details->article = $request->input('article');
+        $item_details->unit_id = $request->input('unit_id');
         $item_details->price_catalogue = $request->input('price_catalogue');
+
         $item_details->save();
         
         return redirect('/admin/manage-item-details') -> with('success_update','Descriptions created successfully');
+
+        $afterState = json_encode($item_details);
+        try {
+            DB::beginTransaction();
+
+            if ($item_details->save()) {
+                $userId = $request->session()->get('login');
+                if (UserHelpers::recordItemHistory($userId, $request->id, $prevState, $afterState)) {
+                    DB::commit();
+                    return redirect('/admin/manage-item-details')->with('success', 'Descriptions created successfully');
+                } else {
+                    DB::rollBack();
+                    return redirect()->back();
+                }
+            } else {
+                DB::rollBack();
+                return redirect()->back();
+            }
+        } catch (Throwable $e) {
+            DB::rollBack();
+            return redirect()->back();
+        }
+
     }
 
     /**
@@ -116,8 +145,10 @@ class ItemDetailsController extends Controller
     public function deleteCateg(Request $request)
     {
         $ids = $request->ids;
+
         ItemDetails::whereIn('id',$ids)->delete();
         
         return redirect()->back()->with('success_deleted','Descriptions created successfully');
+
     }
 }
