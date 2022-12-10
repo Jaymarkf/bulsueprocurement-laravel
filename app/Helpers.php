@@ -3,6 +3,8 @@
 namespace App\Helpers;
 
 use App\Models\UserActionLog;
+use App\Models\ItemDetailHistory;
+use Throwable;
 
 class UserHelpers
 {
@@ -26,6 +28,34 @@ class UserHelpers
         }
 
         return false;
+    }
+
+    /**
+     * Record the edit detail history
+     *
+     * @param   int    $userId          ID of the user who are making the changes
+     * @param   int    $itemId          ID of the item that is edited
+     * @param   string $beforeChange    The previous state of the item detail
+     * @param   string $afterChange     The after state of the item detail
+     * @return  boolean
+     */
+    public static function recordItemHistory(int $userId, int $itemId, string $beforeChange, string $afterChange)
+    {
+        try {
+            $addItemHistory = new ItemDetailHistory();
+            $addItemHistory->user_id = $userId;
+            $addItemHistory->item_id = $itemId;
+            $addItemHistory->before_change = $beforeChange;
+            $addItemHistory->after_change = $afterChange;
+
+            if ($addItemHistory->save()) {
+                return true;
+            }
+
+            return false;
+        } catch (Throwable $e) {
+            return false;
+        }
     }
 
     /**
