@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ItemDetails;
 use App\Models\ItemCategories;
+use App\Models\Unit;
 
 use Illuminate\Support\Facades\DB;
 
@@ -18,10 +19,6 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        //
-
-        // $item_details = ItemDetails::all();
-        // $item_categories= ItemCategories::all();
 
         $item_details = ItemDetails::with('category')->get();
         $item_categories = ItemCategories::with('detail')->get();
@@ -37,7 +34,9 @@ class FacultyController extends Controller
         $item_details = ItemDetails::all();
         $item_categories= ItemCategories::all();
 
-        $posts = ItemDetails::where('category_name','like','%'.$search.'%') -> get();
+        $posts = ItemDetails::where('description','like','%'.$search.'%') -> get();
+        // $posts_id = $posts::where('category_id')->get();
+
         // $post_datas = $posts->toArray();
         return view('faculty.dashboard', ['post' => $posts], compact('item_details','item_categories', 'posts'));
         
@@ -52,7 +51,7 @@ class FacultyController extends Controller
 
          $query = DB::table('item_details as sub_cat')
                 ->leftjoin('item_categories as item_cat', 'item_cat.id', '=', 'sub_cat.category_id');
-         $output = $query->select(['sub_cat.category_name as cat_name','sub_cat.price_catalogue as cat_price','sub_cat.unit_name as cat_unit','item_cat.description as description'])->whereRaw('category_id IN ('.$id.')')->get();  
+         $output = $query->select(['sub_cat.description as cat_name','sub_cat.price_catalogue as cat_price','sub_cat.unit_name as cat_unit','item_cat.description as description'])->whereRaw('category_id IN ('.$id.')')->get();  
          
 
          echo json_encode($output);
@@ -86,9 +85,22 @@ class FacultyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         //
+
+        $item_details = ItemDetails::with('category')->get();
+        $item_categories = ItemCategories::with('detail')->get();
+
+        $id = $request->id;
+        $show_items = Itemdetails::where('id', $id)->get();
+
+        $units = Unit::all();
+
+        // dd($show_items);
+        return view('faculty.order-details', compact('item_details','item_categories', 'show_items', 'units'));
+
+
     }
 
     /**

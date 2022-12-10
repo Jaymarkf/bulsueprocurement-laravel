@@ -28,17 +28,34 @@
 }   
 
 .active-cat .label-categ {
-    color:rgba(96, 165, 250, var(--tw-text-opacity)) !important;
+    color: #2176bd !important;
+}
+#input__search::-webkit-input-placeholder{
+
 }
 
+#allItem_label:hover{
+    cursor: pointer;
+    background: #fff;
+    color: #2176bd !important;
+}
 
+.active-cat{
+    color: #2176bd !important;
+}
+.is-active{
+    background: #fff;
+}
+.is-active label{
+    color: #2176bd !important;
+}
 </style>
 <script src="{{ asset('js/app.js') }}"></script>
 
 <script>
 $(document).ready(function() {
     $(document).on('click', '.category_checkbox', function () {
-
+        $("#allItem_label").removeClass("active-cat");
         var ids = [];
 
         var counter = 0;
@@ -53,9 +70,12 @@ $(document).ready(function() {
             }
         });
         setTimeout(function(){
-            $('#item_count').text($("#all_Items div").length);
-
-
+            if(counter != 0){
+                $('#item_count').text($("#all_Items div").length);
+            }else{
+                $('#item_count').text($("#All_Data div").length);
+                $("#allItem_label").addClass('active-cat');
+            }
         }, 500)
        
 
@@ -101,7 +121,33 @@ function fetchCauseAgainstCategory(id) {
             }
         }
     });
-}
+} 
+</script>
+
+<script>
+    $("#allItem_label").click(function(){
+        $(this).addClass("active-cat");
+        $('#item_count').text($("#All_Data div").length);
+        $("#all_Items").attr('style', 'display: none !important');
+        $("#All_Data").show();
+        $('.category_checkbox, .custom-checkbox').removeClass('active-cat');
+        $('.category_checkbox').prop('checked', false);
+
+    });
+</script>
+
+<script>
+
+
+$("ul.list-unstyled.components .custom-control.custom-checkbox").hover(
+  function () {
+    $(this).addClass("is-active");
+  },
+  function () {
+    $(this).removeClass("is-active");
+  }
+);
+
 </script>
 
 
@@ -109,7 +155,6 @@ function fetchCauseAgainstCategory(id) {
     $(document).ready(function(){
         $('#yearbtn').tooltip('show');
         $('#yearbtn').tooltip('hide');
-
    });
 </script> -->
 

@@ -24,7 +24,9 @@ class ItemDetailsController extends Controller
         $item_details = ItemDetails::all();
         $item_categories = ItemCategories::all();
         $unit = Unit::all();
-        return view('admin.manage-item-details', compact('item_details', 'item_categories', 'unit'));
+        return view('admin.manage-item-details',compact('item_details', 'item_categories','unit'));
+
+
     }
 
     /**
@@ -58,7 +60,7 @@ class ItemDetailsController extends Controller
 
         ItemDetails::create($request->all());
 
-        return redirect()->back();
+        return redirect()->back()->with('success_add','Descriptions created successfully');
     }
 
     /**
@@ -100,6 +102,11 @@ class ItemDetailsController extends Controller
         $item_details->article = $request->input('article');
         $item_details->unit_id = $request->input('unit_id');
         $item_details->price_catalogue = $request->input('price_catalogue');
+
+        $item_details->save();
+        
+        return redirect('/admin/manage-item-details') -> with('success_update','Descriptions created successfully');
+
         $afterState = json_encode($item_details);
         try {
             DB::beginTransaction();
@@ -121,6 +128,7 @@ class ItemDetailsController extends Controller
             DB::rollBack();
             return redirect()->back();
         }
+
     }
 
     /**
@@ -137,7 +145,10 @@ class ItemDetailsController extends Controller
     public function deleteCateg(Request $request)
     {
         $ids = $request->ids;
-        ItemDetails::whereIn('id', $ids)->delete();
-        return redirect()->back();
+
+        ItemDetails::whereIn('id',$ids)->delete();
+        
+        return redirect()->back()->with('success_deleted','Descriptions created successfully');
+
     }
 }
