@@ -1,0 +1,7 @@
+- name: Deploy app by FTP
+  uses: januszmarcinik/ftp-deploy@v1
+  with:
+    server: ${{ secrets.ftp_servername}}
+    user: ${{secrets.ftp_username }}
+    password: ${{ secrets.ftp_password }}
+    localRoot: /test.bulsueprocurement.com
