@@ -9,65 +9,53 @@
             </div>
             <div class="grid grid-cols-1 gap-4 grid-content-center px-2 mt-4">
               <!-- CREATE FORM -->
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{route('userlists.store')}}" method="POST">
                 @csrf 
-                    <label for="Access level">Access Level</label><br>
-                    <select name="level" id="selectAccessLevel"  class="form-control form-control-sm">
-                        <option disabled selected hidden>Select Access Level</option>
-                        @foreach($access_levels as $access_level)
-                          <option value="{{$access_level->level}}" id="{{$access_level->level}}" acess-level="{{$access_level->level}}">{{$access_level->level}}</option>
-                        @endforeach
+                    <label for="Position">Position</label><br>
+                    <select name="level" id="Position"  class="form-control form-control-sm" name="level">
+                        <option disabled selected hidden>Select Position</option>
+                        <option value="procurement-office">Procurement Office</option>
+                        <option value="budget-office">Budget Office</option>
+                        <option value="end-user">End User</option>
+                        <option value="supplier">Supplier</option>
+                        <option value="end-user">To do....</option>
                     </select><br>
 
                     <label for="cars">College Department</label><br>
-
                     <select name="cars" id="selectBranch"  class="form-control form-control-sm" disabled>
-                       <option disabled selected hidden>Select Branch</option>
-                       @foreach($branches as $branch)
-                          @if($branch->level === 'administrator')
-                            <option value="{{$branch->branch_name}}" id="{{$branch->id}}" access-level="administrator">{{$branch->branch_name}}</option>
+                       @foreach($branches as $k => $v )
+                          @if($k == 0)
+                         <option value="{{ $v->branch_name }}" selected>{{ $v->branch_name }}</option>
+                          @else
+                          <option value="{{ $v->branch_name }}">{{ $v->branch_name }}</option>
                           @endif
-                        @endforeach
-
-                        @foreach($branches as $branch)
-                          @if($branch->level === 'user')
-                            <option value="{{$branch->branch_name}}" id="{{$branch->id}}" access-level="user">{{$branch->branch_name}}</option>
-                          @endif
-                        @endforeach
-
-                        @foreach($branches as $branch)
-                          @if($branch->level === 'supplier')
-                            <option value="{{$branch->branch_name}}" id="{{$branch->id}}" access-level="supplier">{{$branch->branch_name}}</option>
-                          @endif
-                        @endforeach
-
+                       @endforeach
+                        
                     </select><br>
-
-                    <div class="form-group hidden">
-                        <input type="text" hidden name="branch_id" id="updateBranchId" value="1">
-                        <input type="text" hidden name="branch" id="updateBranch" value="CIT">
-                        <input type="text" hidden name="profile_id" id="updateUserProfileId" value="1">
-                        <input type="text" hidden name="level" id="updateLevel" value="admin">
-                        <input type="text" hidden name="remarks" id="updateremarks" value="Registered by Admin"> 
-                        <input type="text" hidden name="approved" id="updateremarks" value="1">
-                        <input type="text" hidden name="dashboard_year" id="updateyear" value="2022">
-                        <input type="password" hidden name="password" id="updateyear" value="password">
-                    </div>
-
                     <label for="fname">Unique Username:</label><br>
                     <input type="text" id="unique-name" name="username" placeholder="Username" class="form-control form-control-sm"><br>
 
                     <label for="fname">First name</label><br>
                     <input type="text" id="first-name" name="first_name" placeholder="First Name" class="form-control form-control-sm"><br>
 
+                    <label for="middle-name">First name</label><br>
+                    <input type="text" id="middle-name" name="middle_name" placeholder="Middle Initial" class="form-control form-control-sm"><br>
+
                     <label for="lname">Last name</label><br>
                     <input type="text" id="last-name" name="last_name" placeholder="Last Name" class="form-control form-control-sm"><br>
                   
                     <label for="email_address">Email address</label>
                     <input type="email" id="email address" name="email_address" placeholder="Email address" class="form-control form-control-sm"><br>
-                   
-                    <label for="lname">Position</label><br>
-                    <input type="text" id="position" name="position" value="Doe" class="form-control form-control-sm"><br>
+  
                  
                     <button type="submit" data-placement="right" title="" id="save" name="save" class="btn btn-success" data-original-title="Click to Save"><i class="fas fa-save"></i> Save</button>
                 </form> 
@@ -83,7 +71,7 @@
                 <h5><i class="fas fa-user mr-2"></i>Users List</h5>
                 </div>
                 <div class="w-50 text-right">
-                    <p>Numbers of Users: <span class="badge badge-info">{{$users_lists->count()}}</span> </p>
+                    <p>Numbers of Users: <span class="badge badge-info">1</span> </p>
                 </div>
             </div>
             <!-- Admin User Actions  -->
@@ -107,41 +95,36 @@
                       </thead>
                       <tbody style="height: auto; overflow-y: auto;" >
                       @if(isset($users_lists))           
-        
-                        @foreach($users_lists as $users_list)
-                        <tr id="{{$users_list->id}}">
-                            <td class="id" hidden name="ids[{{$users_list->id}}]"> {{$users_list->id}}</td>
-                            <td>
-                                  <label class="inline-flex items-center">
-                                    <input type="checkbox" class="form-checkbox" name="ids[{{$users_list->id}}]" value="{{$users_list->id}}"/>
-                                  </label>
-                            </td>
-                            <td>
-                              <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center edit" onclick="modalHandler(true)">
-                                  <i class="fas fa-edit text-white"></i>
-                              </a>
-                            </td>
-                            <td class="branch">{{$users_list->branch}}</td>
-                            <td class="username">{{$users_list->username}}</td>
-                            <div class="firstname hidden">{{$users_list->first_name}}</div>
-                            <div class="lastname hidden">{{$users_list->last_name}}</div>
-                            <div class="password hidden">{{$users_list->password}}</div>
-                            <td>{{$users_list->level}}</td>
-                            <div class="password hidden">{{$users_list->created_at}}</div>
-                            <td>
-                              <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center" href="{{route('reset-password', $users_list->id)}}">
-                                    <i class="fas fa-repeat text-white"></i>
-                              </a>
-                            </td>
-                            <td>
-                                <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                  <i class="fas fa-check text-white"></i>  
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                      
-                      
+                          @foreach($users_lists as $users_lists)
+                              <td class="id" hidden name="ids[{{$users_lists->id}}]">{{$users_lists->id}}</td>
+                                    <td>
+                                          <label class="inline-flex items-center">
+                                            <input type="checkbox" class="form-checkbox" name="ids[{{$users_lists->id}}]" value="{{$users_lists->id}}"/>
+                                          </label>
+                                    </td>
+                                    <td>
+                                      <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center edit" onclick="modalHandler(true)">
+                                          <i class="fas fa-edit text-white"></i>
+                                      </a>
+                                    </td>
+                                    <td class="branch">{{$users_lists->branch}}</td>
+                                    <td class="username">{{$users_lists->username}}</td>
+                                    <div class="firstname hidden">{{$users_lists->first_name}}</div>
+                                    <div class="lastname hidden">{{$users_lists->last_name}}</div>
+                                    <div class="password hidden">{{$users_lists->password}}</div>
+                                    <td>{{$users_lists->level}}</td>
+                                    <div class="password hidden">{{$users_lists->created_at}}</div>
+                                    <td>
+                                      <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center" href="{{route('reset-password', $users_lists->id)}}">
+                                            <i class="fas fa-repeat text-white"></i>
+                                      </a>
+                                    </td>
+                                    <td>
+                                        <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                                          <i class="fas fa-check text-white"></i>  
+                                        </a>
+                                </td>
+                          @endforeach
                       @else
                       <td colspan="8">No Records Found. </td>
                       @endif

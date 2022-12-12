@@ -56,7 +56,7 @@ Route::post('add-users',[AdminController::class,'save']);
 // Manage Item Categories
 Route::get('admin/manage-item-category', [ItemCategoriesController::class, 'index'])->name('item_categories.index');
 Route::post('admin/manage-item-category', [ItemCategoriesController::class, 'store'])->name('item_categories.store');
-Route::post('admin/manage-item-category/update', [ItemCategoriesController::class, 'update'])->name('item_categories.update');
+Route::post('admin/manage-item-category/update', [ItemCategoriesController::class, 'update'])->name('item_categoriesD.update');
 Route::post('admin/manage-item-category/delete', [ItemCategoriesController::class, 'deleteCateg'])->name('item_categories.delete');
 
 //Manage Item Details

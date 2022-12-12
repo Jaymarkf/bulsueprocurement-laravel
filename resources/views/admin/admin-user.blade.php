@@ -121,31 +121,6 @@
         $(document).ready( function () {
             $('#manage-user').DataTable();
         });
-    
-</script>
-
-<script>
-    $('#selectAccessLevel').on('change', function() {
-        $('#selectBranch').removeAttr('disabled')
-        var selectedText = $("#selectAccessLevel").find("option:selected").text();
-        if(selectedText === 'administrator'){
-            $('#selectBranch').find('option[access-level="administrator"]').show();
-            $('#selectBranch').find('option:not([access-level="administrator"])').hide();
-            console.log('admin')
-        }else if(selectedText === 'user'){
-            $('#selectBranch').find('option[access-level="user"]').show();
-            $('#selectBranch').find('option:not([access-level="user"])').hide();
-            console.log('user');
-        }else if(selectedText === 'supplier'){
-            $('#selectBranch').find('option[access-level="supplier"]').show();
-            $('#selectBranch').find('option:not([access-level="supplier"])').hide();
-            console.log('supplier')
-        }else{
-
-        }
-
-    });
-
 </script>
 <script>
         let modal = document.getElementById("modal");
@@ -191,6 +166,17 @@
         $('.modal-body #username').val(currentValue.find('.username').text());
         $('.modal-body #first_name').val(currentValue.find('.firstname').text());
         $('.modal-body #last_name').val(currentValue.find('.lastname').text());
+        });
+
+        $(document).ready(function(){
+          $('#Position').change(function(){
+            if($(this).val() == 'end-user'){
+              $('#selectBranch').removeAttr('disabled');
+            }else{
+              $('#selectBranch').attr('disabled','disabled');
+              $('#selectBranch').val('none').change();
+            }
+          });
         });
   </script>
 </html>

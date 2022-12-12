@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
-            $table->foreign('profile_id')->references('id')->on('user_profiles')->onDelete('cascade');
+            $table->foreign('profile_id')->references('id')->on('user_profiles')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -25,7 +25,6 @@ class UserSeeder extends Seeder
             'approved' => 1,
             'remarks' => 'Test',
             'level' => 'admin',
-            'added_by' => 1,
         ]);
     }
 }

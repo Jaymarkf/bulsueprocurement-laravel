@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Branches;
+use App\Models\UserProfiles;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,13 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
-        $branches = Branches::all();
-        $users_lists = User::all();
-        $access_levels = Branches::distinct()->get(['level']);
-        $branch_names = User::distinct()->get(['branch']);
-        return view('admin.admin-user',compact('users_lists', 'branches','access_levels', 'branch_names'));
+        // $branches = Branches::all();
+        // $users_lists = User::all();
+        // $access_levels = Branches::distinct()->get(['level']);
+        // $branch_names = User::distinct()->get(['branch']);
+        $users_lists = User::with('profiles')->get();
+        $branches = Branches::distinct()->get(['branch_name']);
+        return view('admin.admin-user',compact('users_lists','branches'));
     }
 
     /**
@@ -32,7 +34,6 @@ class UsersController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -41,25 +42,50 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
         $request -> validate([
-            'username' => 'required',
-            'email_address' => 'required',
-            'password' => 'required',
-            'dashboard_year' => 'required',
-            'branch_id' => 'required',
-            'branch' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'position' => 'required',
-            'profile_id' => 'required',
-            'approved' => 'required',
-            'remarks' => 'required',
-            'level' => 'required'
+            'username' => ['required','unique:App\Models\User,username'],
+            'email_address' => ['required','email:rfc,dns'],
+            'first_name'  => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            'last_name'  => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/']
         ]);
 
-        User::create($request->all());
+        // $user_profiles = new UserProfiles();
+        // $user = new User();
+
+        // $user_profiles->first_name = $request->first_name;
+        // $user_profiles->middle_initial = $request->middle_name;
+        // $user_profiles->last_name = $request->last_name;
+        // $user_profiles->employee_position_id = 1;
+        
+        // $user->username = $request->username;
+        // $user->email_address = $request->email_address;
+        // $user->password = md5($request->password);
+        // $user->level = $request->level;
+        // $user->branch_id = 1;
+        $user = new User([
+            'username'=>$request->username,
+            'email_address'=>$request->email_address,
+            'password'=>$request->password,
+            'level' => $request->level,
+            'branch_id'=> 1
+        ]);
+        $user_profiles = new UserProfiles([
+            'first_name' => $request->first_name,
+            'middle_initial' => $request->middle_name,
+            'last_name' => $request->last_name,
+            'employee_position_id' => 1
+        ]);
+
+        
+
+       $user->save();
+       $user_profiles->users()->associate($user);
+       $user_profiles()->users()->save();
+      
+     
+       
+        
+        // User::create($request->all());
         return redirect()->back();
         // $errors = Session::get('errors');
 
