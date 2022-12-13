@@ -21,6 +21,8 @@ class CreateItemDetailsTable extends Migration
             $table->unsignedBigInteger('unit_id');
             $table->decimal('price_catalogue');
             $table->unsignedBigInteger('added_by');
+            $table->boolean('is_approved')->default(false);
+            $table->unsignedBigInteger('approved_by')->default(0);
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('item_categories')->onDelete('cascade');
