@@ -22,6 +22,8 @@ class ItemDetailSeeder extends Seeder
             'unit_id' => 16,
             'price_catalogue' => 1000.23,
             'added_by' => 1,
+            'is_approved' => false,
+            'approved_by' => 0,
         ]);
     }
 }
