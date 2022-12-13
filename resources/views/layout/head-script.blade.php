@@ -7,8 +7,23 @@
         <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
         <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+        <script>
+            // Enable pusher logging - don't include this in production
+            Pusher.logToConsole = true;
 
-        
+            var pusher = new Pusher('{{ env("PUSHER_APP_KEY") }}', {
+                cluster: '{{ env("PUSHER_APP_CLUSTER") }}',
+            });
+
+            var channel = pusher.subscribe('channel-name');
+            channel.bind('App\\Events\\PPMPNotif', function(data) {
+                console.log(data)
+                alert(JSON.stringify(data))
+                // app.messages.push(JSON.stringify(data)); //Data assignment
+            });
+        </script>
+
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
