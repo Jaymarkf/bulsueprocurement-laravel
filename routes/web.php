@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\PPMPNotif;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
@@ -22,6 +23,14 @@ use App\Http\Controllers\ItemOrderDetailsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//PUSHER NOTIF TEST
+Route::get('/pushtest', function () {
+    $array = ["name" => "HEY"];
+    event(new PPMPNotif($array));
+
+    return "done";
+});
 
 
 //Manage Units/Unit of Measurements
@@ -49,7 +58,7 @@ Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController:
 
 
 //Add Users todo-> middleware
-Route::post('add-users',[AdminController::class,'save']);
+Route::post('add-users', [AdminController::class, 'save']);
 
 
 // roncy_updated BRANCH
@@ -95,7 +104,7 @@ Route::get('/', function () {
 
 
 //HOME PAGE LOGIN
-Route::post('login',[AdminController::class,'login']);
+Route::post('login', [AdminController::class, 'login']);
 
 //ADMIN ROUTES with MIDDLEWARE
 Route::get('/admin/{url}', function ($url) {
@@ -119,7 +128,7 @@ Route::get('/admin/{url}', function ($url) {
         return view('/admin/add-purchase-order');
     } elseif ($url == 'add-inspection-acceptance') {
         return view('/admin/add-inspection-acceptance');
-    }elseif ($url == 'manage-quotation') {
+    } elseif ($url == 'manage-quotation') {
         return view('/admin/manage-quotation');
     } elseif ($url == 'inspection-acceptance') {
         return view('/admin/inspection-acceptance');
