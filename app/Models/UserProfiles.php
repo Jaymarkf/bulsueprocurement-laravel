@@ -9,7 +9,7 @@ class UserProfiles extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['first_name', 'middle_initial', 'last_name', 'position'];
+    protected $fillable = ['first_name', 'middle_initial', 'last_name', 'position','employee_position_id'];
 
     function users(){
         return $this->belongsTo(User::class);

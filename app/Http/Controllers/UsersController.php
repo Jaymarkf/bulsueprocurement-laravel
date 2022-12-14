@@ -42,32 +42,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+
+        //TODO do not proceed to create if firstname middle name and last name is exist
         $request -> validate([
             'username' => ['required','unique:App\Models\User,username'],
             'email_address' => ['required','email:rfc,dns'],
             'first_name'  => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
             'last_name'  => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/']
         ]);
-
-        // $user_profiles = new UserProfiles();
-        // $user = new User();
-
-        // $user_profiles->first_name = $request->first_name;
-        // $user_profiles->middle_initial = $request->middle_name;
-        // $user_profiles->last_name = $request->last_name;
-        // $user_profiles->employee_position_id = 1;
-        
-        // $user->username = $request->username;
-        // $user->email_address = $request->email_address;
-        // $user->password = md5($request->password);
-        // $user->level = $request->level;
-        // $user->branch_id = 1;
         $user = new User([
             'username'=>$request->username,
             'email_address'=>$request->email_address,
-            'password'=>$request->password,
+            'password'=>md5('12345'),
             'level' => $request->level,
-            'branch_id'=> 1
+            'branch_id'=> 1,
+            'approved' => 1,
+            'added_by' => 1,
+            'remarks' => 'created'
         ]);
         $user_profiles = new UserProfiles([
             'first_name' => $request->first_name,
@@ -75,18 +66,12 @@ class UsersController extends Controller
             'last_name' => $request->last_name,
             'employee_position_id' => 1
         ]);
-
-        
-
+       $user_profiles->save();
+       $user->profiles()->associate($user_profiles);
        $user->save();
-       $user_profiles->users()->associate($user);
-       $user_profiles()->users()->save();
-      
-     
-       
-        
+
         // User::create($request->all());
-        return redirect()->back();
+        return redirect()->back()->with('success','New account was created');
         // $errors = Session::get('errors');
 
     }
@@ -157,8 +142,11 @@ class UsersController extends Controller
     public function deleteUser(Request $request)
     {
         $ids = $request->ids;
+       
+        $user_id = User::select('profiles_id')->whereIn('id',$ids)->get()->first();
+        $d = $user_id->profiles_id;
+        UserProfiles::where('id','=' , $d)->delete();
         User::whereIn('id',$ids)->delete();
-        dd($ids);        
-        // return redirect()->back();
+        return redirect()->back()->with('success','User account was deleted');
     }
 }

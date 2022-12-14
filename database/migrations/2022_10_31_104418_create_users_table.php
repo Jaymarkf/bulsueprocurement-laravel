@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->integer('dashboard_year')->default(0);
             $table->unsignedBigInteger('branch_id');
-            $table->unsignedBigInteger('profile_id');
+            $table->unsignedBigInteger('profiles_id');
             $table->integer('approved');
             $table->longText('remarks');
             $table->text('level');
@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
-            $table->foreign('profile_id')->references('id')->on('user_profiles')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('profiles_id')->references('id')->on('user_profiles')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -32,7 +32,8 @@ class User extends Authenticatable
         'approved',
         'remarks',
         'level',
-        'username'
+        'username',
+        'added_by'
 
     ];
 
@@ -55,6 +56,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     function profiles(){
-        return $this->hasMany(UserProfiles::class);
+        return $this->belongsTo(UserProfiles::class);
     }
 }

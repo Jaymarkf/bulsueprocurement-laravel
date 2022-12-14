@@ -16,7 +16,7 @@
     <div class="modal-dialog modal-dialog-centered relative w-full pointer-events-none">
         <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
         <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-            <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel"> Edit this item category </h5>
+            <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">Edit account</h5>
         </div>
         <!-- UPDATE FORM -->
         <form action="{{ route('userlists.update')}}" method="POST">
@@ -96,7 +96,7 @@
             <div class="flex items-center justify-start w-full">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
                 <i class="fas fa-save mr-1"></i> Save </button>
-                <button class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler()" aria-label="close modal">Cancel</button>
+                <span class="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler()" aria-label="close modal">Cancel</span>
             </div>
             </div>
         </form>

@@ -10,7 +10,7 @@
             <div class="grid grid-cols-1 gap-4 grid-content-center px-2 mt-4">
               <!-- CREATE FORM -->
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger animate-pulse">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -18,6 +18,15 @@
                         </ul>
                     </div>
                 @endif
+           
+                @if (\Session::has('success'))
+                    <div class="alert alert-success animate-pulse">
+                        <ul>
+                            <li>{!! \Session::get('success') !!}</li>
+                        </ul>
+                    </div>
+                @endif
+    
                 <form action="{{route('userlists.store')}}" method="POST">
                 @csrf 
                     <label for="Position">Position</label><br>
@@ -43,11 +52,10 @@
                     </select><br>
                     <label for="fname">Unique Username:</label><br>
                     <input type="text" id="unique-name" name="username" placeholder="Username" class="form-control form-control-sm"><br>
-
                     <label for="fname">First name</label><br>
                     <input type="text" id="first-name" name="first_name" placeholder="First Name" class="form-control form-control-sm"><br>
 
-                    <label for="middle-name">First name</label><br>
+                    <label for="middle-name">Middle Initial</label><br>
                     <input type="text" id="middle-name" name="middle_name" placeholder="Middle Initial" class="form-control form-control-sm"><br>
 
                     <label for="lname">Last name</label><br>
@@ -96,14 +104,14 @@
                       <tbody style="height: auto; overflow-y: auto;" >
                       @if(isset($users_lists))           
                           @foreach($users_lists as $users_lists)
-                              <td class="id" hidden name="ids[{{$users_lists->id}}]">{{$users_lists->id}}</td>
+                              <tr class="id"  name="ids[{{$users_lists->id}}]">{{$users_lists->id}}</td>
                                     <td>
                                           <label class="inline-flex items-center">
                                             <input type="checkbox" class="form-checkbox" name="ids[{{$users_lists->id}}]" value="{{$users_lists->id}}"/>
                                           </label>
                                     </td>
                                     <td>
-                                      <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center edit" onclick="modalHandler(true)">
+                                      <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center edit cursor-pointer" onclick="modalHandler(true)">
                                           <i class="fas fa-edit text-white"></i>
                                       </a>
                                     </td>
@@ -123,7 +131,7 @@
                                         <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
                                           <i class="fas fa-check text-white"></i>  
                                         </a>
-                                </td>
+                                </tr>
                           @endforeach
                       @else
                       <td colspan="8">No Records Found. </td>
