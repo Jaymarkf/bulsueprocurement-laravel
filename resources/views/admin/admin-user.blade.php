@@ -167,15 +167,17 @@
         $('.modal-body #first_name').val(currentValue.find('.firstname').text());
         $('.modal-body #last_name').val(currentValue.find('.lastname').text());
         });
-
         $(document).ready(function(){
           $('#Position').change(function(){
             if($(this).val() == 'end-user'){
               $('#selectBranch').removeAttr('disabled');
             }else{
               $('#selectBranch').attr('disabled','disabled');
-              $('#selectBranch').val('none').change();
+              $('#selectBranch').val('N/A').change();
             }
+          });
+          $('.load_spinner').click(function(){
+             $('.loader-spinner').css('display','flex');
           });
         });
   </script>
