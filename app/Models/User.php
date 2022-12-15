@@ -32,7 +32,8 @@ class User extends Authenticatable
         'approved',
         'remarks',
         'level',
-        'username'
+        'username',
+        'added_by'
 
     ];
 
@@ -54,4 +55,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    function profiles(){
+        return $this->belongsTo(UserProfiles::class);
+    }
 }

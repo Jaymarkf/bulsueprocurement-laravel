@@ -56,7 +56,7 @@ Route::post('add-users',[AdminController::class,'save']);
 // Manage Item Categories
 Route::get('admin/manage-item-category', [ItemCategoriesController::class, 'index'])->name('item_categories.index');
 Route::post('admin/manage-item-category', [ItemCategoriesController::class, 'store'])->name('item_categories.store');
-Route::post('admin/manage-item-category/update', [ItemCategoriesController::class, 'update'])->name('item_categories.update');
+Route::post('admin/manage-item-category/update', [ItemCategoriesController::class, 'update'])->name('item_categoriesD.update');
 Route::post('admin/manage-item-category/delete', [ItemCategoriesController::class, 'deleteCateg'])->name('item_categories.delete');
 
 //Manage Item Details
@@ -65,7 +65,7 @@ Route::post('admin/manage-item-details', [ItemDetailsController::class, 'store']
 Route::post('admin/manage-item-details/update', [ItemDetailsController::class, 'update'])->name('item_details.update');
 Route::post('admin/manage-item-details/delete', [ItemDetailsController::class, 'deleteCateg'])->name('item_details.delete');
 
-//ADMIN - Manage User
+//ADMIN - Manage User Maxx Task
 Route::get('admin/manage-user', [UsersController::class, 'index']);
 Route::post('admin/manage-user', [UsersController::class, 'store'])->name('userlists.store');
 Route::post('admin/manage-user/update', [UsersController::class, 'update'])->name('userlists.update');
