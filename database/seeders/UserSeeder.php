@@ -21,11 +21,14 @@ class UserSeeder extends Seeder
             'email_address' => 'dev@gmail.com',
             'password' => bcrypt('devpw123#'),
             'branch_id' => 1,
-            'profile_id' => 1,
+            'profiles_id' => 1,
             'approved' => 1,
             'remarks' => 'Test',
             'level' => 'admin',
-            'added_by' => 1,
+<<<<<<< HEAD
+            'added_by' => '1'
+=======
+>>>>>>> b646d17 (test)
         ]);
     }
 }

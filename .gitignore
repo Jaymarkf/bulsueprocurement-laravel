@@ -1,5 +1,9 @@
 node_modules
+<<<<<<< HEAD
 public/js
 public/css
+=======
+public
+>>>>>>> e4baa5fa75547a45d508c3b138b62bf152661a83
 .env
 vendor
