@@ -2,7 +2,7 @@
 
 <div class="mt-2 w-97 mx-auto">
 	<div class="w-90">
-      Set the procurement year first before making a transactions...	
+      <span class="font-italic">Please double check the PPMP year!</span>
    </div>
    <div class="d-flex w-100 mx-auto justify-content-between align-items-center p-3">
       <div class="w-50">
@@ -14,16 +14,15 @@
 
       </div>
       <div class="w-50">
-          <a href="#" class="btn btn-default bg-gray-100 border border-gray-300 pull-right text-dark rounded-none py-1 shadow-lg md:shadow-lg"><i class="fa fa-shopping-cart" aria-hidden="true"></i> PPMP Cart<br><span class="badge badge-info  px-2 rounded-full text-sm text-light py-0 bg-blue-500 shadow-lg shadow-blue-500/50">0</span></a>
+         <a href="#" class="btn btn-default bg-gray-100 border border-gray-300 pull-right text-dark rounded-none py-1 shadow-lg md:shadow-lg"><i class="fa fa-shopping-cart" aria-hidden="true"></i> PPMP Cart<br><span class="badge badge-info  px-2 rounded-full text-sm text-light py-0 bg-blue-500 shadow-lg shadow-blue-500/50">0</span></a>
       </div>
-   </div>    
+   </div>
 </div>
 <!-- End of Section -->
- 
 <div class="container d-md-flex align-items-stretch w-90 mw-100 pt-5">
    <!-- Page Content  -->
    <nav id="sidebar" class="w-3/12 sticky top-0" >
-      <h2 class="p-1 text-center h2"><i class="fas fa-tags"></i> Price Catalogue </h2>
+      <h2 class="p-1 text-center h2"><em class="fas fa-tags"></em> Price Catalogue </h2>
       <div class="border border-secondary ul-items rounded mx-auto w-10/12">
          <h5 class="text-uppercase py-3 px-5" id="allItem_label"><i class="fas fa-tags mr-2"></i>All Items</h5>
          <ul class="list-unstyled components">
@@ -68,17 +67,18 @@
       <!-- COUNT ITEM -->
       <div class="d-flex mx-auto justify-content-between align-items-center text-light all-number-item">
          <div class="w-50">
-           <h5 class="text-uppercase"><i class="fas fa-tags mr-2"></i>All Items</h5>
+            <h5 class="text-uppercase"><em class="fas fa-tags mr-2"></em> All Items <a href="#" class="inline bg-white p-1 rounded text-red-600 hover:no-underline font-bold border border-white hover:border-white hover:bg-transparent hover:text-white transition-all ease-in-out">Add new item</a></h5>
          </div>
          <div class="w-50 text-right">
-            <p>Number of Items Found: <span class="badge badge-info" id="item_count">
-               @if(!empty($item_details))
-                  {{$item_details->count()}}
-               @else
-               {{$item_details->count()}}
-               @endif
-
-            </span> </p>
+            <p>Number of Items Found:
+               <span class="badge badge-info" id="item_count">
+                  @if(!empty($item_details))
+                     {{$item_details->count()}}
+                  @else
+                     {{$item_details->count()}}
+                  @endif
+               </span>
+            </p>
          </div>
       </div>
       <!-- SEARCH FORM -->
@@ -126,15 +126,15 @@
                @foreach ($item_details as $item_detail)
                   <div>
                      <form action="{{ route('show-item')}}" method="post">
-                     @csrf  
-                     <ul>
-                           <input type="text" name="id" hidden value="{{$item_detail->id}}">
-                           <h5 class="h4 text-blue-500 m-0 text-white">{{$item_detail->description}}</h5>
-                           <h2 class="h4 text-yellow-500 my-3 white">{{$item_detail->price_catalogue}} / {{$item_detail->unit_name}}</h2>
-                           <p>{{$item_detail->category->description}}</p>
-                           
-                           <button type="submit" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </button>
-                     </ul>
+                        @csrf
+                        <ul>
+                              <input type="text" name="id" hidden value="{{$item_detail->id}}">
+                              <h5 class="h4 text-blue-500 m-0 text-white">{{$item_detail->description}}</h5>
+                              <h2 class="h4 text-yellow-500 my-3 white">{{$item_detail->price_catalogue}} / {{$item_detail->unit_name}}</h2>
+                              <p>{{$item_detail->category->description}}</p>
+                              
+                              <button type="submit" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Item Details </button>
+                        </ul>
                      </form>
                   </div>
                @endforeach
