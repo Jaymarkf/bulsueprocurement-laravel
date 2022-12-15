@@ -90,9 +90,11 @@ Route::post('admin/manage-user/reset-password/{reset_code}', [ResetPasswordContr
 // FACULTY - ORDER DETAILS
 Route::get('/faculty/order-details-item', [ItemOrderDetailsController::class, 'index']);
 
-// Faculty 
+// Faculty
 Route::get('/faculty', [FacultyController::class, 'index']);
 Route::post('/faculty', [FacultyController::class, 'search'])->name('search-item');
+Route::get('/faculty/item-detail/add', [FacultyController::class, 'create'])->name('faculty-add-item.show');
+Route::post('/faculty/item-detail/add', [FacultyController::class, 'store'])->name('faculty-add-item.perform');
 Route::get('/faculty/{id}', [FacultyController::class, 'get_causes_against_category']);
 
 Route::post('/faculty/order-item-details', [FacultyController::class, 'show'])->name('show-item');
@@ -182,9 +184,6 @@ Route::get('/faculty/{url}', function ($url) {
         return redirect('/404');
     }
 });
-
-
-
 
 //  SETTING
 
