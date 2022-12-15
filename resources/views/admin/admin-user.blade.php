@@ -167,18 +167,28 @@
         $('.modal-body #first_name').val(currentValue.find('.firstname').text());
         $('.modal-body #last_name').val(currentValue.find('.lastname').text());
         });
+<<<<<<< HEAD
+=======
+
+>>>>>>> b646d17 (test)
         $(document).ready(function(){
           $('#Position').change(function(){
             if($(this).val() == 'end-user'){
               $('#selectBranch').removeAttr('disabled');
             }else{
               $('#selectBranch').attr('disabled','disabled');
+<<<<<<< HEAD
               $('#selectBranch').val('N/A').change();
             }
           });
           $('.load_spinner').click(function(){
              $('.loader-spinner').css('display','flex');
           });
+=======
+              $('#selectBranch').val('none').change();
+            }
+          });
+>>>>>>> b646d17 (test)
         });
   </script>
 </html>

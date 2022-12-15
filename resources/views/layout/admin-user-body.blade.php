@@ -21,7 +21,11 @@
             <div class="grid grid-cols-1 gap-4 grid-content-center px-2 mt-4">
               <!-- CREATE FORM -->
                 @if ($errors->any())
+<<<<<<< HEAD
                     <div class="alert alert-danger animate-pulse">
+=======
+                    <div class="alert alert-danger">
+>>>>>>> b646d17 (test)
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -29,6 +33,7 @@
                         </ul>
                     </div>
                 @endif
+<<<<<<< HEAD
            
                 @if (\Session::has('success'))
                     <div class="alert alert-success animate-pulse">
@@ -42,6 +47,12 @@
                 @csrf 
                     <label for="Position">Position</label><br>
                     <select name="level" id="Position"  class="form-control form-control-sm" name="level" required>
+=======
+                <form action="{{route('userlists.store')}}" method="POST">
+                @csrf 
+                    <label for="Position">Position</label><br>
+                    <select name="level" id="Position"  class="form-control form-control-sm" name="level">
+>>>>>>> b646d17 (test)
                         <option disabled selected hidden>Select Position</option>
                         <option value="procurement-office">Procurement Office</option>
                         <option value="budget-office">Budget Office</option>
@@ -51,10 +62,17 @@
                     </select><br>
 
                     <label for="cars">College Department</label><br>
+<<<<<<< HEAD
                     <select name="cars" id="selectBranch"  class="form-control form-control-sm" disabled required>
                        @foreach($branches as $k => $v )
                           @if($k == 0)
                           <option value="{{ $v->branch_name }}" selected>{{ $v->branch_name }}</option>
+=======
+                    <select name="cars" id="selectBranch"  class="form-control form-control-sm" disabled>
+                       @foreach($branches as $k => $v )
+                          @if($k == 0)
+                         <option value="{{ $v->branch_name }}" selected>{{ $v->branch_name }}</option>
+>>>>>>> b646d17 (test)
                           @else
                           <option value="{{ $v->branch_name }}">{{ $v->branch_name }}</option>
                           @endif
@@ -69,11 +87,18 @@
                     <label for="middle-name">Middle Initial</label><br>
                     <input required type="text" id="middle-name" name="middle_name" placeholder="Middle Initial" class="form-control form-control-sm"><br>
 
+                    <label for="middle-name">First name</label><br>
+                    <input type="text" id="middle-name" name="middle_name" placeholder="Middle Initial" class="form-control form-control-sm"><br>
+
                     <label for="lname">Last name</label><br>
                     <input required type="text" id="last-name" name="last_name" placeholder="Last Name" class="form-control form-control-sm"><br>
                   
                     <label for="email_address">Email address</label>
+<<<<<<< HEAD
                     <input required type="email" id="email address" name="email_address" placeholder="Email address" class="form-control form-control-sm"><br>
+=======
+                    <input type="email" id="email address" name="email_address" placeholder="Email address" class="form-control form-control-sm"><br>
+>>>>>>> b646d17 (test)
   
                  
                     <button type="submit" data-placement="right" title="" id="save" name="save" class="btn btn-success load_spinner" data-original-title="Click to Save"><i class="fas fa-save"></i> Save</button>
@@ -115,14 +140,22 @@
                       <tbody style="height: auto; overflow-y: auto;" >
                       @if(isset($users_lists))           
                           @foreach($users_lists as $users_lists)
+<<<<<<< HEAD
                               <tr class="id"  name="ids[{{$users_lists->id}}]">
+=======
+                              <td class="id" hidden name="ids[{{$users_lists->id}}]">{{$users_lists->id}}</td>
+>>>>>>> b646d17 (test)
                                     <td>
                                           <label class="inline-flex items-center">
                                             <input type="checkbox" class="form-checkbox" name="ids[{{$users_lists->id}}]" value="{{$users_lists->id}}"/>
                                           </label>
                                     </td>
                                     <td>
+<<<<<<< HEAD
                                       <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center edit cursor-pointer" onclick="modalHandler(true)">
+=======
+                                      <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center edit" onclick="modalHandler(true)">
+>>>>>>> b646d17 (test)
                                           <i class="fas fa-edit text-white"></i>
                                       </a>
                                     </td>
@@ -142,7 +175,11 @@
                                         <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
                                           <i class="fas fa-check text-white"></i>  
                                         </a>
+<<<<<<< HEAD
                                 </tr>
+=======
+                                </td>
+>>>>>>> b646d17 (test)
                           @endforeach
                       @else
                       <td colspan="8">No Records Found. </td>
