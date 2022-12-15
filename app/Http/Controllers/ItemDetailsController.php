@@ -24,9 +24,7 @@ class ItemDetailsController extends Controller
         $item_details = ItemDetails::all();
         $item_categories = ItemCategories::all();
         $unit = Unit::all();
-        return view('admin.manage-item-details',compact('item_details', 'item_categories','unit'));
-
-
+        return view('admin.manage-item-details', compact('item_details', 'item_categories', 'unit'));
     }
 
     /**
@@ -60,7 +58,7 @@ class ItemDetailsController extends Controller
 
         ItemDetails::create($request->all());
 
-        return redirect()->back()->with('success_add','Descriptions created successfully');
+        return redirect()->back()->with('success_add', 'Descriptions created successfully');
     }
 
     /**
@@ -104,8 +102,8 @@ class ItemDetailsController extends Controller
         $item_details->price_catalogue = $request->input('price_catalogue');
 
         $item_details->save();
-        
-        return redirect('/admin/manage-item-details') -> with('success_update','Descriptions created successfully');
+
+        return redirect('/admin/manage-item-details')->with('success_update', 'Descriptions created successfully');
 
         $afterState = json_encode($item_details);
         try {
@@ -128,7 +126,6 @@ class ItemDetailsController extends Controller
             DB::rollBack();
             return redirect()->back();
         }
-
     }
 
     /**
@@ -146,9 +143,8 @@ class ItemDetailsController extends Controller
     {
         $ids = $request->ids;
 
-        ItemDetails::whereIn('id',$ids)->delete();
-        
-        return redirect()->back()->with('success_deleted','Descriptions created successfully');
+        ItemDetails::whereIn('id', $ids)->delete();
 
+        return redirect()->back()->with('success_deleted', 'Descriptions created successfully');
     }
 }

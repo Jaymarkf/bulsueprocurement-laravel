@@ -14,7 +14,6 @@ class ItemCategories extends Model
 
     public function detail()
     {
-    	return $this->hasMany(ItemDetails::class, 'id', 'category_id');
+        return $this->hasMany(ItemDetails::class, 'id', 'category_id');
     }
-
 }

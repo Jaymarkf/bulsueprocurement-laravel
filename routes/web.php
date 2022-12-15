@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\PPMPNotif;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
@@ -22,6 +23,14 @@ use App\Http\Controllers\ItemOrderDetailsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//PUSHER NOTIF TEST
+Route::get('/pushtest', function () {
+    $array = ["name" => "HEY"];
+    event(new PPMPNotif($array));
+
+    return "done";
+});
 
 
 //Manage Units/Unit of Measurements
@@ -49,7 +58,7 @@ Route::delete('/admin/manage-company/delete-selected', [ManageCompanyController:
 
 
 //Add Users todo-> middleware
-Route::post('add-users',[AdminController::class,'save']);
+Route::post('add-users', [AdminController::class, 'save']);
 
 
 // roncy_updated BRANCH
@@ -81,9 +90,11 @@ Route::post('admin/manage-user/reset-password/{reset_code}', [ResetPasswordContr
 // FACULTY - ORDER DETAILS
 Route::get('/faculty/order-details-item', [ItemOrderDetailsController::class, 'index']);
 
-// Faculty 
+// Faculty
 Route::get('/faculty', [FacultyController::class, 'index']);
 Route::post('/faculty', [FacultyController::class, 'search'])->name('search-item');
+Route::get('/faculty/item-detail/add', [FacultyController::class, 'create'])->name('faculty-add-item.show');
+Route::post('/faculty/item-detail/add', [FacultyController::class, 'store'])->name('faculty-add-item.perform');
 Route::get('/faculty/{id}', [FacultyController::class, 'get_causes_against_category']);
 
 Route::post('/faculty/order-item-details', [FacultyController::class, 'show'])->name('show-item');
@@ -95,7 +106,7 @@ Route::get('/', function () {
 
 
 //HOME PAGE LOGIN
-Route::post('login',[AdminController::class,'login']);
+Route::post('login', [AdminController::class, 'login']);
 
 //ADMIN ROUTES with MIDDLEWARE
 Route::get('/admin/{url}', function ($url) {
@@ -119,7 +130,7 @@ Route::get('/admin/{url}', function ($url) {
         return view('/admin/add-purchase-order');
     } elseif ($url == 'add-inspection-acceptance') {
         return view('/admin/add-inspection-acceptance');
-    }elseif ($url == 'manage-quotation') {
+    } elseif ($url == 'manage-quotation') {
         return view('/admin/manage-quotation');
     } elseif ($url == 'inspection-acceptance') {
         return view('/admin/inspection-acceptance');
@@ -173,9 +184,6 @@ Route::get('/faculty/{url}', function ($url) {
         return redirect('/404');
     }
 });
-
-
-
 
 //  SETTING
 
