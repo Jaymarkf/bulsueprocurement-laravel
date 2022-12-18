@@ -22,13 +22,10 @@ class UserSeeder extends Seeder
             'password' => bcrypt('devpw123#'),
             'branch_id' => 1,
             'profiles_id' => 1,
-            'approved' => 1,
+            'approved' => 0,
             'remarks' => 'Test',
             'level' => 'admin',
-<<<<<<< HEAD
             'added_by' => '1'
-=======
->>>>>>> b646d17 (test)
         ]);
     }
 }

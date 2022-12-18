@@ -1,5 +1,6 @@
 <?php
-
+use App\Models\User;
+use App\Models\Branches;
 use App\Events\PPMPNotif;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ItemOrderDetailsController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +68,7 @@ Route::post('add-users', [AdminController::class, 'save']);
 // Manage Item Categories
 Route::get('admin/manage-item-category', [ItemCategoriesController::class, 'index'])->name('item_categories.index');
 Route::post('admin/manage-item-category', [ItemCategoriesController::class, 'store'])->name('item_categories.store');
-Route::post('admin/manage-item-category/update', [ItemCategoriesController::class, 'update'])->name('item_categoriesD.update');
+Route::post('admin/manage-item-category/update', [ItemCategoriesController::class, 'update'])->name('item_categories.update');
 Route::post('admin/manage-item-category/delete', [ItemCategoriesController::class, 'deleteCateg'])->name('item_categories.delete');
 
 //Manage Item Details
@@ -80,6 +83,9 @@ Route::post('admin/manage-user', [UsersController::class, 'store'])->name('userl
 Route::post('admin/manage-user/update', [UsersController::class, 'update'])->name('userlists.update');
 Route::post('admin/manage-user/delete', [UsersController::class, 'deleteUser'])->name('userlists.delete');
 
+// Admin - Manage User Approval
+Route::get('/admin/manage-user/update-status/{id}/{st}', [UsersController::class, 'status_manage'])->name('status.manage');
+
 
 // Reset Password
 Route::get('admin/manage-user/forget-password', [ResetPasswordController::class, 'getForgetPassword'])->name('reset-password');
@@ -89,6 +95,7 @@ Route::post('admin/manage-user/reset-password/{reset_code}', [ResetPasswordContr
 
 // FACULTY - ORDER DETAILS
 Route::get('/faculty/order-details-item', [ItemOrderDetailsController::class, 'index']);
+
 
 // Faculty
 Route::get('/faculty', [FacultyController::class, 'index']);

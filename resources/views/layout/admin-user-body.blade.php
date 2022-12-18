@@ -98,7 +98,8 @@
             <!-- Content User Lists -->
             <div class="grid grid-cols-1 gap-4 grid-content px-1 table-responsive py-0" >
             <form action="{{ route('userlists.delete')}}" method="POST" id="index">  
-            @csrf   
+             @csrf  
+
             <button type="submit" class="btn btn-danger mt-2 ml-1 float-left load_spinner"><i class="fa fa-trash mr-2 " aria-hidden="true"></i>Delete Selected</button>
             <table id="manage-user" class="table table-striped table-bordered" cellspacing="0" width="100%" >
                       <thead>
@@ -109,13 +110,13 @@
                           <th class="th-sm">Username</th>
                           <th class="th-sm">Access Level</th>
                           <th class="th-sm">Reset Password</th>
-                          <th class="th-sm">Active</th>
+                          <th class="th-sm">Status</th>
                         </tr>
                       </thead>
                       <tbody style="height: auto; overflow-y: auto;" >
                       @if(isset($users_lists))           
                           @foreach($users_lists as $users_lists)
-                              <tr class="id"  name="ids[{{$users_lists->id}}]">
+                              <tr class="id"  name="ids[{{$users_lists->id}}]" id="{{$users_lists->id}}">
                                     <td>
                                           <label class="inline-flex items-center">
                                             <input type="checkbox" class="form-checkbox" name="ids[{{$users_lists->id}}]" value="{{$users_lists->id}}"/>
@@ -139,9 +140,14 @@
                                       </a>
                                     </td>
                                     <td>
-                                        <a class="bg-green-800 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                          <i class="fas fa-check text-white"></i>  
-                                        </a>
+     
+                                      @if($users_lists->approved==1)
+                                        <a href="javascript:void(0)" id="status{{$users_lists->id}}" title="off" onclick="status('{{$users_lists->id}}','{{$users_lists->approved}}')" class="text-white-600 d-block bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded no-underline status__id">Approved</a>
+                                      @else
+                                        <a href="javascript:void(0)" id="status{{$users_lists->id}}" title="on" onclick="status('{{$users_lists->id}}','{{$users_lists->approved}}')" class="text-white-600 d-block bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded no-underline status__id">Pending</a>
+                                      @endif
+                                    </td>
+  
                                 </tr>
                           @endforeach
                       @else
@@ -154,9 +160,11 @@
                         <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit"><i class="fas fa-trash mr-1"></i> Delete Selected </button>
                     </div> -->
                     </form>
+
         </div>
         </div>
 
     </div>
   </div>
 </div>
+

@@ -8,7 +8,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
         <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
         <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         {{-- Will change this when login is ready --}}
         {{-- @if (auth()->check()) --}}
         <script>

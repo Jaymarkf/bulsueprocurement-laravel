@@ -2,6 +2,7 @@
 <html lang="en">
     @include('layout/head-script')
 <body>
+  
     @include('layout/header',array('user'=>'admin'))
     @include('layout/breadcrumbs-and-year' ,array('breadcrumbs'=>array(
             'link'=> array('/admin','/admin/manage-user'),
@@ -122,6 +123,65 @@
             $('#manage-user').DataTable();
         });
 </script>
+<style>
+  /* Windows Toggle Switch */
+
+.win-switch {
+  display: none;
+  position: relative;
+}
+
+.win-switch + label .small {
+  font-size: 0.8em;
+  color: #999;
+  line-height: 1.5em;
+  display:block;
+}
+
+.win-switch + label {
+  display: block;
+  
+  padding: 10px;
+  text-align: left !important; /* To keep the switch from getting misaligned */
+}
+
+.win-switch + label span.sw {
+  display:inline-block;
+  width: 41px;
+  height: 1.4rem;
+  float: right;
+  border-radius: 11px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: transparent;
+  border: 2px solid #333;
+  transition: all ease 300ms;
+}
+
+.win-switch + label span.sw:before
+{
+  content:'';
+  position:absolute;
+  background-color : #333;
+  margin-top: 3px;
+  margin-left: 3px;
+  height: 11px;
+  width: 11px;
+  border-radius: 15px;
+  transition: all ease 300ms;
+}
+
+.win-switch:checked + label span.sw{
+  background-color: #0078d7;
+  border-color: #0078d7;
+}
+
+.win-switch:checked + label span:before
+{
+    margin-left: 22px;
+    background-color: #fff;
+}
+</style>
 <script>
         let modal = document.getElementById("modal");
 
@@ -181,4 +241,79 @@
           });
         });
   </script>
+
+
+
+
+<script>
+
+
+$('#manage-user tbody tr').each(function(index, tr) { 
+   console.log(index);
+   console.log(tr);
+
+   if($(this).find('.status__id').text() == 'Approved'){
+    $(this).find('.status__id').addClass('approved');
+   }else{
+    $(this).find('.status__id').addClass('pending');
+   }
+});
+
+  $('#manage-user tbody tr .status__id').click(function(){
+
+    if($(this).hasClass('approved')){
+      $(this).removeClass('approved');
+      $(this).removeClass('bg-green-500');   
+      $(this).removeClass('border-green-700');   
+      $(this).addClass('pending bg-red-500 border-red-700');
+      $(this).text('Pending');
+      $(this).attr('title','off');
+    }else{
+      $(this).removeClass('pending');
+      $(this).removeClass('bg-red-500');  
+      $(this).removeClass('border-red-700');    
+      $(this).addClass('approved bg-green-500 border-green-700');
+      $(this).text('Approved');
+      $(this).attr('title','off');
+
+    }
+  }); 
+
+
+
+  function status(id, status){
+    // alert(id+"-"+status);
+    
+    var stp = document.getElementById('status'+id).title;
+    
+    // alert(stp);
+    if(stp == 'off'){
+      stf = 0;
+    }
+    if(stp == 'on'){
+      stf = 1;
+    }
+
+    $.ajax({
+        type: 'GET',
+        url: "/admin/manage-user/update-status/"+id+"/"+stf,
+
+        success:function(response){
+          if(response.status == "1")
+          {
+            document.getElementById('status'+ adid).innerHTML = "OFF";
+          }
+
+          if(response.status == "0")
+          {
+            document.getElementById('status'+ adid).innerHTML = "ON";
+          }
+        }
+
+    });
+
+    location.reload();
+  }
+</script>
+
 </html>

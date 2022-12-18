@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Livewire\Component;
 use App\Models\User;
 use App\Models\Branches;
 use App\Models\UserProfiles;
@@ -9,6 +10,12 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+
+
+    public function mount()
+    {
+        $this -> isActive = (bool) $this->model->getAttribute($this->field); 
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +28,7 @@ class UsersController extends Controller
         // $access_levels = Branches::distinct()->get(['level']);
         // $branch_names = User::distinct()->get(['branch']);
         $users_lists = User::with('profiles')->get();
+        // $users_lists = User::where('approved','1')->get();
         $branches = Branches::distinct()->get(['branch_name']);
         return view('admin.admin-user',compact('users_lists','branches'));
     }
@@ -75,6 +83,9 @@ class UsersController extends Controller
         // $errors = Session::get('errors');
 
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -149,4 +160,12 @@ class UsersController extends Controller
         User::whereIn('id',$ids)->delete();
         return redirect()->back()->with('success','User account was deleted');
     }
+
+  public function status_manage($id, $st){
+    $users = User::find($id);
+    $users->approved = $st;
+    $users->save();
+
+}
+
 }
