@@ -160,10 +160,10 @@
                   </div> --}}
                </div>
                <fieldset>
-                     <div class="form-group">
-                        <label for="disabledTextInput">Estimated Budget:</label>
-                        <input type="text" id="disabledTextInput" class="form-control" placeholder="0">
-                     </div>
+                  <div class="form-group">
+                     <label for="disabledTextInput">Estimated Budget:</label>
+                     <input type="text" id="disabledTextInput" class="form-control" placeholder="0">
+                  </div>
                </fieldset>
                <div class="form-group d-none">
                   <div class="form-check">
