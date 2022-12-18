@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeePositionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\UnitApiController;
+use App\Http\Controllers\ItemDetailsApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::resource('v1/employee', EmployeeController::class);
 Route::resource('v1/branch', BranchController::class);
 
 Route::resource('v1/unit', UnitApiController::class);
+
+Route::resource('v1/item_details', ItemDetailsApiController::class);
