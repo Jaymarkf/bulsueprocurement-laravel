@@ -24,11 +24,14 @@
                 </div>
                 <div class="card-body">
                     <div class="grid grid-cols-4 gap-4 mb-4 align-middle">
-                        <div class="col-span-3">
-
+                        <div class="col-span-4">
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="modalHandler(true, 'add')">
                                 <i class="fas fa-plus mr-1"></i> Add New Item Detail
                             </button>
+
+                            <a href="/admin/manage-item-details/unapproved" class="float-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded no-underline cursor-pointer">
+                                <em class="fa fa-eye" aria-hidden="true"></em> Review Unapproved Items
+                            </a>
 
                         </div>
                         <div class="col-span-1" hidden>
@@ -54,7 +57,7 @@
     
                     </div>
                     <form action="{{ route('item_details.delete')}}" method="POST" id="index"> 
-                    @csrf 
+                    @csrf
                     <div class="table-responsive">
                     <table class="table table-auto table-bordered" id="manage-detail">
                         <thead>
