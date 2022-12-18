@@ -73,6 +73,7 @@ Route::get('admin/manage-item-details', [ItemDetailsController::class, 'index'])
 Route::post('admin/manage-item-details', [ItemDetailsController::class, 'store'])->name('item_details.store');
 Route::post('admin/manage-item-details/update', [ItemDetailsController::class, 'update'])->name('item_details.update');
 Route::post('admin/manage-item-details/delete', [ItemDetailsController::class, 'deleteCateg'])->name('item_details.delete');
+Route::get('admin/manage-item-details/unapproved', [ItemDetailsController::class, 'getUnapprovedItems'])->name('unapproveditems.show');
 
 //ADMIN - Manage User Maxx Task
 Route::get('admin/manage-user', [UsersController::class, 'index']);
