@@ -21,7 +21,7 @@ class ItemDetailsController extends Controller
     public function index()
     {
         //INDEX
-        $item_details = ItemDetails::all();
+        $item_details = ItemDetails::where('is_approved', '=', 1)->get();
         $item_categories = ItemCategories::all();
         $unit = Unit::all();
         return view('admin.manage-item-details', compact('item_details', 'item_categories', 'unit'));
@@ -101,9 +101,9 @@ class ItemDetailsController extends Controller
         $item_details->unit_id = $request->input('unit_id');
         $item_details->price_catalogue = $request->input('price_catalogue');
 
-        $item_details->save();
+        // $item_details->save();
 
-        return redirect('/admin/manage-item-details')->with('success_update', 'Descriptions created successfully');
+        // return redirect('/admin/manage-item-details')->with('success_update', 'Descriptions created successfully');
 
         $afterState = json_encode($item_details);
         try {
@@ -146,5 +146,18 @@ class ItemDetailsController extends Controller
         ItemDetails::whereIn('id', $ids)->delete();
 
         return redirect()->back()->with('success_deleted', 'Descriptions created successfully');
+    }
+
+    //for approval items
+    public function getUnapprovedItems()
+    {
+        $items = ItemDetails::has('category')->leftJoin('users', 'users.id', '=', 'item_details.added_by')->leftJoin('user_profiles', 'user_profiles.id', '=', 'users.profiles_id')->leftJoin('branches', 'branches.id', '=', 'users.branch_id')->where('item_details.is_approved', '=', 0)->select('item_details.*', 'user_profiles.first_name', 'user_profiles.middle_initial', 'user_profiles.last_name', 'branches.branch_name')->get();
+        $categories = ItemCategories::all();
+        $units = Unit::all();
+
+        return view('admin/manage-unapproved-items')
+            ->with('items', $items)
+            ->with('categories', $categories)
+            ->with('units', $units);
     }
 }
