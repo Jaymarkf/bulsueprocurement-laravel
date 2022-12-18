@@ -67,7 +67,7 @@
       <!-- COUNT ITEM -->
       <div class="d-flex mx-auto justify-content-between align-items-center text-light all-number-item">
          <div class="w-50">
-            <h5 class="text-uppercase"><em class="fas fa-tags mr-2"></em> All Items <a href="#" class="inline bg-white p-1 rounded text-red-600 hover:no-underline font-bold border border-white hover:border-white hover:bg-transparent hover:text-white transition-all ease-in-out">Add new item</a></h5>
+            <h5 class="text-uppercase"><em class="fas fa-tags mr-2"></em> All Items <a href="{{ route('faculty-add-item.show') }}" class="inline bg-white p-1 rounded text-red-600 hover:no-underline font-bold border border-white hover:border-white hover:bg-transparent hover:text-white transition-all ease-in-out">Add new item</a></h5>
          </div>
          <div class="w-50 text-right">
             <p>Number of Items Found:
