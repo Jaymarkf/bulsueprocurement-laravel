@@ -34,7 +34,7 @@ class AdminController extends Controller
             // dd('redirect the users in specific template depends on the user position');
             // return redirect('/admin/dashboard'); <---example
             //return redirect('supplier/dashboard'); <---example
-            return redirect('admin/manage-user/forget-password');
+            return redirect('/forget-password');
         }else{
             return back()->with('fail',"Credentials are incorrect! Try again");
         }

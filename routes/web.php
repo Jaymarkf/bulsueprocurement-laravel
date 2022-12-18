@@ -88,6 +88,13 @@ Route::get('/admin/manage-user/update-status/{id}/{st}', [UsersController::class
 
 
 // Reset Password
+Route::get('/forget-password', [ResetPasswordController::class, 'getForgetPassword'])->name('reset-password');
+Route::post('/forget-password', [ResetPasswordController::class, 'postForgetPassword'])->name('post.reset-password');
+Route::get('/reset-password/{reset_code}', [ResetPasswordController::class, 'getResetPassword'])->name('reset-code');
+Route::post('/reset-password/{reset_code}', [ResetPasswordController::class, 'postResetPassword'])->name('post.reset-code');
+
+
+// Reset Password
 Route::get('admin/manage-user/forget-password', [ResetPasswordController::class, 'getForgetPassword'])->name('reset-password');
 Route::post('admin/manage-user/forget-password', [ResetPasswordController::class, 'postForgetPassword'])->name('post.reset-password');
 Route::get('admin/manage-user/reset-password/{reset_code}', [ResetPasswordController::class, 'getResetPassword'])->name('reset-code');
@@ -95,7 +102,6 @@ Route::post('admin/manage-user/reset-password/{reset_code}', [ResetPasswordContr
 
 // FACULTY - ORDER DETAILS
 Route::get('/faculty/order-details-item', [ItemOrderDetailsController::class, 'index']);
-
 
 // Faculty
 Route::get('/faculty', [FacultyController::class, 'index']);

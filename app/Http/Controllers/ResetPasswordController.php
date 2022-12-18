@@ -120,8 +120,6 @@ class ResetPasswordController extends Controller
 
             Mail::to($users_lists->email_address)->send(new ForgetPasswordMail($users_lists->first_name,$reset_code));
             return redirect()->back()->with('success','We have sent you a password reset link. PLease Check your email');
-
-
         }
 
         
