@@ -12,6 +12,8 @@ use App\Models\Unit;
 
 use App\Events\NewItemDetail;
 use App\Models\ItemPurpose;
+use App\Models\User;
+use App\Models\UserProfiles;
 use Throwable;
 
 class FacultyController extends Controller
@@ -24,7 +26,7 @@ class FacultyController extends Controller
     public function index()
     {
 
-        $itemDetails = ItemDetails::with('category')->get();
+        $itemDetails = ItemDetails::with('category')->where('is_approved', '=', '1')->get();
         $itemCategories = ItemCategories::with('detail')->get();
         // dd(array($item_details,$item_categories));
 
@@ -101,24 +103,32 @@ class FacultyController extends Controller
 
         $userId = $request->session()->get('login');
 
+        $getName = User::leftJoin('user_profiles', 'user_profiles.id', '=', 'users.profiles_id')->where('users.id', '=', 1)->select('user_profiles.first_name', 'user_profiles.middle_initial', 'user_profiles.last_name')->get();
+
         $newItem = new ItemDetails();
 
         $newItem->category_id = $request->category_id;
         $newItem->unit_id = $request->unit_id;
         $newItem->description = $request->description;
         $newItem->article = $request->article;
-        $newItem->price_catalogue = $request->pricie_catalogue;
-        $newItem->added_by = $userId;
+        $newItem->price_catalogue = $request->price_catalogue;
+        $newItem->added_by = $userId || 1;
+
+        $userName = $getName[0]->first_name . ' ' . $getName[0]->middle_initial . ' ' . $getName[0]->last_name;
+
+        $message = "Added new item: " . $newItem->description;
+
         DB::beginTransaction();
         try {
             if ($newItem->save()) {
                 DB::commit();
-                event(new NewItemDetail("TEST", "TEST"));
-                return view('');
+                event(new NewItemDetail($userName, $message));
+                return redirect('/faculty');
             }
         } catch (Throwable $e) {
             DB::rollBack();
-            return view('')->with('error', $e);
+
+            return redirect()->back();
         }
     }
 
