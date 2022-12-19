@@ -81,40 +81,7 @@ class ItemDetailsApiController extends Controller
     public function edit(Request $request)
     {
         //
-        //UPDATE
-        $item_details = ItemDetails::find($request->id);
-        $prevState = json_encode($item_details);
-        $item_details->category_id = $request->input('category_id');
-        $item_details->description = $request->input('description');
-        $item_details->article = $request->input('article');
-        $item_details->unit_id = $request->input('unit_id');
-        $item_details->price_catalogue = $request->input('price_catalogue');
 
-        // $item_details->save();
-
-        // return redirect('/admin/manage-item-details')->with('success_update', 'Descriptions created successfully');
-
-        $afterState = json_encode($item_details);
-        try {
-            DB::beginTransaction();
-
-            if ($item_details->save()) {
-                $userId = $request->session()->get('login');
-                if (UserHelpers::recordItemHistory($userId, $request->id, $prevState, $afterState)) {
-                    DB::commit();
-                    return redirect('/admin/manage-item-details')->with('success', 'Descriptions created successfully');
-                } else {
-                    DB::rollBack();
-                    return redirect()->back();
-                }
-            } else {
-                DB::rollBack();
-                return redirect()->back();
-            }
-        } catch (Throwable $e) {
-            DB::rollBack();
-            return redirect()->back();
-        }
     }
 
     /**
@@ -124,9 +91,47 @@ class ItemDetailsApiController extends Controller
      * @param  \App\Models\ItemDetails  $itemDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ItemDetails $itemDetails)
+    public function update(Request $request, $item_details_api)
     {
-        //
+        //UPDATE
+        // return response()->json($request);
+        // $userId = $request->session()->get('login');
+        $userId = 1;
+        $item_details = ItemDetails::find($item_details_api);
+
+        $prevState = json_encode($item_details);
+        $item_details->category_id = $request->category_id;
+        $item_details->description = $request->description;
+        $item_details->article = $request->article;
+        $item_details->unit_id = $request->unit_id;
+        $item_details->price_catalogue = $request->price_catalogue;
+        $item_details->is_approved = $request->submit_mode === "saveAndApprove" ? 1 : 0;
+        $item_details->approved_by = $request->submit_mode === "saveAndApprove" ? $userId : 0;
+        $afterState = json_encode($item_details);
+        DB::beginTransaction();
+        try {
+            if ($item_details->save()) {
+                if (UserHelpers::recordItemHistory($userId, $item_details_api, $prevState, $afterState)) {
+                    DB::commit();
+                    return response()->json([
+                        "success" => true,
+                        "message" => "Item change saved and approved."
+                    ], 200);
+                } else {
+                    DB::rollBack();
+                    return response()->json([
+                        "success" => false,
+                        "message" => "Item changed are not saved and not approved."
+                    ], 400);
+                }
+            }
+        } catch (Throwable $e) {
+            DB::rollBack();
+            return response()->json([
+                "success" => false,
+                "message" => "Item changed are not saved and not approved."
+            ], 400);
+        }
     }
 
     /**

@@ -11,7 +11,7 @@
         <div class="w-full flex">
             <div class="mx-auto w11/12 md:w-10/12 bg-white p-7 rounded shadow-md">
                 <div class="mb-5">
-                    <a href="/admin/manage-units" class="bg-gray-600 rounded px-3 py-2 text-white font-bold no-underline hover:bg-gray-500 transition-all"><i class="fas fa-step-backward"></i> Back</a>
+                    <a href="/admin/manage-item-details" class="bg-gray-600 rounded px-3 py-2 text-white font-bold no-underline hover:bg-gray-500 transition-all"><i class="fas fa-step-backward"></i> Back</a>
                 </div>
                 <h1 class="text-lg font-bold mb-5">Unapproved Items</h1>
                 <table class="table table-auto table-bordered" id="items-table">
@@ -50,97 +50,104 @@
                 <div class="rounded-3xl shadow">
                     <a href="#" title="Close" class="modal-close"><i class="fa fa-window-close" aria-hidden="true"></i></a>
                     <div class="text-xl mb-3">View <span id="edit-title"></span></div>
-                    <div class="form-group">
-                        <label for="description" class="text-xs">Item Name</label>
-                        <input type="text" name="description" id="description" value="" class="w-full" />
-                    </div>
-                    <div class="form-group">
-                        <label for="category_id" class="text-xs">Item Name</label>
-                        <select name="category_id" id="category_id" class="p-1 w-full border border-gray-300 rounded">
-                            @if (isset($categories))
-                                @foreach ($categories as $cat)
-                                    <option value="{{ $cat->id }}">{{ $cat->description }}</option>
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="article" class="text-xs">Item Article</label>
-                        <input type="text" name="article" id="article" value="" class="w-full" />
-                    </div>
-                    <div class="form-group">
-                        <label for="unit_id" class="text-xs">Unit of Measurement</label>
-                        <select name="unit_id" id="unit_id" class="p-1 w-full border border-gray-300 rounded">
-                            @if (isset($units))
-                                @foreach ($units as $unit)
-                                    <option value="{{ $unit->id }}">{{ $unit->uom }}</option>
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="price_catalogue" class="text-xs">Price Catalogue</label>
-                        <input type="text" name="price_catalogue" id="price_catalogue" value="" class="w-full" />
-                    </div>
-                    <div class="text-xs italic mb-3">
-                        <span class="font-bold">Added by:</span> <span id="added_by_span"></span>
-                    </div>
-                    <a href="#" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition-all ease-in-out no-underline">Cancel</a>
-                    <button class="bg-green-700 text-white px-2 py-1 rounded hover:bg-green-600 transition-all ease-in-out no-underline float-right">Save & Approve</button>
-                    <button class="bg-blue-700 text-white px-2 py-1 rounded hover:bg-blue-600 transition-all ease-in-out no-underline float-right mr-3">Save Only</button>
+                    <form id="review-frm-id">
+                        <div class="form-group">
+                            <label for="description" class="text-xs">Item Name</label>
+                            <input type="text" name="description" id="description" value="" class="w-full" />
+                        </div>
+                        <div class="form-group">
+                            <label for="category_id" class="text-xs">Category</label>
+                            <select name="category_id" id="category_id" class="p-1 w-full border border-gray-300 rounded">
+                                @if (isset($categories))
+                                    @foreach ($categories as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->description }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="article" class="text-xs">Item Article</label>
+                            <input type="text" name="article" id="article" value="" class="w-full" />
+                        </div>
+                        <div class="form-group">
+                            <label for="unit_id" class="text-xs">Unit of Measurement</label>
+                            <select name="unit_id" id="unit_id" class="p-1 w-full border border-gray-300 rounded">
+                                @if (isset($units))
+                                    @foreach ($units as $unit)
+                                        <option value="{{ $unit->id }}">{{ $unit->uom }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="price_catalogue" class="text-xs">Price Catalogue</label>
+                            <input type="text" name="price_catalogue" id="price_catalogue" value="" class="w-full" />
+                        </div>
+                        <div class="text-xs italic mb-3">
+                            <span class="font-bold">Added by:</span> <span id="added_by_span"></span>
+                        </div>
+                        <a href="#" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition-all ease-in-out no-underline">Cancel</a>
+                        <button id="save-approve-item" type="button" onclick="saveApprove('saveAndApprove')" class="bg-green-700 text-white px-2 py-1 rounded hover:bg-green-600 transition-all ease-in-out no-underline float-right">Save & Approve</button>
+                        <button id="save-only-item" type="button" onclick="saveApprove('save')" class="bg-blue-700 text-white px-2 py-1 rounded hover:bg-blue-600 transition-all ease-in-out no-underline float-right mr-3">Save Only</button>
+                    </form>
                 </div>
             </div>
         </div>
 </body>
 <style>
 .modal-window {
-  position: fixed;
-  background-color: rgba(46, 46, 46, 0.5);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 999;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
+    position: fixed;
+    background-color: rgba(46, 46, 46, 0.5);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
 }
 .modal-window:target {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
 }
 .modal-window > div {
-  width: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 2em;
-  background: white;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    background: white;
 }
 .modal-window header {
-  font-weight: bold;
+    font-weight: bold;
 }
 .modal-window h1 {
-  font-size: 150%;
-  margin: 0 0 15px;
+    font-size: 150%;
+    margin: 0 0 15px;
 }
 
 .modal-close {
-  color: #aaa;
-  line-height: 50px;
-  font-size: 80%;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: 0;
-  width: 70px;
-  text-decoration: none;
+    color: #aaa;
+    line-height: 50px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
 }
 .modal-close:hover {
-  color: black;
+    color: black;
+}
+
+@media only screen and (max-width: 800px) {
+    .modal-window > div {
+        width: 95% !important;
+    }
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -151,10 +158,12 @@
         $('#items-table').DataTable();
     });
 </script>
-
+@csrf
 <script defer>
+    let currId;
     async function viewDetails(e) {
-        await axios.get('/api/v1/item_details/' + e)
+        currId = e;
+        await axios.get('{{ url("api/v1/item_details_api") }}' + "/" + e)
             .then(res => {
                 let resData = res.data.data[0];
                 let titleName = document.querySelector("#edit-title");
@@ -168,7 +177,7 @@
                         break;
                     }
                 }
-
+                
                 document.querySelector('#article').value = resData.article;
 
                 let selUnit = document.getElementById('unit_id');
@@ -189,8 +198,27 @@
                 alert('Something went wrong! Cannot fetch data. Please refresh the page! If the error persists, please contact website administrator.');
             });
     }
-</script>
 
+    async function saveApprove(submitMode) {
+        const frmData = new FormData(document.getElementById('review-frm-id'));
+        frmData.append('id', currId);
+        frmData.append('_token', '{{ csrf_token() }}');
+        frmData.append('submit_mode', submitMode);
+        var data = {};
+        frmData.forEach((value, key) => data[key] = value);
+        await axios.put('{{ url("api/v1/item_details_api") }}' + "/" + currId, data, {
+            headers: {
+                'Accept' : 'application/json',
+                'Content-Type': 'application/json',
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        })
+            .then(res => {
+                window.location.href = "{{ url('admin/manage-item-details/unapproved') }}";
+            })
+            .catch(err => console.log(err));
+    }
+</script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script defer>
     let selId = 0;

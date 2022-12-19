@@ -32,4 +32,8 @@ Route::resource('v1/branch', BranchController::class);
 
 Route::resource('v1/unit', UnitApiController::class);
 
-Route::resource('v1/item_details', ItemDetailsApiController::class);
+// Route::get('v1/item_details', [ItemDetailsApiController::class, 'index'])->name('api-item-details-all');
+// Route::get('v1/item_details/{id}', [ItemDetailsApiController::class, 'show'])->name('api-item-details-single');
+// Route::put('v1/item_details_api/{id}', [ItemDetailsApiController::class, 'update'])->name('api-item-details-put');
+
+Route::resource('v1/item_details_api', ItemDetailsApiController::class);
