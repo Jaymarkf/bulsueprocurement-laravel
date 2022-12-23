@@ -25,10 +25,7 @@ class UserSeeder extends Seeder
             'approved' => 1,
             'remarks' => 'Test',
             'level' => 'admin',
-<<<<<<< HEAD
             'added_by' => '1'
-=======
->>>>>>> b646d17 (test)
         ]);
     }
 }

@@ -8,10 +8,6 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-    //
-    function save(Request $request){
-        dd('test');
-    }
     function validate_input($string) {
         $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
      
@@ -30,8 +26,7 @@ class AdminController extends Controller
         if($data){
             // session()->pull('login'); session destroyer
             $request->session()->put('login',$data->id); 
-            dd('redirect the users in specific template depends on the user position');
-            // return redirect('/admin/dashboard'); <---example
+            return redirect('/admin/dashboard');
             //return redirect('supplier/dashboard'); <---example
         }else{
             return back()->with('fail',"Credentials are incorrect! Try again");

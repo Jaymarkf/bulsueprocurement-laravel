@@ -20,7 +20,7 @@ class UsersController extends Controller
         // $users_lists = User::all();
         // $access_levels = Branches::distinct()->get(['level']);
         // $branch_names = User::distinct()->get(['branch']);
-        $users_lists = User::with('profiles')->get();
+        $users_lists = User::with('profiles')->with('branch')->get();
         $branches = Branches::distinct()->get(['branch_name']);
         return view('admin.admin-user',compact('users_lists','branches'));
     }
@@ -145,7 +145,8 @@ class UsersController extends Controller
        
         $user_id = User::select('profiles_id')->whereIn('id',$ids)->get()->first();
         $d = $user_id->profiles_id;
-        UserProfiles::where('id','=' , $d)->delete();
+     
+        dd(UserProfiles::where('id','=' , $d)->delete());
         User::whereIn('id',$ids)->delete();
         return redirect()->back()->with('success','User account was deleted');
     }

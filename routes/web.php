@@ -108,7 +108,7 @@ Route::get('/', function () {
 //HOME PAGE LOGIN
 Route::post('login', [AdminController::class, 'login']);
 
-//ADMIN ROUTES with MIDDLEWARE
+//ADMIN ROUTES with MIDDLEWARE GET REQUEST
 Route::get('/admin/{url}', function ($url) {
     if ($url == 'dashboard') {
         return view('/admin/dashboard');

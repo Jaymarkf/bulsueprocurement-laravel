@@ -58,4 +58,7 @@ class User extends Authenticatable
     function profiles(){
         return $this->belongsTo(UserProfiles::class);
     }
+    function branch(){
+        return $this->belongsTo(Branches::class);
+    }
 }

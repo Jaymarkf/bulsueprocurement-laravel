@@ -126,7 +126,7 @@
                                           <i class="fas fa-edit text-white"></i>
                                       </a>
                                     </td>
-                                    <td class="branch">{{$users_lists->branch}}</td>
+                                    <td class="branch">{{$users_lists->branch->branch_name}}</td>
                                     <td class="username">{{$users_lists->username}}</td>
                                     <div class="firstname hidden">{{$users_lists->first_name}}</div>
                                     <div class="lastname hidden">{{$users_lists->last_name}}</div>
