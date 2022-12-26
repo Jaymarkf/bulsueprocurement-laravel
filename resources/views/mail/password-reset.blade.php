@@ -67,7 +67,7 @@
   </main>
 
   <div id="Footer-content">
-  @include('layout/footer')
+    @include('layout/footer')
   </div>
 
   <script src="{{ asset('js/app.js') }}"></script>

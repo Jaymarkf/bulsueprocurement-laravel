@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Mail;
 use App\Mail\ForgetPasswordMail;
+use Illuminate\Validation\Rules\Password;
+
 
 class ResetPasswordController extends Controller
 {
@@ -145,13 +147,18 @@ class ResetPasswordController extends Controller
   
            $request->validate([
            'email'=>'required|email',
-           'password'=>'required|min:6|max:100',
+           'password'=>[
+            'required', 'min:6', 'max:100',
+            Password::min(8)->mixedCase()->letters()->numbers()->symbols()->uncompromised(),
+            ],
            'confirm_password'=>'required|same:password',
            ]);
   
            $user=User::find($password_reset_data->user_id);
            $user->password = $request->password;
            $user->save();
+
+           return redirect()->back()->with('success', 'Your password has been reset successfully');
   
            
         //    if($user->email!=$request->email){
